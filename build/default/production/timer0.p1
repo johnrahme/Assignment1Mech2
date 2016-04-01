@@ -1,12 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"270 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
-[v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-[v F1091 `(v ~T0 @X0 1 tf1`ul ]
-"152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
-[v __delay `JF1091 ~T0 @X0 0 e ]
-[p i __delay ]
-"55 C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h
-[v _round `(d ~T0 @X0 0 ef1`d ]
+"2513 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
+[v _RB0 `Vb ~T0 @X0 0 e@48 ]
+"2515
+[v _RB1 `Vb ~T0 @X0 0 e@49 ]
+"2517
+[v _RB2 `Vb ~T0 @X0 0 e@50 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1024,208 +1022,185 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-[; ;math.h: 30: extern double fabs(double);
-[; ;math.h: 31: extern double floor(double);
-[; ;math.h: 32: extern double ceil(double);
-[; ;math.h: 33: extern double modf(double, double *);
-[; ;math.h: 34: extern double sqrt(double);
-[; ;math.h: 35: extern double atof(const char *);
-[; ;math.h: 36: extern double sin(double) ;
-[; ;math.h: 37: extern double cos(double) ;
-[; ;math.h: 38: extern double tan(double) ;
-[; ;math.h: 39: extern double asin(double) ;
-[; ;math.h: 40: extern double acos(double) ;
-[; ;math.h: 41: extern double atan(double);
-[; ;math.h: 42: extern double atan2(double, double) ;
-[; ;math.h: 43: extern double log(double);
-[; ;math.h: 44: extern double log10(double);
-[; ;math.h: 45: extern double pow(double, double) ;
-[; ;math.h: 46: extern double exp(double) ;
-[; ;math.h: 47: extern double sinh(double) ;
-[; ;math.h: 48: extern double cosh(double) ;
-[; ;math.h: 49: extern double tanh(double);
-[; ;math.h: 50: extern double eval_poly(double, const double *, int);
-[; ;math.h: 51: extern double frexp(double, int *);
-[; ;math.h: 52: extern double ldexp(double, int);
-[; ;math.h: 53: extern double fmod(double, double);
-[; ;math.h: 54: extern double trunc(double);
-[; ;math.h: 55: extern double round(double);
-"13 motor.h
-[v _cstep `c ~T0 @X0 1 e ]
-[i _cstep
--> -> 0 `i `c
+"7 timer0.h
+[v _pb0Pressed `Vb ~T0 @X0 1 e ]
+[i _pb0Pressed
+-> 0 `i
 ]
-[; ;motor.h: 13: signed char cstep = 0;
-"14
-[v _allSteps `i ~T0 @X0 -> 0 `x e ]
-[i _allSteps
-:U ..
--> 60 `i
--> 46 `i
--> 43 `i
--> 39 `i
--> 53 `i
--> 23 `i
--> 27 `i
--> 30 `i
-..
+[; ;timer0.h: 7: volatile bit pb0Pressed = 0;
+"8
+[v _pb0Released `Vb ~T0 @X0 1 e ]
+[i _pb0Released
+-> 0 `i
 ]
-[; ;motor.h: 14: int allSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
-[; ;motor.h: 16: void move(char steps, char direction);
-[; ;motor.h: 17: void moveDeg(double deg);
-"18 motor.c
-[v _move `(v ~T0 @X0 1 ef2`uc`uc ]
+[; ;timer0.h: 8: volatile bit pb0Released = 0;
+"9
+[v _rtcCounter `Vuc ~T0 @X0 1 e ]
+[i _rtcCounter
+-> -> 0 `i `uc
+]
+[; ;timer0.h: 9: volatile unsigned char rtcCounter = 0;
+"11
+[v _pb1Pressed `Vb ~T0 @X0 1 e ]
+[i _pb1Pressed
+-> 0 `i
+]
+[; ;timer0.h: 11: volatile bit pb1Pressed = 0;
+"12
+[v _pb1Released `Vb ~T0 @X0 1 e ]
+[i _pb1Released
+-> 0 `i
+]
+[; ;timer0.h: 12: volatile bit pb1Released = 0;
+"13
+[v _rtcCounter2 `Vuc ~T0 @X0 1 e ]
+[i _rtcCounter2
+-> -> 0 `i `uc
+]
+[; ;timer0.h: 13: volatile unsigned char rtcCounter2 = 0;
+"15
+[v _pb2Pressed `Vb ~T0 @X0 1 e ]
+[i _pb2Pressed
+-> 0 `i
+]
+[; ;timer0.h: 15: volatile bit pb2Pressed = 0;
+"16
+[v _pb2Released `Vb ~T0 @X0 1 e ]
+[i _pb2Released
+-> 0 `i
+]
+[; ;timer0.h: 16: volatile bit pb2Released = 0;
+"17
+[v _rtcCounter3 `Vuc ~T0 @X0 1 e ]
+[i _rtcCounter3
+-> -> 0 `i `uc
+]
+[; ;timer0.h: 17: volatile unsigned char rtcCounter3 = 0;
+[; ;timer0.h: 19: void debounceButtons();
+"6 timer0.c
+[v _debounceButtons `(v ~T0 @X0 1 ef ]
 {
-[; ;motor.c: 18: void move(char steps, char direction){
-[e :U _move ]
-[v _steps `uc ~T0 @X0 1 r1 ]
-[v _direction `uc ~T0 @X0 1 r2 ]
+[; ;timer0.c: 6: void debounceButtons(){
+[e :U _debounceButtons ]
 [f ]
-[; ;motor.c: 19: for(char i = 0; i<steps; i++){
-"19
+[; ;timer0.c: 8: if(!RB0) {
+"8
+[e $ ! ! _RB0 97  ]
 {
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $U 100  ]
+[; ;timer0.c: 9: rtcCounter++;
+"9
+[e ++ _rtcCounter -> -> 1 `i `uc ]
+[; ;timer0.c: 10: if(rtcCounter >10 &&pb0Released){
+"10
+[e $ ! && > -> _rtcCounter `i -> 10 `i _pb0Released 98  ]
+{
+[; ;timer0.c: 11: pb0Pressed = 1;
+"11
+[e = _pb0Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 12: pb0Released = 0;
+"12
+[e = _pb0Released -> -> 0 `i `b ]
+"13
+}
+[e :U 98 ]
+"14
+}
+[; ;timer0.c: 13: }
+[; ;timer0.c: 14: }
+[e $U 99  ]
+"15
 [e :U 97 ]
+[; ;timer0.c: 15: else{
 {
-[; ;motor.c: 20: if(cstep == 7 && direction == 1){
+[; ;timer0.c: 16: rtcCounter = 0;
+"16
+[e = _rtcCounter -> -> 0 `i `uc ]
+[; ;timer0.c: 17: pb0Released = 1;
+"17
+[e = _pb0Released -> -> 1 `i `b ]
+"18
+}
+[e :U 99 ]
+[; ;timer0.c: 18: }
+[; ;timer0.c: 20: if(!RB1) {
 "20
-[e $ ! && == -> _cstep `i -> 7 `i == -> _direction `i -> 1 `i 101  ]
+[e $ ! ! _RB1 100  ]
 {
-[; ;motor.c: 21: PORTC = allSteps[0];
+[; ;timer0.c: 21: rtcCounter2++;
 "21
-[e = _PORTC -> *U + &U _allSteps * -> -> -> 0 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
-[; ;motor.c: 22: cstep = 0;
+[e ++ _rtcCounter2 -> -> 1 `i `uc ]
+[; ;timer0.c: 22: if(rtcCounter2 >10 &&pb1Released){
 "22
-[e = _cstep -> -> 0 `i `c ]
+[e $ ! && > -> _rtcCounter2 `i -> 10 `i _pb1Released 101  ]
+{
+[; ;timer0.c: 23: pb1Pressed = 1;
 "23
-}
-[; ;motor.c: 23: }
-[e $U 102  ]
+[e = _pb1Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 24: pb1Released = 0;
 "24
-[e :U 101 ]
-[; ;motor.c: 24: else if(cstep == 0 && direction == 0){
-[e $ ! && == -> _cstep `i -> 0 `i == -> _direction `i -> 0 `i 103  ]
-{
-[; ;motor.c: 25: PORTC = allSteps[7];
+[e = _pb1Released -> -> 0 `i `b ]
 "25
-[e = _PORTC -> *U + &U _allSteps * -> -> -> 7 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
-[; ;motor.c: 26: cstep = 7;
+}
+[e :U 101 ]
 "26
-[e = _cstep -> -> 7 `i `c ]
+}
+[; ;timer0.c: 25: }
+[; ;timer0.c: 26: }
+[e $U 102  ]
 "27
-}
-[; ;motor.c: 27: }
-[e $U 104  ]
+[e :U 100 ]
+[; ;timer0.c: 27: else{
+{
+[; ;timer0.c: 28: rtcCounter2 = 0;
 "28
-[e :U 103 ]
-[; ;motor.c: 28: else if (cstep >= 0 && cstep <= 7){
-[e $ ! && >= -> _cstep `i -> 0 `i <= -> _cstep `i -> 7 `i 105  ]
-{
-[; ;motor.c: 29: if(direction == 1){
+[e = _rtcCounter2 -> -> 0 `i `uc ]
+[; ;timer0.c: 29: pb1Released = 1;
 "29
-[e $ ! == -> _direction `i -> 1 `i 106  ]
-{
-[; ;motor.c: 30: PORTC = allSteps[cstep+1];
+[e = _pb1Released -> -> 1 `i `b ]
 "30
-[e = _PORTC -> *U + &U _allSteps * -> -> + -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
-[; ;motor.c: 31: cstep++;
-"31
-[e ++ _cstep -> -> 1 `i `c ]
-"32
 }
-[; ;motor.c: 32: }
-[e $U 107  ]
-"33
-[e :U 106 ]
-[; ;motor.c: 33: else if(direction == 0){
-[e $ ! == -> _direction `i -> 0 `i 108  ]
+[e :U 102 ]
+[; ;timer0.c: 30: }
+[; ;timer0.c: 31: if(!RB2) {
+"31
+[e $ ! ! _RB2 103  ]
 {
-[; ;motor.c: 34: PORTC = allSteps[cstep-1];
+[; ;timer0.c: 32: rtcCounter3++;
+"32
+[e ++ _rtcCounter3 -> -> 1 `i `uc ]
+[; ;timer0.c: 33: if(rtcCounter3 >10 &&pb2Released){
+"33
+[e $ ! && > -> _rtcCounter3 `i -> 10 `i _pb2Released 104  ]
+{
+[; ;timer0.c: 34: pb2Pressed = 1;
 "34
-[e = _PORTC -> *U + &U _allSteps * -> -> - -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
-[; ;motor.c: 35: cstep--;
+[e = _pb2Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 35: pb2Released = 0;
 "35
-[e -- _cstep -> -> 1 `i `c ]
+[e = _pb2Released -> -> 0 `i `b ]
 "36
 }
-[e :U 108 ]
-"38
-[e :U 107 ]
+[e :U 104 ]
+"37
 }
-[; ;motor.c: 36: }
-[; ;motor.c: 38: }
-[e $U 109  ]
-"39
-[e :U 105 ]
-[; ;motor.c: 39: else{
+[; ;timer0.c: 36: }
+[; ;timer0.c: 37: }
+[e $U 105  ]
+"38
+[e :U 103 ]
+[; ;timer0.c: 38: else{
 {
-[; ;motor.c: 40: PORTC = 0x00;
+[; ;timer0.c: 39: rtcCounter3 = 0;
+"39
+[e = _rtcCounter3 -> -> 0 `i `uc ]
+[; ;timer0.c: 40: pb2Released = 1;
 "40
-[e = _PORTC -> -> 0 `i `uc ]
+[e = _pb2Released -> -> 1 `i `b ]
 "41
 }
-[e :U 109 ]
-[e :U 104 ]
-[e :U 102 ]
-[; ;motor.c: 41: }
-[; ;motor.c: 42: _delay((unsigned long)((100)*(20000000/4000.0)));
+[e :U 105 ]
+[; ;timer0.c: 41: }
+[; ;timer0.c: 42: }
 "42
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"43
-}
-"19
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 100 ]
-[e $ < -> _i `i -> _steps `i 97  ]
-[e :U 98 ]
-"43
-}
-[; ;motor.c: 43: }
-[; ;motor.c: 44: }
-"44
 [e :UE 96 ]
-}
-"46
-[v _moveDeg `(v ~T0 @X0 1 ef1`d ]
-{
-[; ;motor.c: 46: void moveDeg(double deg){
-[e :U _moveDeg ]
-[v _deg `d ~T0 @X0 1 r1 ]
-[f ]
-"47
-[v _stepsToMove `uc ~T0 @X0 1 a ]
-[; ;motor.c: 47: char stepsToMove;
-[; ;motor.c: 48: if(deg<0){
-"48
-[e $ ! < _deg -> -> 0 `i `d 111  ]
-{
-[; ;motor.c: 49: stepsToMove = (char) round(-deg/(7.5/2.0));
-"49
-[e = _stepsToMove -> ( _round (1 / -U _deg / .7.5 .2.0 `uc ]
-[; ;motor.c: 50: move(stepsToMove,0);
-"50
-[e ( _move (2 , _stepsToMove -> -> 0 `i `uc ]
-"51
-}
-[; ;motor.c: 51: }
-[e $U 112  ]
-"52
-[e :U 111 ]
-[; ;motor.c: 52: else{
-{
-[; ;motor.c: 53: stepsToMove = (char) round(deg/(7.5/2.0));
-"53
-[e = _stepsToMove -> ( _round (1 / _deg / .7.5 .2.0 `uc ]
-[; ;motor.c: 54: move(stepsToMove,1);
-"54
-[e ( _move (2 , _stepsToMove -> -> 1 `i `uc ]
-"55
-}
-[e :U 112 ]
-[; ;motor.c: 55: }
-[; ;motor.c: 56: }
-"56
-[e :UE 110 ]
 }

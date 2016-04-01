@@ -1,14 +1,10 @@
 
 #include <xc.h>
 #include "timer0.h"
+#define DEBOUNCE_REQ_COUNT 10 // Ehhh we can make this any reasonable number
 
-void interrupt isr(void){
-    if (T0IF){ // If Timer 0 overflow occurred
-    T0IF = 0; // Clear flag
-    TMR0 = TMR0_VAL;
-    
-    // Reset the timer0 start count
-    // Increment counter
+void debounceButtons(){
+
         if(PB0) {
             rtcCounter++;
             if(rtcCounter >DEBOUNCE_REQ_COUNT &&pb0Released){
@@ -32,5 +28,15 @@ void interrupt isr(void){
             rtcCounter2 = 0;
             pb1Released = 1;
         }
-    }
+        if(PB2) {
+            rtcCounter3++;
+            if(rtcCounter3 >DEBOUNCE_REQ_COUNT &&pb2Released){
+                pb2Pressed = 1;
+                pb2Released = 0;
+            }
+        }
+        else{
+            rtcCounter3 = 0;
+            pb2Released = 1;
+        }
 }

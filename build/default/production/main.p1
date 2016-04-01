@@ -3,18 +3,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _T0IF `Vb ~T0 @X0 0 e@90 ]
 "55
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
-"2513
-[v _RB0 `Vb ~T0 @X0 0 e@48 ]
-"2515
-[v _RB1 `Vb ~T0 @X0 0 e@49 ]
-"1337
+"19 timer0.h
+[v _debounceButtons `(v ~T0 @X0 0 ef ]
+"1337 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "1398
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"2517
-[v _RB2 `Vb ~T0 @X0 0 e@50 ]
 "2519
 [v _RB3 `Vb ~T0 @X0 0 e@51 ]
+"2521
+[v _RB4 `Vb ~T0 @X0 0 e@52 ]
 "2627
 [v _T0CS `Vb ~T0 @X0 0 e@1037 ]
 "2633
@@ -32,7 +30,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "2443
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
 [p mainexit ]
-"17 motor.h
+"16 motor.h
+[v _move `(v ~T0 @X0 0 ef2`uc`uc ]
+"17
 [v _moveDeg `(v ~T0 @X0 0 ef1`d ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
@@ -1078,7 +1078,62 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;motor.h: 14: int allSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
 [; ;motor.h: 16: void move(char steps, char direction);
 [; ;motor.h: 17: void moveDeg(double deg);
-"4 main.c
+"7 timer0.h
+[v _pb0Pressed `Vb ~T0 @X0 1 e ]
+[i _pb0Pressed
+-> 0 `i
+]
+[; ;timer0.h: 7: volatile bit pb0Pressed = 0;
+"8
+[v _pb0Released `Vb ~T0 @X0 1 e ]
+[i _pb0Released
+-> 0 `i
+]
+[; ;timer0.h: 8: volatile bit pb0Released = 0;
+"9
+[v _rtcCounter `Vuc ~T0 @X0 1 e ]
+[i _rtcCounter
+-> -> 0 `i `uc
+]
+[; ;timer0.h: 9: volatile unsigned char rtcCounter = 0;
+"11
+[v _pb1Pressed `Vb ~T0 @X0 1 e ]
+[i _pb1Pressed
+-> 0 `i
+]
+[; ;timer0.h: 11: volatile bit pb1Pressed = 0;
+"12
+[v _pb1Released `Vb ~T0 @X0 1 e ]
+[i _pb1Released
+-> 0 `i
+]
+[; ;timer0.h: 12: volatile bit pb1Released = 0;
+"13
+[v _rtcCounter2 `Vuc ~T0 @X0 1 e ]
+[i _rtcCounter2
+-> -> 0 `i `uc
+]
+[; ;timer0.h: 13: volatile unsigned char rtcCounter2 = 0;
+"15
+[v _pb2Pressed `Vb ~T0 @X0 1 e ]
+[i _pb2Pressed
+-> 0 `i
+]
+[; ;timer0.h: 15: volatile bit pb2Pressed = 0;
+"16
+[v _pb2Released `Vb ~T0 @X0 1 e ]
+[i _pb2Released
+-> 0 `i
+]
+[; ;timer0.h: 16: volatile bit pb2Released = 0;
+"17
+[v _rtcCounter3 `Vuc ~T0 @X0 1 e ]
+[i _rtcCounter3
+-> -> 0 `i `uc
+]
+[; ;timer0.h: 17: volatile unsigned char rtcCounter3 = 0;
+[; ;timer0.h: 19: void debounceButtons();
+"5 main.c
 [p x BOREN=OFF ]
 [p x CPD=OFF ]
 [p x WRT=OFF ]
@@ -1087,252 +1142,177 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x CP=OFF ]
 [p x LVP=OFF ]
 [p x PWRTE=OFF ]
-"13
-[v _pb0Pressed `Vb ~T0 @X0 1 e ]
-[i _pb0Pressed
+"10
+[v _motorToggle `b ~T0 @X0 1 e ]
+[i _motorToggle
 -> 0 `i
 ]
-[; ;main.c: 13: volatile bit pb0Pressed = 0;
-"14
-[v _pb0Released `Vb ~T0 @X0 1 e ]
-[i _pb0Released
--> 0 `i
-]
-[; ;main.c: 14: volatile bit pb0Released = 0;
-"15
-[v _rtcCounter `Vuc ~T0 @X0 1 e ]
-[i _rtcCounter
--> -> 0 `i `uc
-]
-[; ;main.c: 15: volatile unsigned char rtcCounter = 0;
-"17
-[v _pb1Pressed `Vb ~T0 @X0 1 e ]
-[i _pb1Pressed
--> 0 `i
-]
-[; ;main.c: 17: volatile bit pb1Pressed = 0;
-"18
-[v _pb1Released `Vb ~T0 @X0 1 e ]
-[i _pb1Released
--> 0 `i
-]
-[; ;main.c: 18: volatile bit pb1Released = 0;
-"19
-[v _rtcCounter2 `Vuc ~T0 @X0 1 e ]
-[i _rtcCounter2
--> -> 0 `i `uc
-]
-[; ;main.c: 19: volatile unsigned char rtcCounter2 = 0;
-[v F1110 `(v ~T0 @X0 1 tf ]
-"24
-[v _isr `IF1110 ~T0 @X0 1 e ]
+[; ;main.c: 10: bit motorToggle = 0;
+[v F1115 `(v ~T0 @X0 1 tf ]
+"12
+[v _isr `IF1115 ~T0 @X0 1 e ]
 {
-[; ;main.c: 24: void interrupt isr(void){
+[; ;main.c: 12: void interrupt isr(void){
 [e :U _isr ]
 [f ]
-[; ;main.c: 25: if (T0IF){
-"25
+[; ;main.c: 13: if (T0IF){
+"13
 [e $ ! _T0IF 97  ]
 {
-[; ;main.c: 26: T0IF = 0;
-"26
+[; ;main.c: 14: T0IF = 0;
+"14
 [e = _T0IF -> -> 0 `i `b ]
-[; ;main.c: 27: TMR0 = 100;
-"27
+[; ;main.c: 15: TMR0 = 100;
+"15
 [e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 31: if(!RB0) {
-"31
-[e $ ! ! _RB0 98  ]
-{
-[; ;main.c: 32: rtcCounter++;
-"32
-[e ++ _rtcCounter -> -> 1 `i `uc ]
-[; ;main.c: 33: if(rtcCounter >10 &&pb0Released){
-"33
-[e $ ! && > -> _rtcCounter `i -> 10 `i _pb0Released 99  ]
-{
-[; ;main.c: 34: pb0Pressed = 1;
-"34
-[e = _pb0Pressed -> -> 1 `i `b ]
-[; ;main.c: 35: pb0Released = 0;
-"35
-[e = _pb0Released -> -> 0 `i `b ]
-"36
-}
-[e :U 99 ]
-"37
-}
-[; ;main.c: 36: }
-[; ;main.c: 37: }
-[e $U 100  ]
-"38
-[e :U 98 ]
-[; ;main.c: 38: else{
-{
-[; ;main.c: 39: rtcCounter = 0;
-"39
-[e = _rtcCounter -> -> 0 `i `uc ]
-[; ;main.c: 40: pb0Released = 1;
-"40
-[e = _pb0Released -> -> 1 `i `b ]
-"41
-}
-[e :U 100 ]
-[; ;main.c: 41: }
-[; ;main.c: 43: if(!RB1) {
-"43
-[e $ ! ! _RB1 101  ]
-{
-[; ;main.c: 44: rtcCounter2++;
-"44
-[e ++ _rtcCounter2 -> -> 1 `i `uc ]
-[; ;main.c: 45: if(rtcCounter2 >10 &&pb1Released){
-"45
-[e $ ! && > -> _rtcCounter2 `i -> 10 `i _pb1Released 102  ]
-{
-[; ;main.c: 46: pb1Pressed = 1;
-"46
-[e = _pb1Pressed -> -> 1 `i `b ]
-[; ;main.c: 47: pb1Released = 0;
-"47
-[e = _pb1Released -> -> 0 `i `b ]
-"48
-}
-[e :U 102 ]
-"49
-}
-[; ;main.c: 48: }
-[; ;main.c: 49: }
-[e $U 103  ]
-"50
-[e :U 101 ]
-[; ;main.c: 50: else{
-{
-[; ;main.c: 51: rtcCounter2 = 0;
-"51
-[e = _rtcCounter2 -> -> 0 `i `uc ]
-[; ;main.c: 52: pb1Released = 1;
-"52
-[e = _pb1Released -> -> 1 `i `b ]
-"53
-}
-[e :U 103 ]
-"54
+[; ;main.c: 16: debounceButtons();
+"16
+[e ( _debounceButtons ..  ]
+"17
 }
 [e :U 97 ]
-[; ;main.c: 53: }
-[; ;main.c: 54: }
-[; ;main.c: 55: }
-"55
+[; ;main.c: 17: }
+[; ;main.c: 18: }
+"18
 [e :UE 96 ]
 }
-"56
+"19
 [v _initialise `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 56: void initialise (void){
+[; ;main.c: 19: void initialise (void){
 [e :U _initialise ]
 [f ]
-[; ;main.c: 59: TRISB = 0b00000011;
-"59
-[e = _TRISB -> -> 3 `i `uc ]
-[; ;main.c: 60: TRISC = 0;
-"60
+[; ;main.c: 22: TRISB = 0b00000111;
+"22
+[e = _TRISB -> -> 7 `i `uc ]
+[; ;main.c: 23: TRISC = 0;
+"23
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 62: RB2 = 1;
-"62
-[e = _RB2 -> -> 1 `i `b ]
-[; ;main.c: 63: RB3 = 1;
-"63
+[; ;main.c: 25: RB3 = 1;
+"25
 [e = _RB3 -> -> 1 `i `b ]
-[; ;main.c: 66: TMR0 = 100;
-"66
+[; ;main.c: 26: RB4 = 1;
+"26
+[e = _RB4 -> -> 1 `i `b ]
+[; ;main.c: 29: TMR0 = 100;
+"29
 [e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 67: T0CS = 0;
-"67
+[; ;main.c: 30: T0CS = 0;
+"30
 [e = _T0CS -> -> 0 `i `b ]
-[; ;main.c: 68: T0SE = 0;
-"68
+[; ;main.c: 31: T0SE = 0;
+"31
 [e = _T0SE -> -> 0 `i `b ]
-[; ;main.c: 69: PSA = 0;
-"69
+[; ;main.c: 32: PSA = 0;
+"32
 [e = _PSA -> -> 0 `i `b ]
-[; ;main.c: 70: PS0 = 0;
-"70
+[; ;main.c: 33: PS0 = 0;
+"33
 [e = _PS0 -> -> 0 `i `b ]
-[; ;main.c: 71: PS1 = 0;
-"71
+[; ;main.c: 34: PS1 = 0;
+"34
 [e = _PS1 -> -> 0 `i `b ]
-[; ;main.c: 72: PS2 = 1;
-"72
+[; ;main.c: 35: PS2 = 1;
+"35
 [e = _PS2 -> -> 1 `i `b ]
-[; ;main.c: 74: TMR0IE = 1;
-"74
+[; ;main.c: 37: TMR0IE = 1;
+"37
 [e = _TMR0IE -> -> 1 `i `b ]
-[; ;main.c: 75: (GIE = 1);
-"75
+[; ;main.c: 38: (GIE = 1);
+"38
 [e = _GIE -> -> 1 `i `b ]
-[; ;main.c: 76: }
-"76
-[e :UE 104 ]
+[; ;main.c: 39: }
+"39
+[e :UE 98 ]
 }
-"78
+"41
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 78: void main (void) {
+[; ;main.c: 41: void main (void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 80: initialise();
-"80
+[; ;main.c: 43: initialise();
+"43
 [e ( _initialise ..  ]
-[; ;main.c: 82: while(1){
-"82
-[e :U 107 ]
+[; ;main.c: 45: while(1){
+"45
+[e :U 101 ]
 {
-[; ;main.c: 83: if(pb0Pressed){
-"83
-[e $ ! _pb0Pressed 109  ]
+[; ;main.c: 46: if(pb0Pressed){
+"46
+[e $ ! _pb0Pressed 103  ]
 {
-[; ;main.c: 84: RB2 = !RB2;
-"84
-[e = _RB2 ! _RB2 ]
-[; ;main.c: 85: moveDeg(3.75);
-"85
-[e ( _moveDeg (1 .3.75 ]
-[; ;main.c: 86: pb0Pressed = 0;
-"86
+[; ;main.c: 47: move(1,0);
+"47
+[e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 48: pb0Pressed = 0;
+"48
 [e = _pb0Pressed -> -> 0 `i `b ]
-"87
+"49
 }
-[e :U 109 ]
-[; ;main.c: 87: }
-[; ;main.c: 88: if(pb1Pressed){
-"88
-[e $ ! _pb1Pressed 110  ]
+[e :U 103 ]
+[; ;main.c: 49: }
+[; ;main.c: 50: if(pb1Pressed){
+"50
+[e $ ! _pb1Pressed 104  ]
 {
-[; ;main.c: 89: RB3 = !RB3;
-"89
-[e = _RB3 ! _RB3 ]
-[; ;main.c: 90: moveDeg(180);
-"90
-[e ( _moveDeg (1 -> -> 180 `i `d ]
-[; ;main.c: 91: pb1Pressed = 0;
-"91
+[; ;main.c: 51: move(1,1);
+"51
+[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 52: pb1Pressed = 0;
+"52
 [e = _pb1Pressed -> -> 0 `i `b ]
-"92
+"53
 }
-[e :U 110 ]
-[; ;main.c: 92: }
-[; ;main.c: 93: _delay((unsigned long)((20)*(20000000/4000.0)));
-"93
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"94
+[e :U 104 ]
+[; ;main.c: 53: }
+[; ;main.c: 54: if(pb2Pressed){
+"54
+[e $ ! _pb2Pressed 105  ]
+{
+[; ;main.c: 55: if(motorToggle){
+"55
+[e $ ! _motorToggle 106  ]
+{
+[; ;main.c: 56: moveDeg(-180);
+"56
+[e ( _moveDeg (1 -> -U -> 180 `i `d ]
+"57
 }
-[e :U 106 ]
-"82
+[; ;main.c: 57: }
 [e $U 107  ]
-[e :U 108 ]
-[; ;main.c: 94: }
-[; ;main.c: 95: }
-"95
-[e :UE 105 ]
+"58
+[e :U 106 ]
+[; ;main.c: 58: else{
+{
+[; ;main.c: 59: moveDeg(180);
+"59
+[e ( _moveDeg (1 -> -> 180 `i `d ]
+"60
+}
+[e :U 107 ]
+[; ;main.c: 60: }
+[; ;main.c: 61: motorToggle = !motorToggle;
+"61
+[e = _motorToggle ! _motorToggle ]
+[; ;main.c: 62: pb2Pressed = 0;
+"62
+[e = _pb2Pressed -> -> 0 `i `b ]
+"63
+}
+[e :U 105 ]
+[; ;main.c: 63: }
+[; ;main.c: 64: _delay((unsigned long)((20)*(20000000/4000.0)));
+"64
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"65
+}
+[e :U 100 ]
+"45
+[e $U 101  ]
+[e :U 102 ]
+[; ;main.c: 65: }
+[; ;main.c: 66: }
+"66
+[e :UE 99 ]
 }

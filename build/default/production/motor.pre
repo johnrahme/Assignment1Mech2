@@ -1494,7 +1494,7 @@ cstep--;
 else{
 PORTC = 0x00;
 }
-_delay((unsigned long)((20)*(20000000/4000.0)));
+_delay((unsigned long)((100)*(20000000/4000.0)));
 }
 }
 

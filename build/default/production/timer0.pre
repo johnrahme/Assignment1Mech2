@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "timer0.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -1434,13 +1434,6 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 13 "motor.h"
-signed char cstep = 0;
-int allSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
-
-void move(char steps, char direction);
-void moveDeg(double deg);
-
 # 7 "timer0.h"
 volatile bit pb0Pressed = 0;
 volatile bit pb0Released = 0;
@@ -1456,67 +1449,41 @@ volatile unsigned char rtcCounter3 = 0;
 
 void debounceButtons();
 
+# 6 "timer0.c"
+void debounceButtons(){
 
-# 5 "main.c"
-#pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
-
-
-
-
-bit motorToggle = 0;
-
-void interrupt isr(void){
-if (T0IF){
-T0IF = 0;
-TMR0 = 100;
-debounceButtons();
+if(!RB0) {
+rtcCounter++;
+if(rtcCounter >10 &&pb0Released){
+pb0Pressed = 1;
+pb0Released = 0;
 }
-}
-void initialise (void){
-
-
-TRISB = 0b00000111;
-TRISC = 0;
-
-RB3 = 1;
-RB4 = 1;
-
-
-TMR0 = 100;
-T0CS = 0;
-T0SE = 0;
-PSA = 0;
-PS0 = 0;
-PS1 = 0;
-PS2 = 1;
-
-TMR0IE = 1;
-(GIE = 1);
-}
-
-void main (void) {
-
-initialise();
-
-while(1){
-if(pb0Pressed){
-move(1,0);
-pb0Pressed = 0;
-}
-if(pb1Pressed){
-move(1,1);
-pb1Pressed = 0;
-}
-if(pb2Pressed){
-if(motorToggle){
-moveDeg(-180);
 }
 else{
-moveDeg(180);
+rtcCounter = 0;
+pb0Released = 1;
 }
-motorToggle = !motorToggle;
-pb2Pressed = 0;
+
+if(!RB1) {
+rtcCounter2++;
+if(rtcCounter2 >10 &&pb1Released){
+pb1Pressed = 1;
+pb1Released = 0;
 }
-_delay((unsigned long)((20)*(20000000/4000.0)));
+}
+else{
+rtcCounter2 = 0;
+pb1Released = 1;
+}
+if(!RB2) {
+rtcCounter3++;
+if(rtcCounter3 >10 &&pb2Released){
+pb2Pressed = 1;
+pb2Released = 0;
+}
+}
+else{
+rtcCounter3 = 0;
+pb2Released = 1;
 }
 }
