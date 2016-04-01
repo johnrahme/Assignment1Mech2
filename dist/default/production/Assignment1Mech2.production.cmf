@@ -11,10 +11,6 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
-reset_vec CODE 0 0 0 3 2
-end_init CODE 0 12 12 3 2
-config CONFIG 0 2007 2007 1 2
 $dist/default/production\Assignment1Mech2.production.obj
 cinit CODE 0 15 15 19 2
 text1 CODE 0 137 137 EF 2
@@ -23,46 +19,50 @@ text3 CODE 0 4FC 4FC 4A 2
 text4 CODE 0 5CE 5CE 3C 2
 text5 CODE 0 2DE 2DE 8E 2
 text6 CODE 0 58C 58C 42 2
-text7 CODE 0 68C 68C A 2
+text7 CODE 0 694 694 A 2
 text8 CODE 0 2E 2E 109 2
 text9 CODE 0 3DA 3DA 63 2
 text10 CODE 0 49D 49D 5F 2
 text11 CODE 0 226 226 B8 2
 text12 CODE 0 36C 36C 6E 2
-text13 CODE 0 655 655 16 2
-text14 CODE 0 63E 63E 17 2
+text13 CODE 0 66D 66D 16 2
+text14 CODE 0 656 656 17 2
 text15 CODE 0 60A 60A 34 2
 maintext CODE 0 546 546 46 2
 cstackCOMMON COMMON 1 71 71 5 1
 cstackBANK0 BANK0 1 20 20 50 1
-cstackBANK1 BANK1 1 B0 B0 D 1
-inittext CODE 0 66B 66B 11 2
+cstackBANK1 BANK1 1 B8 B8 D 1
+inittext CODE 0 683 683 11 2
 intentry CODE 0 4 4 E 2
 bitbssCOMMON COMMON 1 380 70 7 1
-bssBANK1 BANK1 1 BD BD 2 1
-idataBANK1 CODE 0 67C 67C 10 2
-dataBANK1 BANK1 1 A0 A0 10 1
+bssBANK1 BANK1 1 C5 C5 2 1
+idataBANK1 CODE 0 63E 63E 18 2
+dataBANK1 BANK1 1 A0 A0 18 1
 bssCOMMON COMMON 1 76 76 4 1
+$C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
+reset_vec CODE 0 0 0 3 2
+end_init CODE 0 12 12 3 2
+config CONFIG 0 2007 2007 1 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM BF-EF 1
+RAM C7-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK1 BF-EF 1
+BANK1 C7-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 696-1FFF 2
+CONST 69E-1FFF 2
 ENTRY 3-3 2
-ENTRY 696-1FFF 2
+ENTRY 69E-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 696-1FFF 2
+CODE 69E-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
@@ -70,9 +70,9 @@ SFR3 180-18F 1
 COMMON 7A-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 696-1FFF 2
+STRCODE 69E-1FFF 2
 STRING 3-3 2
-STRING 696-1FFF 2
+STRING 69E-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -87,30 +87,30 @@ STRING 696-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Assignment1Mech2.production.obj
-15 cinit CODE >525:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-15 cinit CODE >528:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-15 cinit CODE >586:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-16 cinit CODE >589:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-17 cinit CODE >590:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-18 cinit CODE >591:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-19 cinit CODE >592:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-1A cinit CODE >595:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-1B cinit CODE >596:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-1C cinit CODE >597:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-1D cinit CODE >598:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-1E cinit CODE >630:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-1F cinit CODE >631:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-20 cinit CODE >632:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-21 cinit CODE >633:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-22 cinit CODE >634:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-23 cinit CODE >635:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-24 cinit CODE >636:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-25 cinit CODE >637:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-26 cinit CODE >638:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-27 cinit CODE >639:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-2A cinit CODE >645:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-2A cinit CODE >647:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-2B cinit CODE >648:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
+15 cinit CODE >540:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+15 cinit CODE >543:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+15 cinit CODE >607:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+16 cinit CODE >610:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+17 cinit CODE >611:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+18 cinit CODE >612:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+19 cinit CODE >613:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+1A cinit CODE >616:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+1B cinit CODE >617:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+1C cinit CODE >618:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+1D cinit CODE >619:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+1E cinit CODE >651:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+1F cinit CODE >652:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+20 cinit CODE >653:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+21 cinit CODE >654:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+22 cinit CODE >655:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+23 cinit CODE >656:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+24 cinit CODE >657:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+25 cinit CODE >658:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+26 cinit CODE >659:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+27 cinit CODE >660:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+2A cinit CODE >666:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+2A cinit CODE >668:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+2B cinit CODE >669:C:\Users\JohnMac\AppData\Local\Temp\s23c.
 4 intentry CODE >12:C:\Users\JohnMac\Assignment1Mech2\main.c
 60A text15 CODE >6:C:\Users\JohnMac\Assignment1Mech2\timer0.c
 60A text15 CODE >8:C:\Users\JohnMac\Assignment1Mech2\timer0.c
@@ -137,27 +137,27 @@ $dist/default/production\Assignment1Mech2.production.obj
 63A text15 CODE >37:C:\Users\JohnMac\Assignment1Mech2\timer0.c
 63B text15 CODE >39:C:\Users\JohnMac\Assignment1Mech2\timer0.c
 63C text15 CODE >40:C:\Users\JohnMac\Assignment1Mech2\timer0.c
-63E text14 CODE >12:C:\Users\JohnMac\Assignment1Mech2\main.c
-63E text14 CODE >13:C:\Users\JohnMac\Assignment1Mech2\main.c
-640 text14 CODE >14:C:\Users\JohnMac\Assignment1Mech2\main.c
-641 text14 CODE >15:C:\Users\JohnMac\Assignment1Mech2\main.c
-643 text14 CODE >16:C:\Users\JohnMac\Assignment1Mech2\main.c
-648 text14 CODE >18:C:\Users\JohnMac\Assignment1Mech2\main.c
-655 text13 CODE >19:C:\Users\JohnMac\Assignment1Mech2\main.c
-655 text13 CODE >22:C:\Users\JohnMac\Assignment1Mech2\main.c
-659 text13 CODE >23:C:\Users\JohnMac\Assignment1Mech2\main.c
-65A text13 CODE >25:C:\Users\JohnMac\Assignment1Mech2\main.c
-65D text13 CODE >26:C:\Users\JohnMac\Assignment1Mech2\main.c
-65E text13 CODE >29:C:\Users\JohnMac\Assignment1Mech2\main.c
-660 text13 CODE >30:C:\Users\JohnMac\Assignment1Mech2\main.c
-663 text13 CODE >31:C:\Users\JohnMac\Assignment1Mech2\main.c
-664 text13 CODE >32:C:\Users\JohnMac\Assignment1Mech2\main.c
-665 text13 CODE >33:C:\Users\JohnMac\Assignment1Mech2\main.c
-666 text13 CODE >34:C:\Users\JohnMac\Assignment1Mech2\main.c
-667 text13 CODE >35:C:\Users\JohnMac\Assignment1Mech2\main.c
-668 text13 CODE >37:C:\Users\JohnMac\Assignment1Mech2\main.c
-669 text13 CODE >38:C:\Users\JohnMac\Assignment1Mech2\main.c
-66A text13 CODE >39:C:\Users\JohnMac\Assignment1Mech2\main.c
+656 text14 CODE >12:C:\Users\JohnMac\Assignment1Mech2\main.c
+656 text14 CODE >13:C:\Users\JohnMac\Assignment1Mech2\main.c
+658 text14 CODE >14:C:\Users\JohnMac\Assignment1Mech2\main.c
+659 text14 CODE >15:C:\Users\JohnMac\Assignment1Mech2\main.c
+65B text14 CODE >16:C:\Users\JohnMac\Assignment1Mech2\main.c
+660 text14 CODE >18:C:\Users\JohnMac\Assignment1Mech2\main.c
+66D text13 CODE >19:C:\Users\JohnMac\Assignment1Mech2\main.c
+66D text13 CODE >22:C:\Users\JohnMac\Assignment1Mech2\main.c
+671 text13 CODE >23:C:\Users\JohnMac\Assignment1Mech2\main.c
+672 text13 CODE >25:C:\Users\JohnMac\Assignment1Mech2\main.c
+675 text13 CODE >26:C:\Users\JohnMac\Assignment1Mech2\main.c
+676 text13 CODE >29:C:\Users\JohnMac\Assignment1Mech2\main.c
+678 text13 CODE >30:C:\Users\JohnMac\Assignment1Mech2\main.c
+67B text13 CODE >31:C:\Users\JohnMac\Assignment1Mech2\main.c
+67C text13 CODE >32:C:\Users\JohnMac\Assignment1Mech2\main.c
+67D text13 CODE >33:C:\Users\JohnMac\Assignment1Mech2\main.c
+67E text13 CODE >34:C:\Users\JohnMac\Assignment1Mech2\main.c
+67F text13 CODE >35:C:\Users\JohnMac\Assignment1Mech2\main.c
+680 text13 CODE >37:C:\Users\JohnMac\Assignment1Mech2\main.c
+681 text13 CODE >38:C:\Users\JohnMac\Assignment1Mech2\main.c
+682 text13 CODE >39:C:\Users\JohnMac\Assignment1Mech2\main.c
 36C text12 CODE >62:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
 36C text12 CODE >64:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
 376 text12 CODE >65:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
@@ -272,9 +272,9 @@ FB text8 CODE >140:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fta
 111 text8 CODE >143:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
 11B text8 CODE >144:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
 11D text8 CODE >146:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
-68C text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
-68C text7 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
-693 text7 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+694 text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+694 text7 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
+69B text7 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
 58C text6 CODE >42:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
 58C text6 CODE >45:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
 58F text6 CODE >46:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
@@ -351,23 +351,23 @@ FB text8 CODE >140:C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\fta
 57F maintext CODE >62:C:\Users\JohnMac\Assignment1Mech2\main.c
 580 maintext CODE >64:C:\Users\JohnMac\Assignment1Mech2\main.c
 58B maintext CODE >45:C:\Users\JohnMac\Assignment1Mech2\main.c
-66B inittext CODE >604:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-66B inittext CODE >605:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-66C inittext CODE >606:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-66D inittext CODE >607:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-66E inittext CODE >608:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-66F inittext CODE >615:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-66F inittext CODE >616:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-672 inittext CODE >617:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-673 inittext CODE >618:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-674 inittext CODE >619:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-675 inittext CODE >620:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-676 inittext CODE >621:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-677 inittext CODE >622:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-678 inittext CODE >623:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-679 inittext CODE >624:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-67A inittext CODE >625:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-67B inittext CODE >626:C:\Users\JohnMac\AppData\Local\Temp\s3l8.
+683 inittext CODE >625:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+683 inittext CODE >626:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+684 inittext CODE >627:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+685 inittext CODE >628:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+686 inittext CODE >629:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+687 inittext CODE >636:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+687 inittext CODE >637:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+68A inittext CODE >638:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+68B inittext CODE >639:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+68C inittext CODE >640:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+68D inittext CODE >641:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+68E inittext CODE >642:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+68F inittext CODE >643:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+690 inittext CODE >644:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+691 inittext CODE >645:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+692 inittext CODE >646:C:\Users\JohnMac\AppData\Local\Temp\s23c.
+693 inittext CODE >647:C:\Users\JohnMac\AppData\Local\Temp\s23c.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -387,7 +387,7 @@ __Hspace_1 387 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __HidataBANK1 0 0 ABS 0 idataBANK1 -
-__end_of_initialise CD6 0 CODE 0 text13 dist/default/production\Assignment1Mech2.production.obj
+__end_of_initialise D06 0 CODE 0 text13 dist/default/production\Assignment1Mech2.production.obj
 frexp@eptr 23 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ___ftdiv@exp 41 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
@@ -402,14 +402,14 @@ _T0CS 40D 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _T0IF 5A 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _T0SE 40C 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _TMR0 1 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
-___sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
+___sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
 _main A8C 0 CODE 0 maintext dist/default/production\Assignment1Mech2.production.obj
 _move 7B4 0 CODE 0 text9 dist/default/production\Assignment1Mech2.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ltemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ___ftadd@f1 5A 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ___ftadd@f2 5D 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-start 24 0 CODE 0 init C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
+start 24 0 CODE 0 init C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
 ttemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 wtemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __size_of___ftadd 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
@@ -437,12 +437,12 @@ ttemp1 81 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ttemp2 84 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ttemp3 87 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ttemp4 7F 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
-intlevel1 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
-intlevel2 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
-intlevel3 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
-intlevel4 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
-intlevel5 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
+intlevel0 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
+intlevel1 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
+intlevel2 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
+intlevel3 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
+intlevel4 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
+intlevel5 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 wtemp1 80 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
@@ -453,7 +453,6 @@ wtemp5 88 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 wtemp6 7F 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __Hfunctab 0 0 CODE 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
-_allSteps A0 0 BANK1 1 dataBANK1 dist/default/production\Assignment1Mech2.production.obj
 ___ftneg@f1 30 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 _pb0Pressed 381 -310 COMMON 1 bitbssCOMMON dist/default/production\Assignment1Mech2.production.obj
 __size_of___altoft 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
@@ -465,7 +464,7 @@ __Lmaintext 0 0 ABS 0 maintext -
 __size_of___ftpack 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __end_of___ftadd 26E 0 CODE 0 text8 dist/default/production\Assignment1Mech2.production.obj
 __end_of___ftdiv 5BC 0 CODE 0 text11 dist/default/production\Assignment1Mech2.production.obj
-__end_of___ftneg D2C 0 CODE 0 text7 dist/default/production\Assignment1Mech2.production.obj
+__end_of___ftneg D3C 0 CODE 0 text7 dist/default/production\Assignment1Mech2.production.obj
 __end_of___fttol 6D8 0 CODE 0 text5 dist/default/production\Assignment1Mech2.production.obj
 trunc@expon 58 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 __size_of_frexp 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
@@ -479,19 +478,19 @@ __size_of_initialise 0 0 ABS 0 - dist/default/production\Assignment1Mech2.produc
 round@f 6A 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 round@x 67 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 _motorToggle 380 -310 COMMON 1 bitbssCOMMON dist/default/production\Assignment1Mech2.production.obj
-_moveDeg$535 B1 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
-_moveDeg$536 B4 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
-_moveDeg$537 B7 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
+_moveDeg$537 B9 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
+_moveDeg$538 BC 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
+_moveDeg$539 BF 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
 __end_of___altoft B9C 0 CODE 0 text6 dist/default/production\Assignment1Mech2.production.obj
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-__pcstackBANK1 B0 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
+__pcstackBANK1 B8 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
 ___fttol@exp1 50 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ___fttol@lval 4C 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 _TMR0IE 5D 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ___ftpack 6D8 0 CODE 0 text12 dist/default/production\Assignment1Mech2.production.obj
 ___ftpack@arg 20 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ___ftpack@exp 23 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
+___int_sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
 __end_of___ftpack 7B4 0 CODE 0 text12 dist/default/production\Assignment1Mech2.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -546,32 +545,32 @@ _RB2 32 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _RB3 33 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _RB4 34 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __S0 2008 0 ABS 0 - -
-__S1 BF 0 ABS 0 - -
+__S1 C7 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_isr C7C 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
+_isr CAC 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
 saved_w 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 move@direction 20 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-__end_of_isr CAA 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
+__end_of_isr CDA 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
 _rtcCounter 77 0 COMMON 1 bssCOMMON dist/default/production\Assignment1Mech2.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
 __pdataBANK1 A0 0 BANK1 1 dataBANK1 dist/default/production\Assignment1Mech2.production.obj
 __size_of___ftge 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
 ?___altoft 28 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-moveDeg@stepsToMove BA 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
+moveDeg@stepsToMove C2 0 BANK1 1 cstackBANK1 dist/default/production\Assignment1Mech2.production.obj
 ___altoft@exp 2E 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 __ptext10 93A 0 CODE 0 text10 dist/default/production\Assignment1Mech2.production.obj
 __ptext11 44C 0 CODE 0 text11 dist/default/production\Assignment1Mech2.production.obj
 __ptext12 6D8 0 CODE 0 text12 dist/default/production\Assignment1Mech2.production.obj
-__ptext13 CAA 0 CODE 0 text13 dist/default/production\Assignment1Mech2.production.obj
-__ptext14 C7C 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
+__ptext13 CDA 0 CODE 0 text13 dist/default/production\Assignment1Mech2.production.obj
+__ptext14 CAC 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
 __ptext15 C14 0 CODE 0 text15 dist/default/production\Assignment1Mech2.production.obj
 __end_of_moveDeg 44C 0 CODE 0 text1 dist/default/production\Assignment1Mech2.production.obj
 ___ftadd 5C 0 CODE 0 text8 dist/default/production\Assignment1Mech2.production.obj
 ___ftdiv 44C 0 CODE 0 text11 dist/default/production\Assignment1Mech2.production.obj
-___ftneg D18 0 CODE 0 text7 dist/default/production\Assignment1Mech2.production.obj
+___ftneg D28 0 CODE 0 text7 dist/default/production\Assignment1Mech2.production.obj
 ___fttol 5BC 0 CODE 0 text5 dist/default/production\Assignment1Mech2.production.obj
 __pmaintext A8C 0 CODE 0 maintext dist/default/production\Assignment1Mech2.production.obj
 __Lcommon 0 0 ABS 0 common -
@@ -580,8 +579,8 @@ __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __Hinittext 0 0 ABS 0 inittext -
-stackhi 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
-stacklo 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s3l8.obj
+stackhi 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
+stacklo 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s23c.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
@@ -589,7 +588,7 @@ __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __pbssCOMMON 76 0 COMMON 1 bssCOMMON dist/default/production\Assignment1Mech2.production.obj
 __HbitbssCOMMON 0 0 ABS 0 bitbssCOMMON -
-init_fetch0 CD6 0 CODE 0 inittext dist/default/production\Assignment1Mech2.production.obj
+init_fetch0 D06 0 CODE 0 inittext dist/default/production\Assignment1Mech2.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __HcstackBANK1 0 0 ABS 0 cstackBANK1 -
 __Lend_init 24 0 CODE 0 end_init -
@@ -611,7 +610,7 @@ __ptext3 9F8 0 CODE 0 text3 dist/default/production\Assignment1Mech2.production.
 __ptext4 B9C 0 CODE 0 text4 dist/default/production\Assignment1Mech2.production.obj
 __ptext5 5BC 0 CODE 0 text5 dist/default/production\Assignment1Mech2.production.obj
 __ptext6 B18 0 CODE 0 text6 dist/default/production\Assignment1Mech2.production.obj
-__ptext7 D18 0 CODE 0 text7 dist/default/production\Assignment1Mech2.production.obj
+__ptext7 D28 0 CODE 0 text7 dist/default/production\Assignment1Mech2.production.obj
 __ptext8 5C 0 CODE 0 text8 dist/default/production\Assignment1Mech2.production.obj
 __ptext9 7B4 0 CODE 0 text9 dist/default/production\Assignment1Mech2.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
@@ -622,7 +621,7 @@ __CFG_FOSC$HS 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.ob
 __end_of__initialization 54 0 CODE 0 cinit dist/default/production\Assignment1Mech2.production.obj
 __Lfunctab 0 0 CODE 0 functab -
 frexp@value 20 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-__pidataBANK1 CF8 0 CODE 0 idataBANK1 dist/default/production\Assignment1Mech2.production.obj
+__pidataBANK1 C7C 0 CODE 0 idataBANK1 dist/default/production\Assignment1Mech2.production.obj
 ?_round 67 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ?_trunc 51 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 __Lclrtext 0 0 ABS 0 clrtext -
@@ -631,9 +630,9 @@ ___ftpack@sign 24 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2
 __pcstackCOMMON 71 0 COMMON 1 cstackCOMMON dist/default/production\Assignment1Mech2.production.obj
 ___ftdiv@cntr 3D 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ___ftdiv@sign 42 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-_initialise CAA 0 CODE 0 text13 dist/default/production\Assignment1Mech2.production.obj
+_initialise CDA 0 CODE 0 text13 dist/default/production\Assignment1Mech2.production.obj
 __Hend_init 2A 0 CODE 0 end_init -
-init_ram0 CDE 0 CODE 0 inittext dist/default/production\Assignment1Mech2.production.obj
+init_ram0 D0E 0 CODE 0 inittext dist/default/production\Assignment1Mech2.production.obj
 __end_of_main B18 0 CODE 0 maintext dist/default/production\Assignment1Mech2.production.obj
 __end_of_move 87A 0 CODE 0 text9 dist/default/production\Assignment1Mech2.production.obj
 __end_of_frexp C14 0 CODE 0 text4 dist/default/production\Assignment1Mech2.production.obj
@@ -658,11 +657,12 @@ __HdataBANK1 0 0 ABS 0 dataBANK1 -
 __LbitbssCOMMON 0 0 ABS 0 bitbssCOMMON -
 __initialization 2A 0 CODE 0 cinit dist/default/production\Assignment1Mech2.production.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
-__pbssBANK1 BD 0 BANK1 1 bssBANK1 dist/default/production\Assignment1Mech2.production.obj
+__pbssBANK1 C5 0 BANK1 1 bssBANK1 dist/default/production\Assignment1Mech2.production.obj
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 trunc@i 55 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 trunc@x 51 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 _moveDeg 26E 0 CODE 0 text1 dist/default/production\Assignment1Mech2.production.obj
+_halfSteps A0 0 BANK1 1 dataBANK1 dist/default/production\Assignment1Mech2.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -689,8 +689,8 @@ _moveDeg 26E 0 CODE 0 text1 dist/default/production\Assignment1Mech2.production.
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cstackBANK0 1 20 20 50 1
-intentry 0 4 8 692 2
+intentry 0 4 8 69A 2
 bitbssCOMMON 1 380 70 A 1
 reset_vec 0 0 0 3 2
-dataBANK1 1 A0 A0 1F 1
+dataBANK1 1 A0 A0 27 1
 config 0 2007 400E 1 2

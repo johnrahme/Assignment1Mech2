@@ -1436,7 +1436,8 @@ extern __bit __timeout;
 
 # 13 "motor.h"
 signed char cstep = 0;
-int allSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
+int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
+int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 
 void move(char steps, char direction);
 void moveDeg(double deg);

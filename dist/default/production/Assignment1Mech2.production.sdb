@@ -80,7 +80,7 @@
 "13 C:\Users\JohnMac\Assignment1Mech2\motor.h
 [v _cstep cstep `c  1 e 1 0 ]
 "14
-[v _allSteps allSteps `[8]i  1 e 16 0 ]
+[v _halfSteps halfSteps `[8]i  1 e 16 0 ]
 "7 C:\Users\JohnMac\Assignment1Mech2\timer0.h
 [v _pb0Pressed pb0Pressed `VEb  1 e 0 0 ]
 "8

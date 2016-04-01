@@ -1464,7 +1464,8 @@ extern double round(double);
 
 # 13 "motor.h"
 signed char cstep = 0;
-int allSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
+int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
+int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 
 void move(char steps, char direction);
 void moveDeg(double deg);
@@ -1473,20 +1474,20 @@ void moveDeg(double deg);
 void move(char steps, char direction){
 for(char i = 0; i<steps; i++){
 if(cstep == 7 && direction == 1){
-PORTC = allSteps[0];
+PORTC = halfSteps[0];
 cstep = 0;
 }
 else if(cstep == 0 && direction == 0){
-PORTC = allSteps[7];
+PORTC = halfSteps[7];
 cstep = 7;
 }
 else if (cstep >= 0 && cstep <= 7){
 if(direction == 1){
-PORTC = allSteps[cstep+1];
+PORTC = halfSteps[cstep+1];
 cstep++;
 }
 else if(direction == 0){
-PORTC = allSteps[cstep-1];
+PORTC = halfSteps[cstep-1];
 cstep--;
 }
 

@@ -1,5 +1,5 @@
 ___altoft@c 28 0 BANK0 1
-__end_of___ftneg 696 0 CODE 0
+__end_of___ftneg 69E 0 CODE 0
 __CFG_WRT$OFF 0 0 ABS 0
 _RB0 30 0 ABS 0
 _RB1 31 0 ABS 0
@@ -10,7 +10,7 @@ _PS0 408 0 ABS 0
 _PS1 409 0 ABS 0
 _PS2 40A 0 ABS 0
 __S0 2008 0 ABS 0
-__S1 BF 0 ABS 0
+__S1 C7 0 ABS 0
 __S2 0 0 ABS 0
 __S3 0 0 ABS 0
 _GIE 5F 0 ABS 0
@@ -19,7 +19,7 @@ __Hintentry 12 0 CODE 0
 __Lintentry 4 0 CODE 0
 __pintentry 4 0 CODE 0
 ___ftadd@f1 5A 0 BANK0 1
-_isr 63E 0 CODE 0
+_isr 656 0 CODE 0
 _TMR0 1 0 ABS 0
 _T0IF 5A 0 ABS 0
 _T0SE 40C 0 ABS 0
@@ -89,7 +89,6 @@ _TMR0IE 5D 0 ABS 0
 ___int_sp 0 0 STACK 2
 ___altoft 58C 0 CODE 0
 ?___ftdiv 33 0 BANK0 1
-_allSteps A0 0 BANK1 1
 __Habs1 0 0 ABS 0
 __Labs1 0 0 ABS 0
 __Hsfr0 0 0 ABS 0
@@ -107,7 +106,7 @@ trunc@i 55 0 BANK0 1
 __size_of___ftpack 0 0 ABS 0
 __size_of___fttol 0 0 ABS 0
 ___ftadd@sign 64 0 BANK0 1
-init_fetch0 66B 0 CODE 0
+init_fetch0 683 0 CODE 0
 __Hcode 0 0 ABS 0
 __Lcode 0 0 ABS 0
 moveDeg@deg 6D 0 BANK0 1
@@ -142,6 +141,7 @@ __Hstrings 0 0 ABS 0
 __Lstrings 0 0 ABS 0
 __end_of_move 43D 0 CODE 0
 ?___altoft 28 0 BANK0 1
+_halfSteps A0 0 BANK1 1
 move@steps 24 0 BANK0 1
 frexp@eptr 23 0 BANK0 1
 __Hbank0 0 0 ABS 0
@@ -165,18 +165,18 @@ __ptext3 4FC 0 CODE 0
 __ptext4 5CE 0 CODE 0
 __ptext5 2DE 0 CODE 0
 __ptext6 58C 0 CODE 0
-__ptext7 68C 0 CODE 0
+__ptext7 694 0 CODE 0
 __HcstackBANK1 0 0 ABS 0
 __LcstackBANK1 0 0 ABS 0
 __ptext8 2E 0 CODE 0
 __ptext9 3DA 0 CODE 0
 __size_of___altoft 0 0 ABS 0
-__pcstackBANK1 B0 0 BANK1 1
+__pcstackBANK1 B8 0 BANK1 1
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
 __end_of__initialization 2A 0 CODE 0
 _moveDeg 137 0 CODE 0
-_initialise 655 0 CODE 0
+_initialise 66D 0 CODE 0
 __end_of_frexp 60A 0 CODE 0
 ___ftadd 2E 0 CODE 0
 frexp@value 20 0 BANK0 1
@@ -184,10 +184,10 @@ __Hidloc 0 0 IDLOC 0
 __Lidloc 0 0 IDLOC 0
 __Hstack 0 0 STACK 2
 __Lstack 0 0 STACK 2
-___ftneg 68C 0 CODE 0
+___ftneg 694 0 CODE 0
 __Hspace_0 2008 0 ABS 0
 __Lspace_0 0 0 ABS 0
-__end_of_isr 655 0 CODE 0
+__end_of_isr 66D 0 CODE 0
 ___ftpack@sign 24 0 BANK0 1
 __size_of_trunc 0 0 ABS 0
 __Hspace_1 387 0 ABS 0
@@ -210,20 +210,18 @@ ___ftpack@arg 20 0 BANK0 1
 move@direction 20 0 BANK0 1
 __size_of_moveDeg 0 0 ABS 0
 ___ftadd@exp2 65 0 BANK0 1
-_moveDeg$535 B1 0 BANK1 1
 __end_of_moveDeg 226 0 CODE 0
 __HbssBANK1 0 0 ABS 0
 __LbssBANK1 0 0 ABS 0
-__pbssBANK1 BD 0 BANK1 1
+__pbssBANK1 C5 0 BANK1 1
 __ptext10 49D 0 CODE 0
 __ptext11 226 0 CODE 0
 __ptext12 36C 0 CODE 0
-_moveDeg$536 B4 0 BANK1 1
-__ptext13 655 0 CODE 0
+__ptext13 66D 0 CODE 0
 __HidataBANK1 0 0 ABS 0
 __LidataBANK1 0 0 ABS 0
-__ptext14 63E 0 CODE 0
-__pidataBANK1 67C 0 CODE 0
+__ptext14 656 0 CODE 0
+__pidataBANK1 63E 0 CODE 0
 __ptext15 60A 0 CODE 0
 trunc@expon 58 0 BANK0 1
 __CFG_BOREN$OFF 0 0 ABS 0
@@ -235,7 +233,7 @@ __size_of_round 0 0 ABS 0
 _rtcCounter 77 0 COMMON 1
 __pbssCOMMON 76 0 COMMON 1
 __end_of_debounceButtons 63E 0 CODE 0
-_moveDeg$537 B7 0 BANK1 1
+_moveDeg$537 B9 0 BANK1 1
 __Hend_init 15 0 CODE 0
 __Lend_init 12 0 CODE 0
 _pb0Released 382 -310 COMMON 1
@@ -243,14 +241,16 @@ _pb1Released 384 -310 COMMON 1
 _pb2Released 386 -310 COMMON 1
 ___ftpack@exp 23 0 BANK0 1
 __size_of_move 0 0 ABS 0
-__end_of_initialise 66B 0 CODE 0
+__end_of_initialise 683 0 CODE 0
+_moveDeg$538 BC 0 BANK1 1
 __Hreset_vec 3 0 CODE 0
 __Lreset_vec 0 0 CODE 0
-moveDeg@stepsToMove BA 0 BANK1 1
-init_ram0 66F 0 CODE 0
+moveDeg@stepsToMove C2 0 BANK1 1
+init_ram0 687 0 CODE 0
 intlevel0 0 0 CODE 0
 __CFG_WDTE$OFF 0 0 ABS 0
 intlevel1 0 0 CODE 0
+_moveDeg$539 BF 0 BANK1 1
 ___altoft@exp 2E 0 BANK0 1
 intlevel2 0 0 CODE 0
 intlevel3 0 0 CODE 0
@@ -283,55 +283,55 @@ __end_of___ftdiv 2DE 0 CODE 0
 __size_of_initialise 0 0 ABS 0
 %segments
 reset_vec 0 5 CODE 0 0
-intentry 8 D2B CODE 8 0
+intentry 8 D3B CODE 8 0
 config 400E 400F CONFIG 400E 0
 bitbssCOMMON 380 389 COMMON 70 1
 cstackBANK0 20 6F BANK0 20 1
-dataBANK1 A0 BE BANK1 A0 1
+dataBANK1 A0 C6 BANK1 A0 1
 %locals
 dist/default/production\Assignment1Mech2.production.obj
-C:\Users\JohnMac\AppData\Local\Temp\s3l8.
-525 15 0 CODE 0
-528 15 0 CODE 0
-586 15 0 CODE 0
-589 16 0 CODE 0
-590 17 0 CODE 0
-591 18 0 CODE 0
-592 19 0 CODE 0
-595 1A 0 CODE 0
-596 1B 0 CODE 0
-597 1C 0 CODE 0
-598 1D 0 CODE 0
-630 1E 0 CODE 0
-631 1F 0 CODE 0
-632 20 0 CODE 0
-633 21 0 CODE 0
-634 22 0 CODE 0
-635 23 0 CODE 0
-636 24 0 CODE 0
-637 25 0 CODE 0
-638 26 0 CODE 0
-639 27 0 CODE 0
-645 2A 0 CODE 0
-647 2A 0 CODE 0
-648 2B 0 CODE 0
-604 66B 0 CODE 0
-605 66B 0 CODE 0
-606 66C 0 CODE 0
-607 66D 0 CODE 0
-608 66E 0 CODE 0
-615 66F 0 CODE 0
-616 66F 0 CODE 0
-617 672 0 CODE 0
-618 673 0 CODE 0
-619 674 0 CODE 0
-620 675 0 CODE 0
-621 676 0 CODE 0
-622 677 0 CODE 0
-623 678 0 CODE 0
-624 679 0 CODE 0
-625 67A 0 CODE 0
-626 67B 0 CODE 0
+C:\Users\JohnMac\AppData\Local\Temp\s23c.
+540 15 0 CODE 0
+543 15 0 CODE 0
+607 15 0 CODE 0
+610 16 0 CODE 0
+611 17 0 CODE 0
+612 18 0 CODE 0
+613 19 0 CODE 0
+616 1A 0 CODE 0
+617 1B 0 CODE 0
+618 1C 0 CODE 0
+619 1D 0 CODE 0
+651 1E 0 CODE 0
+652 1F 0 CODE 0
+653 20 0 CODE 0
+654 21 0 CODE 0
+655 22 0 CODE 0
+656 23 0 CODE 0
+657 24 0 CODE 0
+658 25 0 CODE 0
+659 26 0 CODE 0
+660 27 0 CODE 0
+666 2A 0 CODE 0
+668 2A 0 CODE 0
+669 2B 0 CODE 0
+625 683 0 CODE 0
+626 683 0 CODE 0
+627 684 0 CODE 0
+628 685 0 CODE 0
+629 686 0 CODE 0
+636 687 0 CODE 0
+637 687 0 CODE 0
+638 68A 0 CODE 0
+639 68B 0 CODE 0
+640 68C 0 CODE 0
+641 68D 0 CODE 0
+642 68E 0 CODE 0
+643 68F 0 CODE 0
+644 690 0 CODE 0
+645 691 0 CODE 0
+646 692 0 CODE 0
+647 693 0 CODE 0
 main.c
 41 546 0 CODE 0
 43 546 0 CODE 0
@@ -416,9 +416,9 @@ C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
 52 5B3 0 CODE 0
 56 5B4 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftneg.c
-15 68C 0 CODE 0
-17 68C 0 CODE 0
-18 693 0 CODE 0
+15 694 0 CODE 0
+17 694 0 CODE 0
+18 69B 0 CODE 0
 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftadd.c
 86 2E 0 CODE 0
 90 2E 0 CODE 0
@@ -539,27 +539,27 @@ C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
 84 3D8 0 CODE 0
 86 3D9 0 CODE 0
 main.c
-19 655 0 CODE 0
-22 655 0 CODE 0
-23 659 0 CODE 0
-25 65A 0 CODE 0
-26 65D 0 CODE 0
-29 65E 0 CODE 0
-30 660 0 CODE 0
-31 663 0 CODE 0
-32 664 0 CODE 0
-33 665 0 CODE 0
-34 666 0 CODE 0
-35 667 0 CODE 0
-37 668 0 CODE 0
-38 669 0 CODE 0
-39 66A 0 CODE 0
-12 63E 0 CODE 0
-13 63E 0 CODE 0
-14 640 0 CODE 0
-15 641 0 CODE 0
-16 643 0 CODE 0
-18 648 0 CODE 0
+19 66D 0 CODE 0
+22 66D 0 CODE 0
+23 671 0 CODE 0
+25 672 0 CODE 0
+26 675 0 CODE 0
+29 676 0 CODE 0
+30 678 0 CODE 0
+31 67B 0 CODE 0
+32 67C 0 CODE 0
+33 67D 0 CODE 0
+34 67E 0 CODE 0
+35 67F 0 CODE 0
+37 680 0 CODE 0
+38 681 0 CODE 0
+39 682 0 CODE 0
+12 656 0 CODE 0
+13 656 0 CODE 0
+14 658 0 CODE 0
+15 659 0 CODE 0
+16 65B 0 CODE 0
+18 660 0 CODE 0
 12 4 0 CODE 0
 timer0.c
 6 60A 0 CODE 0

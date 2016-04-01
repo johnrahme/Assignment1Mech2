@@ -18,20 +18,20 @@
 void move(char steps, char direction){
     for(char i = 0; i<steps; i++){
          if(cstep == 7 && direction == CLOCKWISE){
-            PORTC = allSteps[0];
+            PORTC = halfSteps[0];
             cstep = 0;
          }
          else if(cstep == 0 && direction == COUNTER_CLOCKWISE){
-            PORTC = allSteps[7];
+            PORTC = halfSteps[7];
             cstep = 7;
          }
          else if (cstep >= 0 && cstep <= 7){
              if(direction == CLOCKWISE){
-                PORTC = allSteps[cstep+1]; 
+                PORTC = halfSteps[cstep+1]; 
                 cstep++;
              }
              else if(direction == COUNTER_CLOCKWISE){
-                PORTC = allSteps[cstep-1];
+                PORTC = halfSteps[cstep-1];
                 cstep--;
              }
              

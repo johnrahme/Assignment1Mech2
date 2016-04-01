@@ -1057,8 +1057,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motor.h: 13: signed char cstep = 0;
 "14
-[v _allSteps `i ~T0 @X0 -> 0 `x e ]
-[i _allSteps
+[v _halfSteps `i ~T0 @X0 -> 0 `x e ]
+[i _halfSteps
 :U ..
 -> 60 `i
 -> 46 `i
@@ -1070,9 +1070,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 30 `i
 ..
 ]
-[; ;motor.h: 14: int allSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
-[; ;motor.h: 16: void move(char steps, char direction);
-[; ;motor.h: 17: void moveDeg(double deg);
+[; ;motor.h: 14: int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
+"15
+[v _wholeSteps `i ~T0 @X0 -> 0 `x e ]
+[i _wholeSteps
+:U ..
+-> 60 `i
+-> 43 `i
+-> 53 `i
+-> 27 `i
+..
+]
+[; ;motor.h: 15: int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
+[; ;motor.h: 17: void move(char steps, char direction);
+[; ;motor.h: 18: void moveDeg(double deg);
 "18 motor.c
 [v _move `(v ~T0 @X0 1 ef2`uc`uc ]
 {
@@ -1093,9 +1104,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "20
 [e $ ! && == -> _cstep `i -> 7 `i == -> _direction `i -> 1 `i 101  ]
 {
-[; ;motor.c: 21: PORTC = allSteps[0];
+[; ;motor.c: 21: PORTC = halfSteps[0];
 "21
-[e = _PORTC -> *U + &U _allSteps * -> -> -> 0 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
+[e = _PORTC -> *U + &U _halfSteps * -> -> -> 0 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
 [; ;motor.c: 22: cstep = 0;
 "22
 [e = _cstep -> -> 0 `i `c ]
@@ -1108,9 +1119,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;motor.c: 24: else if(cstep == 0 && direction == 0){
 [e $ ! && == -> _cstep `i -> 0 `i == -> _direction `i -> 0 `i 103  ]
 {
-[; ;motor.c: 25: PORTC = allSteps[7];
+[; ;motor.c: 25: PORTC = halfSteps[7];
 "25
-[e = _PORTC -> *U + &U _allSteps * -> -> -> 7 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
+[e = _PORTC -> *U + &U _halfSteps * -> -> -> 7 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
 [; ;motor.c: 26: cstep = 7;
 "26
 [e = _cstep -> -> 7 `i `c ]
@@ -1127,9 +1138,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "29
 [e $ ! == -> _direction `i -> 1 `i 106  ]
 {
-[; ;motor.c: 30: PORTC = allSteps[cstep+1];
+[; ;motor.c: 30: PORTC = halfSteps[cstep+1];
 "30
-[e = _PORTC -> *U + &U _allSteps * -> -> + -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
+[e = _PORTC -> *U + &U _halfSteps * -> -> + -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
 [; ;motor.c: 31: cstep++;
 "31
 [e ++ _cstep -> -> 1 `i `c ]
@@ -1142,9 +1153,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;motor.c: 33: else if(direction == 0){
 [e $ ! == -> _direction `i -> 0 `i 108  ]
 {
-[; ;motor.c: 34: PORTC = allSteps[cstep-1];
+[; ;motor.c: 34: PORTC = halfSteps[cstep-1];
 "34
-[e = _PORTC -> *U + &U _allSteps * -> -> - -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _allSteps `ui `ux `uc ]
+[e = _PORTC -> *U + &U _halfSteps * -> -> - -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
 [; ;motor.c: 35: cstep--;
 "35
 [e -- _cstep -> -> 1 `i `c ]
