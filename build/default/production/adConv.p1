@@ -11,6 +11,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PEIE `Vb ~T0 @X0 0 e@94 ]
 "2443
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
+"1118
+[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
+"2169
+[v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
+"2519
+[v _RB3 `Vb ~T0 @X0 0 e@51 ]
+"2521
+[v _RB4 `Vb ~T0 @X0 0 e@52 ]
+[v F1091 `(v ~T0 @X0 1 tf1`ul ]
+"152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
+[v __delay `JF1091 ~T0 @X0 0 e ]
+[p i __delay ]
+"2445 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
+[v _GO `Vb ~T0 @X0 0 e@250 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1028,31 +1042,118 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-"4 adConv.c
+"5 adConv.h
+[v _conversionDone `Vb ~T0 @X0 1 e ]
+[i _conversionDone
+-> 0 `i
+]
+[; ;adConv.h: 5: volatile bit conversionDone = 0;
+[; ;adConv.h: 6: void initializeADC();
+[; ;adConv.h: 7: int readADCData();
+[; ;adConv.h: 8: void startADCConversion();
+"5 adConv.c
 [v _initializeADC `(v ~T0 @X0 1 ef ]
 {
-[; ;adConv.c: 4: void initializeADC(){
+[; ;adConv.c: 5: void initializeADC(){
 [e :U _initializeADC ]
 [f ]
-[; ;adConv.c: 7: ADCON1 = 0b10000000;
-"7
-[e = _ADCON1 -> -> 128 `i `uc ]
-[; ;adConv.c: 9: ADCON0 = 0b100000001;
+[; ;adConv.c: 9: ADCON1 = 0b10000000;
 "9
+[e = _ADCON1 -> -> 128 `i `uc ]
+[; ;adConv.c: 11: ADCON0 = 0b100000001;
+"11
 [e = _ADCON0 -> -> 257 `i `uc ]
-[; ;adConv.c: 13: ADIF = 0;
-"13
-[e = _ADIF -> -> 0 `i `b ]
-[; ;adConv.c: 14: ADIE = 1;
-"14
-[e = _ADIE -> -> 1 `i `b ]
-[; ;adConv.c: 15: PEIE = 1;
+[; ;adConv.c: 15: ADIF = 0;
 "15
-[e = _PEIE -> -> 1 `i `b ]
-[; ;adConv.c: 16: GIE = 1;
+[e = _ADIF -> -> 0 `i `b ]
+[; ;adConv.c: 16: ADIE = 1;
 "16
-[e = _GIE -> -> 1 `i `b ]
-[; ;adConv.c: 17: }
+[e = _ADIE -> -> 1 `i `b ]
+[; ;adConv.c: 17: PEIE = 1;
 "17
+[e = _PEIE -> -> 1 `i `b ]
+[; ;adConv.c: 18: GIE = 1;
+"18
+[e = _GIE -> -> 1 `i `b ]
+[; ;adConv.c: 19: }
+"19
 [e :UE 96 ]
+}
+"20
+[v _readADCData `(i ~T0 @X0 1 ef ]
+{
+[; ;adConv.c: 20: int readADCData(){
+[e :U _readADCData ]
+[f ]
+"22
+[v _ADCResult `i ~T0 @X0 1 a ]
+[; ;adConv.c: 22: int ADCResult = (ADRESH<<8) + ADRESL ;
+[e = _ADCResult + << -> _ADRESH `i -> 8 `i -> _ADRESL `i ]
+[; ;adConv.c: 24: if(ADCResult>1000){
+"24
+[e $ ! > _ADCResult -> 1000 `i 98  ]
+{
+[; ;adConv.c: 25: RB3 = 0;
+"25
+[e = _RB3 -> -> 0 `i `b ]
+[; ;adConv.c: 26: RB4 = 1;
+"26
+[e = _RB4 -> -> 1 `i `b ]
+"27
+}
+[; ;adConv.c: 27: }
+[e $U 99  ]
+"28
+[e :U 98 ]
+[; ;adConv.c: 28: else if (ADCResult<1000&&ADCResult>400){
+[e $ ! && < _ADCResult -> 1000 `i > _ADCResult -> 400 `i 100  ]
+{
+[; ;adConv.c: 29: RB3 = 1;
+"29
+[e = _RB3 -> -> 1 `i `b ]
+[; ;adConv.c: 30: RB4 = 0;
+"30
+[e = _RB4 -> -> 0 `i `b ]
+"31
+}
+[; ;adConv.c: 31: }
+[e $U 101  ]
+"33
+[e :U 100 ]
+[; ;adConv.c: 33: else{
+{
+[; ;adConv.c: 34: RB3 = 1;
+"34
+[e = _RB3 -> -> 1 `i `b ]
+[; ;adConv.c: 35: RB4 = 1;
+"35
+[e = _RB4 -> -> 1 `i `b ]
+"36
+}
+[e :U 101 ]
+[e :U 99 ]
+[; ;adConv.c: 36: }
+[; ;adConv.c: 37: return ADCResult;
+"37
+[e ) _ADCResult ]
+[e $UE 97  ]
+[; ;adConv.c: 39: }
+"39
+[e :UE 97 ]
+}
+"40
+[v _startADCConversion `(v ~T0 @X0 1 ef ]
+{
+[; ;adConv.c: 40: void startADCConversion(){
+[e :U _startADCConversion ]
+[f ]
+[; ;adConv.c: 42: _delay((unsigned long)((1)*(20000000/4000.0)));
+"42
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;adConv.c: 44: GO = 1;
+"44
+[e = _GO -> -> 1 `i `b ]
+[; ;adConv.c: 45: }
+"45
+[e :UE 102 ]
 }

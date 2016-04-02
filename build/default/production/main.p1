@@ -7,24 +7,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _debounceButtons `(v ~T0 @X0 0 ef ]
 "2331 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _ADIF `Vb ~T0 @X0 0 e@102 ]
-"1118
-[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
-"2169
-[v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
-"2519
-[v _RB3 `Vb ~T0 @X0 0 e@51 ]
-"2521
-[v _RB4 `Vb ~T0 @X0 0 e@52 ]
-[v F1091 `(v ~T0 @X0 1 tf1`ul ]
-"152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
-[v __delay `JF1091 ~T0 @X0 0 e ]
-[p i __delay ]
-"2445 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
-[v _GO `Vb ~T0 @X0 0 e@250 ]
 "1337
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
 "1398
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
+"2519
+[v _RB3 `Vb ~T0 @X0 0 e@51 ]
+"2521
+[v _RB4 `Vb ~T0 @X0 0 e@52 ]
 "2627
 [v _T0CS `Vb ~T0 @X0 0 e@1037 ]
 "2633
@@ -42,12 +32,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 "2443
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
 [p mainexit ]
-"3 adConv.h
+"6 adConv.h
 [v _initializeADC `(v ~T0 @X0 0 ef ]
+"8
+[v _startADCConversion `(v ~T0 @X0 0 ef ]
+"7
+[v _readADCData `(i ~T0 @X0 0 ef ]
 "17 motor.h
 [v _move `(v ~T0 @X0 0 ef2`uc`uc ]
 "18
 [v _moveDeg `(v ~T0 @X0 0 ef1`d ]
+[v F1091 `(v ~T0 @X0 1 tf1`ul ]
+"152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
+[v __delay `JF1091 ~T0 @X0 0 e ]
+[p i __delay ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1154,7 +1152,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;timer0.h: 17: volatile unsigned char rtcCounter3 = 0;
 [; ;timer0.h: 19: void debounceButtons();
-[; ;adConv.h: 3: void initializeADC();
+"5 adConv.h
+[v _conversionDone `Vb ~T0 @X0 1 e ]
+[i _conversionDone
+-> 0 `i
+]
+[; ;adConv.h: 5: volatile bit conversionDone = 0;
+[; ;adConv.h: 6: void initializeADC();
+[; ;adConv.h: 7: int readADCData();
+[; ;adConv.h: 8: void startADCConversion();
 "6 main.c
 [p x BOREN=OFF ]
 [p x CPD=OFF ]
@@ -1164,251 +1170,215 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x CP=OFF ]
 [p x LVP=OFF ]
 [p x PWRTE=OFF ]
-"11
+"9
 [v _motorToggle `b ~T0 @X0 1 e ]
 [i _motorToggle
 -> 0 `i
 ]
-[; ;main.c: 11: bit motorToggle = 0;
-[v F1117 `(v ~T0 @X0 1 tf ]
-"13
-[v _isr `IF1117 ~T0 @X0 1 e ]
+[; ;main.c: 9: bit motorToggle = 0;
+[v F1120 `(v ~T0 @X0 1 tf ]
+"11
+[v _isr `IF1120 ~T0 @X0 1 e ]
 {
-[; ;main.c: 13: void interrupt isr(void){
+[; ;main.c: 11: void interrupt isr(void){
 [e :U _isr ]
 [f ]
-[; ;main.c: 14: if (T0IF){
-"14
+[; ;main.c: 12: if (T0IF){
+"12
 [e $ ! _T0IF 97  ]
 {
-[; ;main.c: 15: T0IF = 0;
-"15
+[; ;main.c: 13: T0IF = 0;
+"13
 [e = _T0IF -> -> 0 `i `b ]
-[; ;main.c: 16: TMR0 = 100;
-"16
+[; ;main.c: 14: TMR0 = 100;
+"14
 [e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 17: debounceButtons();
-"17
+[; ;main.c: 15: debounceButtons();
+"15
 [e ( _debounceButtons ..  ]
-"18
+"16
 }
 [e :U 97 ]
-[; ;main.c: 18: }
-[; ;main.c: 19: if(ADIF){
-"19
+[; ;main.c: 16: }
+[; ;main.c: 17: if(ADIF){
+"17
 [e $ ! _ADIF 98  ]
 {
-"20
-[v _ADCResult `i ~T0 @X0 1 a ]
-[; ;main.c: 20: int ADCResult = (ADRESH<<8) + ADRESL ;
-[e = _ADCResult + << -> _ADRESH `i -> 8 `i -> _ADRESL `i ]
-[; ;main.c: 22: if(ADCResult>1000){
-"22
-[e $ ! > _ADCResult -> 1000 `i 99  ]
-{
-[; ;main.c: 23: RB3 = 0;
-"23
-[e = _RB3 -> -> 0 `i `b ]
-[; ;main.c: 24: RB4 = 1;
-"24
-[e = _RB4 -> -> 1 `i `b ]
-"25
-}
-[; ;main.c: 25: }
-[e $U 100  ]
-"26
-[e :U 99 ]
-[; ;main.c: 26: else if (ADCResult<1000&&ADCResult>400){
-[e $ ! && < _ADCResult -> 1000 `i > _ADCResult -> 400 `i 101  ]
-{
-[; ;main.c: 27: RB3 = 1;
-"27
-[e = _RB3 -> -> 1 `i `b ]
-[; ;main.c: 28: RB4 = 0;
-"28
-[e = _RB4 -> -> 0 `i `b ]
-"29
-}
-[; ;main.c: 29: }
-[e $U 102  ]
-"31
-[e :U 101 ]
-[; ;main.c: 31: else{
-{
-[; ;main.c: 32: RB3 = 1;
-"32
-[e = _RB3 -> -> 1 `i `b ]
-[; ;main.c: 33: RB4 = 1;
-"33
-[e = _RB4 -> -> 1 `i `b ]
-"34
-}
-[e :U 102 ]
-[e :U 100 ]
-[; ;main.c: 34: }
-[; ;main.c: 37: ADIF = 0;
-"37
+[; ;main.c: 18: conversionDone = 1;
+"18
+[e = _conversionDone -> -> 1 `i `b ]
+[; ;main.c: 19: ADIF = 0;
+"19
 [e = _ADIF -> -> 0 `i `b ]
-[; ;main.c: 39: _delay((unsigned long)((1)*(20000000/4000.0)));
-"39
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 41: GO = 1;
-"41
-[e = _GO -> -> 1 `i `b ]
-"42
+"20
 }
 [e :U 98 ]
-[; ;main.c: 42: }
-[; ;main.c: 43: }
-"43
+[; ;main.c: 20: }
+[; ;main.c: 21: }
+"21
 [e :UE 96 ]
 }
-"44
+"22
 [v _initialise `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 44: void initialise (void){
+[; ;main.c: 22: void initialise (void){
 [e :U _initialise ]
 [f ]
-[; ;main.c: 47: TRISB = 0b00000111;
-"47
+[; ;main.c: 25: TRISB = 0b00000111;
+"25
 [e = _TRISB -> -> 7 `i `uc ]
-[; ;main.c: 48: TRISC = 0;
-"48
+[; ;main.c: 26: TRISC = 0;
+"26
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 50: RB3 = 1;
-"50
+[; ;main.c: 28: RB3 = 1;
+"28
 [e = _RB3 -> -> 1 `i `b ]
-[; ;main.c: 51: RB4 = 1;
-"51
+[; ;main.c: 29: RB4 = 1;
+"29
 [e = _RB4 -> -> 1 `i `b ]
-[; ;main.c: 54: TMR0 = 100;
-"54
+[; ;main.c: 32: TMR0 = 100;
+"32
 [e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 55: T0CS = 0;
-"55
+[; ;main.c: 33: T0CS = 0;
+"33
 [e = _T0CS -> -> 0 `i `b ]
-[; ;main.c: 56: T0SE = 0;
-"56
+[; ;main.c: 34: T0SE = 0;
+"34
 [e = _T0SE -> -> 0 `i `b ]
-[; ;main.c: 57: PSA = 0;
-"57
+[; ;main.c: 35: PSA = 0;
+"35
 [e = _PSA -> -> 0 `i `b ]
-[; ;main.c: 58: PS0 = 0;
-"58
+[; ;main.c: 36: PS0 = 0;
+"36
 [e = _PS0 -> -> 0 `i `b ]
-[; ;main.c: 59: PS1 = 0;
-"59
+[; ;main.c: 37: PS1 = 0;
+"37
 [e = _PS1 -> -> 0 `i `b ]
-[; ;main.c: 60: PS2 = 1;
-"60
+[; ;main.c: 38: PS2 = 1;
+"38
 [e = _PS2 -> -> 1 `i `b ]
-[; ;main.c: 62: TMR0IE = 1;
-"62
+[; ;main.c: 40: TMR0IE = 1;
+"40
 [e = _TMR0IE -> -> 1 `i `b ]
-[; ;main.c: 63: (GIE = 1);
-"63
+[; ;main.c: 41: (GIE = 1);
+"41
 [e = _GIE -> -> 1 `i `b ]
-[; ;main.c: 64: }
-"64
-[e :UE 103 ]
+[; ;main.c: 43: }
+"43
+[e :UE 99 ]
 }
-"66
+"45
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 66: void main (void) {
+[; ;main.c: 45: void main (void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 68: initialise();
-"68
+[; ;main.c: 47: initialise();
+"47
 [e ( _initialise ..  ]
-[; ;main.c: 69: initializeADC();
-"69
+[; ;main.c: 48: initializeADC();
+"48
 [e ( _initializeADC ..  ]
-[; ;main.c: 72: _delay((unsigned long)((1)*(20000000/4000.0)));
-"72
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;main.c: 74: GO = 1;
-"74
-[e = _GO -> -> 1 `i `b ]
-[; ;main.c: 77: while(1){
-"77
-[e :U 106 ]
+[; ;main.c: 49: startADCConversion();
+"49
+[e ( _startADCConversion ..  ]
+[; ;main.c: 52: while(1){
+"52
+[e :U 102 ]
 {
-[; ;main.c: 81: if(pb0Pressed){
-"81
-[e $ ! _pb0Pressed 108  ]
+[; ;main.c: 55: if(conversionDone){
+"55
+[e $ ! _conversionDone 104  ]
 {
-[; ;main.c: 82: move(1,0);
-"82
+[; ;main.c: 56: conversionDone = 0;
+"56
+[e = _conversionDone -> -> 0 `i `b ]
+"57
+[v _result `i ~T0 @X0 1 a ]
+[; ;main.c: 57: int result = readADCData();
+[e = _result ( _readADCData ..  ]
+[; ;main.c: 58: startADCConversion();
+"58
+[e ( _startADCConversion ..  ]
+"60
+}
+[e :U 104 ]
+[; ;main.c: 60: }
+[; ;main.c: 61: if(pb0Pressed){
+"61
+[e $ ! _pb0Pressed 105  ]
+{
+[; ;main.c: 62: move(1,0);
+"62
 [e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 83: pb0Pressed = 0;
-"83
+[; ;main.c: 63: pb0Pressed = 0;
+"63
 [e = _pb0Pressed -> -> 0 `i `b ]
-"84
-}
-[e :U 108 ]
-[; ;main.c: 84: }
-[; ;main.c: 85: if(pb1Pressed){
-"85
-[e $ ! _pb1Pressed 109  ]
-{
-[; ;main.c: 86: move(1,1);
-"86
-[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 87: pb1Pressed = 0;
-"87
-[e = _pb1Pressed -> -> 0 `i `b ]
-"88
-}
-[e :U 109 ]
-[; ;main.c: 88: }
-[; ;main.c: 89: if(pb2Pressed){
-"89
-[e $ ! _pb2Pressed 110  ]
-{
-[; ;main.c: 90: if(motorToggle){
-"90
-[e $ ! _motorToggle 111  ]
-{
-[; ;main.c: 91: moveDeg(-180);
-"91
-[e ( _moveDeg (1 -> -U -> 180 `i `d ]
-"92
-}
-[; ;main.c: 92: }
-[e $U 112  ]
-"93
-[e :U 111 ]
-[; ;main.c: 93: else{
-{
-[; ;main.c: 94: moveDeg(180);
-"94
-[e ( _moveDeg (1 -> -> 180 `i `d ]
-"95
-}
-[e :U 112 ]
-[; ;main.c: 95: }
-[; ;main.c: 96: motorToggle = !motorToggle;
-"96
-[e = _motorToggle ! _motorToggle ]
-[; ;main.c: 97: pb2Pressed = 0;
-"97
-[e = _pb2Pressed -> -> 0 `i `b ]
-"98
-}
-[e :U 110 ]
-[; ;main.c: 98: }
-[; ;main.c: 99: _delay((unsigned long)((20)*(20000000/4000.0)));
-"99
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"100
+"64
 }
 [e :U 105 ]
+[; ;main.c: 64: }
+[; ;main.c: 65: if(pb1Pressed){
+"65
+[e $ ! _pb1Pressed 106  ]
+{
+[; ;main.c: 66: move(1,1);
+"66
+[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 67: pb1Pressed = 0;
+"67
+[e = _pb1Pressed -> -> 0 `i `b ]
+"68
+}
+[e :U 106 ]
+[; ;main.c: 68: }
+[; ;main.c: 69: if(pb2Pressed){
+"69
+[e $ ! _pb2Pressed 107  ]
+{
+[; ;main.c: 70: if(motorToggle){
+"70
+[e $ ! _motorToggle 108  ]
+{
+[; ;main.c: 71: moveDeg(-180);
+"71
+[e ( _moveDeg (1 -> -U -> 180 `i `d ]
+"72
+}
+[; ;main.c: 72: }
+[e $U 109  ]
+"73
+[e :U 108 ]
+[; ;main.c: 73: else{
+{
+[; ;main.c: 74: moveDeg(180);
+"74
+[e ( _moveDeg (1 -> -> 180 `i `d ]
+"75
+}
+[e :U 109 ]
+[; ;main.c: 75: }
+[; ;main.c: 76: motorToggle = !motorToggle;
+"76
+[e = _motorToggle ! _motorToggle ]
+[; ;main.c: 77: pb2Pressed = 0;
 "77
-[e $U 106  ]
+[e = _pb2Pressed -> -> 0 `i `b ]
+"78
+}
 [e :U 107 ]
-[; ;main.c: 100: }
-[; ;main.c: 101: }
-"101
-[e :UE 104 ]
+[; ;main.c: 78: }
+[; ;main.c: 79: _delay((unsigned long)((20)*(20000000/4000.0)));
+"79
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"80
+}
+[e :U 101 ]
+"52
+[e $U 102  ]
+[e :U 103 ]
+[; ;main.c: 80: }
+[; ;main.c: 81: }
+"81
+[e :UE 100 ]
 }

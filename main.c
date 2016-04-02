@@ -5,8 +5,6 @@
 
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF //for XC8 compiler
 #define TMR0_VAL 100
-#define LED0 RB3 // Lets use PORT B pin 0 and connect it to an LED to show if the button has been pressed or not
-#define LED1 RB4
 
 bit motorToggle = 0;
 
@@ -17,6 +15,7 @@ void interrupt isr(void){
         debounceButtons();
     }
     if(ADIF){
+        conversionDone = 1;
         ADIF = 0;
     }
 }
@@ -40,23 +39,25 @@ void initialise (void){
     
     TMR0IE = 1;
     ei();
+    
 }
 
 void main (void) {
 //initialise the program
     initialise();
     initializeADC();
-    
-         //acquisition time
-       __delay_ms(1);
-       //Set GO/DONE
-       GO = 1;
+    startADCConversion();
 
     //ADCON0 = ADCON0 | 0b00000100;
     while(1){
         
         
-        
+        if(conversionDone){
+            conversionDone = 0;
+            int result = readADCData();
+            startADCConversion();
+            
+        }
         if(pb0Pressed){
             move(1,0);
             pb0Pressed = 0;
