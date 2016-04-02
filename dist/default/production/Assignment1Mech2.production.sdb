@@ -3,6 +3,8 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 6 ]
+"4 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+[v _initializeADC initializeADC `(v  1 e 1 0 ]
 "42 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\float.c
@@ -27,28 +29,44 @@
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"12 C:\Users\JohnMac\Assignment1Mech2\main.c
+"13 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _isr isr `II(v  1 e 1 0 ]
-"19
+"44
 [v _initialise initialise `(v  1 e 1 0 ]
-"41
+"66
 [v _main main `(v  1 e 1 0 ]
 "18 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _move move `(v  1 e 1 0 ]
 "46
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
-"6 C:\Users\JohnMac\Assignment1Mech2\timer0.c
+"7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
 "55 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "270
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"1118
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"1124
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
 "1337
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1398
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"2169
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"2175
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"2329
+[v _ADIE ADIE `VEb  1 e 0 @1126 ]
+"2331
+[v _ADIF ADIF `VEb  1 e 0 @102 ]
 "2443
 [v _GIE GIE `VEb  1 e 0 @95 ]
+"2445
+[v _GO GO `VEb  1 e 0 @250 ]
+"2483
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
 "2487
 [v _PS0 PS0 `VEb  1 e 0 @1032 ]
 "2489
@@ -75,7 +93,7 @@
 [v _T0SE T0SE `VEb  1 e 0 @1036 ]
 "2649
 [v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
-"10 C:\Users\JohnMac\Assignment1Mech2\main.c
+"11 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _motorToggle motorToggle `b  1 e 0 0 ]
 "13 C:\Users\JohnMac\Assignment1Mech2\motor.h
 [v _cstep cstep `c  1 e 1 0 ]
@@ -99,10 +117,10 @@
 [v _pb2Released pb2Released `VEb  1 e 0 0 ]
 "17
 [v _rtcCounter3 rtcCounter3 `VEuc  1 e 1 0 ]
-"41 C:\Users\JohnMac\Assignment1Mech2\main.c
+"66 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"66
+"101
 } 0
 "46 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
@@ -185,11 +203,11 @@
 {
 [v move@steps steps `uc  1 a 1 wreg ]
 "19
-[v move@i i `uc  1 a 1 5 ]
+[v move@i i `uc  1 a 1 4 ]
 "18
 [v move@steps steps `uc  1 a 1 wreg ]
 [v move@direction direction `uc  1 p 1 0 ]
-[v move@steps steps `uc  1 a 1 4 ]
+[v move@steps steps `uc  1 a 1 3 ]
 "44
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftge.c
@@ -221,18 +239,25 @@
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
 } 0
-"19 C:\Users\JohnMac\Assignment1Mech2\main.c
+"4 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+[v _initializeADC initializeADC `(v  1 e 1 0 ]
+{
+"17
+} 0
+"44 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _initialise initialise `(v  1 e 1 0 ]
 {
-"39
+"64
 } 0
-"12
+"13
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"18
+"20
+[v isr@ADCResult ADCResult `i  1 a 2 7 ]
+"43
 } 0
-"6 C:\Users\JohnMac\Assignment1Mech2\timer0.c
+"7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
 {
-"42
+"43
 } 0

@@ -13,7 +13,7 @@
 #define COUNTER_CLOCKWISE 0
 #define STEPS_PER_ROTATION 48
 #define DEG_PER_STEP 7.5
-#define SPEED 100
+#define SPEED 20
 
 void move(char steps, char direction){
     for(char i = 0; i<steps; i++){

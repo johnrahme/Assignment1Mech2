@@ -1181,9 +1181,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 104 ]
 [e :U 102 ]
 [; ;motor.c: 41: }
-[; ;motor.c: 42: _delay((unsigned long)((100)*(20000000/4000.0)));
+[; ;motor.c: 42: _delay((unsigned long)((20)*(20000000/4000.0)));
 "42
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
 "43
 }
 "19

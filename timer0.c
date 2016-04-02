@@ -3,6 +3,7 @@
 #include "timer0.h"
 #define DEBOUNCE_REQ_COUNT 10 // Ehhh we can make this any reasonable number
 
+
 void debounceButtons(){
 
         if(PB0) {
