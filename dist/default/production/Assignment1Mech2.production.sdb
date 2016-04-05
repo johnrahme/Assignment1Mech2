@@ -5,9 +5,9 @@
 [d frameptr 6 ]
 "5 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _initializeADC initializeADC `(v  1 e 1 0 ]
-"20
+"28
 [v _readADCData readADCData `(i  1 e 2 0 ]
-"40
+"48
 [v _startADCConversion startADCConversion `(v  1 e 1 0 ]
 "42 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
@@ -45,7 +45,7 @@
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
 "7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
-"5 C:\Users\JohnMac\Assignment1Mech2\adConv.h
+"8 C:\Users\JohnMac\Assignment1Mech2\adConv.h
 [v _conversionDone conversionDone `VEb  1 e 0 0 ]
 "55 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -55,14 +55,18 @@
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 "1124
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"1288
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1337
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1398
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "2169
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
-"2175
-[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"2323
+[v _ADCS2 ADCS2 `VEb  1 e 0 @1278 ]
+"2327
+[v _ADFM ADFM `VEb  1 e 0 @1279 ]
 "2329
 [v _ADIE ADIE `VEb  1 e 0 @1126 ]
 "2331
@@ -71,6 +75,14 @@
 [v _GIE GIE `VEb  1 e 0 @95 ]
 "2445
 [v _GO GO `VEb  1 e 0 @250 ]
+"2475
+[v _PCFG0 PCFG0 `VEb  1 e 0 @1272 ]
+"2477
+[v _PCFG1 PCFG1 `VEb  1 e 0 @1273 ]
+"2479
+[v _PCFG2 PCFG2 `VEb  1 e 0 @1274 ]
+"2481
+[v _PCFG3 PCFG3 `VEb  1 e 0 @1275 ]
 "2483
 [v _PEIE PEIE `VEb  1 e 0 @94 ]
 "2487
@@ -101,27 +113,27 @@
 [v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
 "9 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _motorToggle motorToggle `b  1 e 0 0 ]
-"13 C:\Users\JohnMac\Assignment1Mech2\motor.h
+"15 C:\Users\JohnMac\Assignment1Mech2\motor.h
 [v _cstep cstep `c  1 e 1 0 ]
-"14
-[v _halfSteps halfSteps `[8]i  1 e 16 0 ]
-"7 C:\Users\JohnMac\Assignment1Mech2\timer0.h
-[v _pb0Pressed pb0Pressed `VEb  1 e 0 0 ]
-"8
-[v _pb0Released pb0Released `VEb  1 e 0 0 ]
-"9
-[v _rtcCounter rtcCounter `VEuc  1 e 1 0 ]
-"11
-[v _pb1Pressed pb1Pressed `VEb  1 e 0 0 ]
-"12
-[v _pb1Released pb1Released `VEb  1 e 0 0 ]
-"13
-[v _rtcCounter2 rtcCounter2 `VEuc  1 e 1 0 ]
-"15
-[v _pb2Pressed pb2Pressed `VEb  1 e 0 0 ]
 "16
-[v _pb2Released pb2Released `VEb  1 e 0 0 ]
+[v _halfSteps halfSteps `[8]i  1 e 16 0 ]
+"9 C:\Users\JohnMac\Assignment1Mech2\timer0.h
+[v _pb0Pressed pb0Pressed `VEb  1 e 0 0 ]
+"10
+[v _pb0Released pb0Released `VEb  1 e 0 0 ]
+"11
+[v _rtcCounter rtcCounter `VEuc  1 e 1 0 ]
+"13
+[v _pb1Pressed pb1Pressed `VEb  1 e 0 0 ]
+"14
+[v _pb1Released pb1Released `VEb  1 e 0 0 ]
+"15
+[v _rtcCounter2 rtcCounter2 `VEuc  1 e 1 0 ]
 "17
+[v _pb2Pressed pb2Pressed `VEb  1 e 0 0 ]
+"18
+[v _pb2Released pb2Released `VEb  1 e 0 0 ]
+"19
 [v _rtcCounter3 rtcCounter3 `VEuc  1 e 1 0 ]
 "45 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _main main `(v  1 e 1 0 ]
@@ -130,17 +142,17 @@
 [v main@result result `i  1 a 2 13 ]
 "81
 } 0
-"40 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+"48 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _startADCConversion startADCConversion `(v  1 e 1 0 ]
 {
-"45
+"53
 } 0
-"20
+"28
 [v _readADCData readADCData `(i  1 e 2 0 ]
 {
-"22
+"30
 [v readADCData@ADCResult ADCResult `i  1 a 2 2 ]
-"39
+"47
 } 0
 "46 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
@@ -262,7 +274,7 @@
 "5 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _initializeADC initializeADC `(v  1 e 1 0 ]
 {
-"19
+"27
 } 0
 "22 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _initialise initialise `(v  1 e 1 0 ]

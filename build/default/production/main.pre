@@ -1434,7 +1434,7 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 13 "motor.h"
+# 15 "motor.h"
 signed char cstep = 0;
 int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
 int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
@@ -1442,7 +1442,7 @@ int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 void move(char steps, char direction);
 void moveDeg(double deg);
 
-# 7 "timer0.h"
+# 9 "timer0.h"
 volatile bit pb0Pressed = 0;
 volatile bit pb0Released = 0;
 volatile unsigned char rtcCounter = 0;
@@ -1457,7 +1457,7 @@ volatile unsigned char rtcCounter3 = 0;
 
 void debounceButtons();
 
-# 5 "adConv.h"
+# 8 "adConv.h"
 volatile bit conversionDone = 0;
 void initializeADC();
 int readADCData();

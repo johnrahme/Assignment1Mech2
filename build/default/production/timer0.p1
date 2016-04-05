@@ -1022,61 +1022,61 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-"7 timer0.h
+"9 timer0.h
 [v _pb0Pressed `Vb ~T0 @X0 1 e ]
 [i _pb0Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 7: volatile bit pb0Pressed = 0;
-"8
+[; ;timer0.h: 9: volatile bit pb0Pressed = 0;
+"10
 [v _pb0Released `Vb ~T0 @X0 1 e ]
 [i _pb0Released
 -> 0 `i
 ]
-[; ;timer0.h: 8: volatile bit pb0Released = 0;
-"9
+[; ;timer0.h: 10: volatile bit pb0Released = 0;
+"11
 [v _rtcCounter `Vuc ~T0 @X0 1 e ]
 [i _rtcCounter
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 9: volatile unsigned char rtcCounter = 0;
-"11
+[; ;timer0.h: 11: volatile unsigned char rtcCounter = 0;
+"13
 [v _pb1Pressed `Vb ~T0 @X0 1 e ]
 [i _pb1Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 11: volatile bit pb1Pressed = 0;
-"12
+[; ;timer0.h: 13: volatile bit pb1Pressed = 0;
+"14
 [v _pb1Released `Vb ~T0 @X0 1 e ]
 [i _pb1Released
 -> 0 `i
 ]
-[; ;timer0.h: 12: volatile bit pb1Released = 0;
-"13
+[; ;timer0.h: 14: volatile bit pb1Released = 0;
+"15
 [v _rtcCounter2 `Vuc ~T0 @X0 1 e ]
 [i _rtcCounter2
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 13: volatile unsigned char rtcCounter2 = 0;
-"15
+[; ;timer0.h: 15: volatile unsigned char rtcCounter2 = 0;
+"17
 [v _pb2Pressed `Vb ~T0 @X0 1 e ]
 [i _pb2Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 15: volatile bit pb2Pressed = 0;
-"16
+[; ;timer0.h: 17: volatile bit pb2Pressed = 0;
+"18
 [v _pb2Released `Vb ~T0 @X0 1 e ]
 [i _pb2Released
 -> 0 `i
 ]
-[; ;timer0.h: 16: volatile bit pb2Released = 0;
-"17
+[; ;timer0.h: 18: volatile bit pb2Released = 0;
+"19
 [v _rtcCounter3 `Vuc ~T0 @X0 1 e ]
 [i _rtcCounter3
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 17: volatile unsigned char rtcCounter3 = 0;
-[; ;timer0.h: 19: void debounceButtons();
+[; ;timer0.h: 19: volatile unsigned char rtcCounter3 = 0;
+[; ;timer0.h: 21: void debounceButtons();
 "7 timer0.c
 [v _debounceButtons `(v ~T0 @X0 1 ef ]
 {

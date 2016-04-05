@@ -3,6 +3,7 @@
 #define _XTAL_FREQ 20000000
 
 void initializeADC(){
+    TRISA = 0b11111111;
     //Right justified
     ADFM = 1;
     //FOSC 32
@@ -10,12 +11,12 @@ void initializeADC(){
     
     PCFG3 = 0;
     PCFG2 = 0;
-    PCFG1 = 0;
+    PCFG1 = 1;
     PCFG0 = 0;
     
     //ADCON1 = 0b10000000;
     
-    ADCON0 = 0b100000001;
+    ADCON0 = 0b10000001;
     
     //Interrupts
     

@@ -3,7 +3,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _T0IF `Vb ~T0 @X0 0 e@90 ]
 "55
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
-"19 timer0.h
+"21 timer0.h
 [v _debounceButtons `(v ~T0 @X0 0 ef ]
 "2331 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _ADIF `Vb ~T0 @X0 0 e@102 ]
@@ -32,15 +32,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "2443
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
 [p mainexit ]
-"6 adConv.h
+"9 adConv.h
 [v _initializeADC `(v ~T0 @X0 0 ef ]
-"8
+"11
 [v _startADCConversion `(v ~T0 @X0 0 ef ]
-"7
+"10
 [v _readADCData `(i ~T0 @X0 0 ef ]
-"17 motor.h
+"19 motor.h
 [v _move `(v ~T0 @X0 0 ef2`uc`uc ]
-"18
+"20
 [v _moveDeg `(v ~T0 @X0 0 ef1`d ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
@@ -1063,13 +1063,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-"13 motor.h
+"15 motor.h
 [v _cstep `c ~T0 @X0 1 e ]
 [i _cstep
 -> -> 0 `i `c
 ]
-[; ;motor.h: 13: signed char cstep = 0;
-"14
+[; ;motor.h: 15: signed char cstep = 0;
+"16
 [v _halfSteps `i ~T0 @X0 -> 0 `x e ]
 [i _halfSteps
 :U ..
@@ -1083,8 +1083,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 30 `i
 ..
 ]
-[; ;motor.h: 14: int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
-"15
+[; ;motor.h: 16: int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
+"17
 [v _wholeSteps `i ~T0 @X0 -> 0 `x e ]
 [i _wholeSteps
 :U ..
@@ -1094,73 +1094,73 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 27 `i
 ..
 ]
-[; ;motor.h: 15: int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
-[; ;motor.h: 17: void move(char steps, char direction);
-[; ;motor.h: 18: void moveDeg(double deg);
-"7 timer0.h
+[; ;motor.h: 17: int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
+[; ;motor.h: 19: void move(char steps, char direction);
+[; ;motor.h: 20: void moveDeg(double deg);
+"9 timer0.h
 [v _pb0Pressed `Vb ~T0 @X0 1 e ]
 [i _pb0Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 7: volatile bit pb0Pressed = 0;
-"8
+[; ;timer0.h: 9: volatile bit pb0Pressed = 0;
+"10
 [v _pb0Released `Vb ~T0 @X0 1 e ]
 [i _pb0Released
 -> 0 `i
 ]
-[; ;timer0.h: 8: volatile bit pb0Released = 0;
-"9
+[; ;timer0.h: 10: volatile bit pb0Released = 0;
+"11
 [v _rtcCounter `Vuc ~T0 @X0 1 e ]
 [i _rtcCounter
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 9: volatile unsigned char rtcCounter = 0;
-"11
+[; ;timer0.h: 11: volatile unsigned char rtcCounter = 0;
+"13
 [v _pb1Pressed `Vb ~T0 @X0 1 e ]
 [i _pb1Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 11: volatile bit pb1Pressed = 0;
-"12
+[; ;timer0.h: 13: volatile bit pb1Pressed = 0;
+"14
 [v _pb1Released `Vb ~T0 @X0 1 e ]
 [i _pb1Released
 -> 0 `i
 ]
-[; ;timer0.h: 12: volatile bit pb1Released = 0;
-"13
+[; ;timer0.h: 14: volatile bit pb1Released = 0;
+"15
 [v _rtcCounter2 `Vuc ~T0 @X0 1 e ]
 [i _rtcCounter2
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 13: volatile unsigned char rtcCounter2 = 0;
-"15
+[; ;timer0.h: 15: volatile unsigned char rtcCounter2 = 0;
+"17
 [v _pb2Pressed `Vb ~T0 @X0 1 e ]
 [i _pb2Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 15: volatile bit pb2Pressed = 0;
-"16
+[; ;timer0.h: 17: volatile bit pb2Pressed = 0;
+"18
 [v _pb2Released `Vb ~T0 @X0 1 e ]
 [i _pb2Released
 -> 0 `i
 ]
-[; ;timer0.h: 16: volatile bit pb2Released = 0;
-"17
+[; ;timer0.h: 18: volatile bit pb2Released = 0;
+"19
 [v _rtcCounter3 `Vuc ~T0 @X0 1 e ]
 [i _rtcCounter3
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 17: volatile unsigned char rtcCounter3 = 0;
-[; ;timer0.h: 19: void debounceButtons();
-"5 adConv.h
+[; ;timer0.h: 19: volatile unsigned char rtcCounter3 = 0;
+[; ;timer0.h: 21: void debounceButtons();
+"8 adConv.h
 [v _conversionDone `Vb ~T0 @X0 1 e ]
 [i _conversionDone
 -> 0 `i
 ]
-[; ;adConv.h: 5: volatile bit conversionDone = 0;
-[; ;adConv.h: 6: void initializeADC();
-[; ;adConv.h: 7: int readADCData();
-[; ;adConv.h: 8: void startADCConversion();
+[; ;adConv.h: 8: volatile bit conversionDone = 0;
+[; ;adConv.h: 9: void initializeADC();
+[; ;adConv.h: 10: int readADCData();
+[; ;adConv.h: 11: void startADCConversion();
 "6 main.c
 [p x BOREN=OFF ]
 [p x CPD=OFF ]

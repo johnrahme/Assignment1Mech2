@@ -1434,7 +1434,7 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 7 "timer0.h"
+# 9 "timer0.h"
 volatile bit pb0Pressed = 0;
 volatile bit pb0Released = 0;
 volatile unsigned char rtcCounter = 0;

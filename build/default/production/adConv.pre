@@ -1434,7 +1434,7 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 5 "adConv.h"
+# 8 "adConv.h"
 volatile bit conversionDone = 0;
 void initializeADC();
 int readADCData();
@@ -1442,12 +1442,20 @@ void startADCConversion();
 
 # 5 "adConv.c"
 void initializeADC(){
+TRISA = 0b11111111;
+
+ADFM = 1;
+
+ADCS2 = 0;
+
+PCFG3 = 0;
+PCFG2 = 0;
+PCFG1 = 1;
+PCFG0 = 0;
 
 
 
-ADCON1 = 0b10000000;
-
-ADCON0 = 0b100000001;
+ADCON0 = 0b10000001;
 
 
 

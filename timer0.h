@@ -1,3 +1,5 @@
+#ifndef TIMER0_H
+#define TIMER0_H
 #include <xc.h>
 
 #define PB0 !RB0 // We?ll NOT the pushbutton input to convert it to active high logic
@@ -17,3 +19,5 @@ volatile bit pb2Released = 0; // Bit to signal if the pushbutton has been releas
 volatile unsigned char rtcCounter3 = 0;
 
 void debounceButtons();
+
+#endif TIMER0_H

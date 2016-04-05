@@ -1,3 +1,5 @@
+#ifndef MOTOR_H
+#define MOTOR_H
 
 #include <xc.h>
 
@@ -17,3 +19,4 @@ int wholeSteps[] = {STEP0, STEP2, STEP4, STEP6};
 void move(char steps, char direction);
 void moveDeg(double deg);
 
+#endif MOTOR_H
