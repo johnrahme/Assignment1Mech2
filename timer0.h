@@ -22,7 +22,8 @@ volatile bit pb3Released = 0; // Bit to signal if the pushbutton has been releas
 volatile unsigned char pbCounter4 = 0;
 
 
-
+void initializeTimer0();
 void debounceButtons();
+void flashLed();
 
 #endif TIMER0_H

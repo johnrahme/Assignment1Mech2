@@ -3,6 +3,28 @@
 #include "timer0.h"
 #define DEBOUNCE_REQ_COUNT 10 // Ehhh we can make this any reasonable number
 
+void initializeTimer0(){
+        
+    //Timer initialization
+    TMR0 = 100;
+    T0CS = 0;
+    T0SE = 0;
+    PSA = 0;
+    PS0 = 0;
+    PS1 = 0;
+    PS2 = 1;
+    
+    TMR0IE = 1;
+    ei();
+}
+
+void flashLed(){
+    rtcCounter++;
+    if(rtcCounter == 500){
+        LED1 = !LED1;
+        rtcCounter = 0;
+    }
+}
 
 void debounceButtons(){
 

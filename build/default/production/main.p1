@@ -3,9 +3,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _T0IF `Vb ~T0 @X0 0 e@90 ]
 "55
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
-"2523
-[v _RB5 `Vb ~T0 @X0 0 e@53 ]
-"26 timer0.h
+"27 timer0.h
+[v _flashLed `(v ~T0 @X0 0 ef ]
+"26
 [v _debounceButtons `(v ~T0 @X0 0 ef ]
 "2331 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _ADIF `Vb ~T0 @X0 0 e@102 ]
@@ -15,32 +15,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
 "2521
 [v _RB4 `Vb ~T0 @X0 0 e@52 ]
-"2627
-[v _T0CS `Vb ~T0 @X0 0 e@1037 ]
-"2633
-[v _T0SE `Vb ~T0 @X0 0 e@1036 ]
-"2493
-[v _PSA `Vb ~T0 @X0 0 e@1035 ]
-"2487
-[v _PS0 `Vb ~T0 @X0 0 e@1032 ]
-"2489
-[v _PS1 `Vb ~T0 @X0 0 e@1033 ]
-"2491
-[v _PS2 `Vb ~T0 @X0 0 e@1034 ]
-"2649
-[v _TMR0IE `Vb ~T0 @X0 0 e@93 ]
-"2443
-[v _GIE `Vb ~T0 @X0 0 e@95 ]
-[p mainexit ]
+"2523
+[v _RB5 `Vb ~T0 @X0 0 e@53 ]
+"25 timer0.h
+[v _initializeTimer0 `(v ~T0 @X0 0 ef ]
 "7 adConv.h
 [v _initializeADC `(v ~T0 @X0 0 ef ]
-"9
-[v _startADCConversion `(v ~T0 @X0 0 ef ]
 "27 lcd.h
 [v _setupLCD `(v ~T0 @X0 0 ef ]
-"59 main.c
+"37 main.c
 [v _initializeMotor `(i ~T0 @X0 0 ef ]
-"8 adConv.h
+[p mainexit ]
+"9 adConv.h
+[v _startADCConversion `(v ~T0 @X0 0 ef ]
+"8
 [v _readADCData `(i ~T0 @X0 0 ef ]
 "19 lcd.h
 [v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
@@ -1189,7 +1177,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;timer0.h: 22: volatile unsigned char pbCounter4 = 0;
+[; ;timer0.h: 25: void initializeTimer0();
 [; ;timer0.h: 26: void debounceButtons();
+[; ;timer0.h: 27: void flashLed();
 "6 adConv.h
 [v _conversionDone `Vb ~T0 @X0 1 e ]
 [i _conversionDone
@@ -1220,9 +1210,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;main.c: 11: bit motorToggle = 0;
-[v F1137 `(v ~T0 @X0 1 tf ]
+[v F1139 `(v ~T0 @X0 1 tf ]
 "13
-[v _isr `IF1137 ~T0 @X0 1 e ]
+[v _isr `IF1139 ~T0 @X0 1 e ]
 {
 [; ;main.c: 13: void interrupt isr(void){
 [e :U _isr ]
@@ -1237,235 +1227,197 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 16: TMR0 = 100;
 "16
 [e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 17: rtcCounter++;
+[; ;main.c: 17: flashLed();
 "17
-[e ++ _rtcCounter -> -> 1 `i `ui ]
-[; ;main.c: 18: if(rtcCounter == 500){
+[e ( _flashLed ..  ]
+[; ;main.c: 18: debounceButtons();
 "18
-[e $ ! == _rtcCounter -> -> 500 `i `ui 98  ]
-{
-[; ;main.c: 19: RB5 = !RB5;
-"19
-[e = _RB5 ! _RB5 ]
-[; ;main.c: 20: rtcCounter = 0;
-"20
-[e = _rtcCounter -> -> 0 `i `ui ]
-"21
-}
-[e :U 98 ]
-[; ;main.c: 21: }
-[; ;main.c: 22: debounceButtons();
-"22
 [e ( _debounceButtons ..  ]
-"23
+"19
 }
 [e :U 97 ]
-[; ;main.c: 23: }
-[; ;main.c: 24: if(ADIF){
-"24
-[e $ ! _ADIF 99  ]
+[; ;main.c: 19: }
+[; ;main.c: 20: if(ADIF){
+"20
+[e $ ! _ADIF 98  ]
 {
-[; ;main.c: 25: conversionDone = 1;
-"25
+[; ;main.c: 21: conversionDone = 1;
+"21
 [e = _conversionDone -> -> 1 `i `b ]
-[; ;main.c: 26: ADIF = 0;
-"26
+[; ;main.c: 22: ADIF = 0;
+"22
 [e = _ADIF -> -> 0 `i `b ]
-"27
+"23
 }
-[e :U 99 ]
-[; ;main.c: 27: }
-[; ;main.c: 28: }
-"28
+[e :U 98 ]
+[; ;main.c: 23: }
+[; ;main.c: 24: }
+"24
 [e :UE 96 ]
 }
-"29
+"25
 [v _initialise `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 29: void initialise (void){
+[; ;main.c: 25: void initialise (void){
 [e :U _initialise ]
 [f ]
-[; ;main.c: 32: TRISB = 0b00001111;
-"32
+[; ;main.c: 28: TRISB = 0b00001111;
+"28
 [e = _TRISB -> -> 15 `i `uc ]
-[; ;main.c: 33: TRISC = 0;
-"33
+[; ;main.c: 29: TRISC = 0;
+"29
 [e = _TRISC -> -> 0 `i `uc ]
-[; ;main.c: 35: RB4 = 1;
-"35
+[; ;main.c: 31: RB4 = 1;
+"31
 [e = _RB4 -> -> 1 `i `b ]
-[; ;main.c: 36: RB5 = 1;
-"36
+[; ;main.c: 32: RB5 = 1;
+"32
 [e = _RB5 -> -> 1 `i `b ]
-[; ;main.c: 40: TMR0 = 100;
-"40
-[e = _TMR0 -> -> 100 `i `uc ]
-[; ;main.c: 41: T0CS = 0;
+[; ;main.c: 34: initializeTimer0();
+"34
+[e ( _initializeTimer0 ..  ]
+[; ;main.c: 35: initializeADC();
+"35
+[e ( _initializeADC ..  ]
+[; ;main.c: 36: setupLCD();
+"36
+[e ( _setupLCD ..  ]
+[; ;main.c: 37: initializeMotor();
+"37
+[e ( _initializeMotor ..  ]
+[; ;main.c: 41: }
 "41
-[e = _T0CS -> -> 0 `i `b ]
-[; ;main.c: 42: T0SE = 0;
-"42
-[e = _T0SE -> -> 0 `i `b ]
-[; ;main.c: 43: PSA = 0;
-"43
-[e = _PSA -> -> 0 `i `b ]
-[; ;main.c: 44: PS0 = 0;
-"44
-[e = _PS0 -> -> 0 `i `b ]
-[; ;main.c: 45: PS1 = 0;
-"45
-[e = _PS1 -> -> 0 `i `b ]
-[; ;main.c: 46: PS2 = 1;
-"46
-[e = _PS2 -> -> 1 `i `b ]
-[; ;main.c: 48: TMR0IE = 1;
-"48
-[e = _TMR0IE -> -> 1 `i `b ]
-[; ;main.c: 49: (GIE = 1);
-"49
-[e = _GIE -> -> 1 `i `b ]
-[; ;main.c: 51: }
-"51
-[e :UE 100 ]
+[e :UE 99 ]
 }
-"53
+"43
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 53: void main (void) {
+[; ;main.c: 43: void main (void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 55: initialise();
-"55
+[; ;main.c: 45: initialise();
+"45
 [e ( _initialise ..  ]
-[; ;main.c: 56: initializeADC();
-"56
-[e ( _initializeADC ..  ]
-[; ;main.c: 57: startADCConversion();
-"57
+[; ;main.c: 46: startADCConversion();
+"46
 [e ( _startADCConversion ..  ]
-[; ;main.c: 58: setupLCD();
-"58
-[e ( _setupLCD ..  ]
-[; ;main.c: 59: initializeMotor();
-"59
-[e ( _initializeMotor ..  ]
-[; ;main.c: 62: while(1){
-"62
-[e :U 103 ]
+[; ;main.c: 49: while(1){
+"49
+[e :U 102 ]
 {
-[; ;main.c: 65: if(conversionDone){
-"65
-[e $ ! _conversionDone 105  ]
+[; ;main.c: 52: if(conversionDone){
+"52
+[e $ ! _conversionDone 104  ]
 {
-[; ;main.c: 66: conversionDone = 0;
-"66
+[; ;main.c: 53: conversionDone = 0;
+"53
 [e = _conversionDone -> -> 0 `i `b ]
-"67
+"54
 [v _result `i ~T0 @X0 1 a ]
-[; ;main.c: 67: int result = readADCData();
+[; ;main.c: 54: int result = readADCData();
 [e = _result ( _readADCData ..  ]
-[; ;main.c: 68: lcdSetCursor(0x00);
-"68
+[; ;main.c: 55: lcdSetCursor(0x00);
+"55
 [e ( _lcdSetCursor (1 -> -> 0 `i `uc ]
-[; ;main.c: 69: lcdWriteToDigitBCD(result);
-"69
+[; ;main.c: 56: lcdWriteToDigitBCD(result);
+"56
 [e ( _lcdWriteToDigitBCD (1 _result ]
-[; ;main.c: 71: startADCConversion();
-"71
+[; ;main.c: 58: startADCConversion();
+"58
 [e ( _startADCConversion ..  ]
-"73
+"60
+}
+[e :U 104 ]
+[; ;main.c: 60: }
+[; ;main.c: 61: if(pb0Pressed){
+"61
+[e $ ! _pb0Pressed 105  ]
+{
+[; ;main.c: 62: move(1,0);
+"62
+[e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 63: pb0Pressed = 0;
+"63
+[e = _pb0Pressed -> -> 0 `i `b ]
+"64
 }
 [e :U 105 ]
-[; ;main.c: 73: }
-[; ;main.c: 74: if(pb0Pressed){
-"74
-[e $ ! _pb0Pressed 106  ]
+[; ;main.c: 64: }
+[; ;main.c: 65: if(pb1Pressed){
+"65
+[e $ ! _pb1Pressed 106  ]
 {
-[; ;main.c: 75: move(1,0);
-"75
-[e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 76: pb0Pressed = 0;
-"76
-[e = _pb0Pressed -> -> 0 `i `b ]
-"77
+[; ;main.c: 66: move(1,1);
+"66
+[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 67: pb1Pressed = 0;
+"67
+[e = _pb1Pressed -> -> 0 `i `b ]
+"68
 }
 [e :U 106 ]
-[; ;main.c: 77: }
-[; ;main.c: 78: if(pb1Pressed){
-"78
-[e $ ! _pb1Pressed 107  ]
+[; ;main.c: 68: }
+[; ;main.c: 69: if(pb2Pressed){
+"69
+[e $ ! _pb2Pressed 107  ]
 {
-[; ;main.c: 79: move(1,1);
-"79
-[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 80: pb1Pressed = 0;
-"80
-[e = _pb1Pressed -> -> 0 `i `b ]
-"81
+[; ;main.c: 70: if(motorToggle){
+"70
+[e $ ! _motorToggle 108  ]
+{
+[; ;main.c: 71: moveDeg(-180);
+"71
+[e ( _moveDeg (1 -> -U -> 180 `i `d ]
+"72
+}
+[; ;main.c: 72: }
+[e $U 109  ]
+"73
+[e :U 108 ]
+[; ;main.c: 73: else{
+{
+[; ;main.c: 74: moveDeg(180);
+"74
+[e ( _moveDeg (1 -> -> 180 `i `d ]
+"75
+}
+[e :U 109 ]
+[; ;main.c: 75: }
+[; ;main.c: 76: motorToggle = !motorToggle;
+"76
+[e = _motorToggle ! _motorToggle ]
+[; ;main.c: 77: pb2Pressed = 0;
+"77
+[e = _pb2Pressed -> -> 0 `i `b ]
+"78
 }
 [e :U 107 ]
-[; ;main.c: 81: }
-[; ;main.c: 82: if(pb2Pressed){
+[; ;main.c: 78: }
+[; ;main.c: 79: if(pb3Pressed){
+"79
+[e $ ! _pb3Pressed 110  ]
+{
+[; ;main.c: 80: RB4 = !RB4;
+"80
+[e = _RB4 ! _RB4 ]
+[; ;main.c: 81: pb3Pressed = 0;
+"81
+[e = _pb3Pressed -> -> 0 `i `b ]
 "82
-[e $ ! _pb2Pressed 108  ]
-{
-[; ;main.c: 83: if(motorToggle){
-"83
-[e $ ! _motorToggle 109  ]
-{
-[; ;main.c: 84: moveDeg(-180);
-"84
-[e ( _moveDeg (1 -> -U -> 180 `i `d ]
-"85
-}
-[; ;main.c: 85: }
-[e $U 110  ]
-"86
-[e :U 109 ]
-[; ;main.c: 86: else{
-{
-[; ;main.c: 87: moveDeg(180);
-"87
-[e ( _moveDeg (1 -> -> 180 `i `d ]
-"88
 }
 [e :U 110 ]
-[; ;main.c: 88: }
-[; ;main.c: 89: motorToggle = !motorToggle;
-"89
-[e = _motorToggle ! _motorToggle ]
-[; ;main.c: 90: pb2Pressed = 0;
-"90
-[e = _pb2Pressed -> -> 0 `i `b ]
-"91
-}
-[e :U 108 ]
-[; ;main.c: 91: }
-[; ;main.c: 92: if(pb3Pressed){
-"92
-[e $ ! _pb3Pressed 111  ]
-{
-[; ;main.c: 93: RB4 = !RB4;
-"93
-[e = _RB4 ! _RB4 ]
-[; ;main.c: 94: pb3Pressed = 0;
-"94
-[e = _pb3Pressed -> -> 0 `i `b ]
-"95
-}
-[e :U 111 ]
-[; ;main.c: 95: }
-[; ;main.c: 97: _delay((unsigned long)((20)*(20000000/4000.0)));
-"97
+[; ;main.c: 82: }
+[; ;main.c: 84: _delay((unsigned long)((20)*(20000000/4000.0)));
+"84
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"98
+"85
 }
-[e :U 102 ]
-"62
-[e $U 103  ]
-[e :U 104 ]
-[; ;main.c: 98: }
-[; ;main.c: 99: }
-"99
-[e :UE 101 ]
+[e :U 101 ]
+"49
+[e $U 102  ]
+[e :U 103 ]
+[; ;main.c: 85: }
+[; ;main.c: 86: }
+"86
+[e :UE 100 ]
 }

@@ -1,5 +1,25 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"2513 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
+"55 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
+[v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
+"2627
+[v _T0CS `Vb ~T0 @X0 0 e@1037 ]
+"2633
+[v _T0SE `Vb ~T0 @X0 0 e@1036 ]
+"2493
+[v _PSA `Vb ~T0 @X0 0 e@1035 ]
+"2487
+[v _PS0 `Vb ~T0 @X0 0 e@1032 ]
+"2489
+[v _PS1 `Vb ~T0 @X0 0 e@1033 ]
+"2491
+[v _PS2 `Vb ~T0 @X0 0 e@1034 ]
+"2649
+[v _TMR0IE `Vb ~T0 @X0 0 e@93 ]
+"2443
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"2523
+[v _RB5 `Vb ~T0 @X0 0 e@53 ]
+"2513
 [v _RB0 `Vb ~T0 @X0 0 e@48 ]
 "2515
 [v _RB1 `Vb ~T0 @X0 0 e@49 ]
@@ -1102,170 +1122,236 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;timer0.h: 22: volatile unsigned char pbCounter4 = 0;
+[; ;timer0.h: 25: void initializeTimer0();
 [; ;timer0.h: 26: void debounceButtons();
-"7 timer0.c
-[v _debounceButtons `(v ~T0 @X0 1 ef ]
+[; ;timer0.h: 27: void flashLed();
+"6 timer0.c
+[v _initializeTimer0 `(v ~T0 @X0 1 ef ]
 {
-[; ;timer0.c: 7: void debounceButtons(){
-[e :U _debounceButtons ]
+[; ;timer0.c: 6: void initializeTimer0(){
+[e :U _initializeTimer0 ]
 [f ]
-[; ;timer0.c: 9: if(!RB0) {
+[; ;timer0.c: 9: TMR0 = 100;
 "9
-[e $ ! ! _RB0 97  ]
-{
-[; ;timer0.c: 10: pbCounter++;
+[e = _TMR0 -> -> 100 `i `uc ]
+[; ;timer0.c: 10: T0CS = 0;
 "10
-[e ++ _pbCounter -> -> 1 `i `uc ]
-[; ;timer0.c: 11: if(pbCounter >10 &&pb0Released){
+[e = _T0CS -> -> 0 `i `b ]
+[; ;timer0.c: 11: T0SE = 0;
 "11
-[e $ ! && > -> _pbCounter `i -> 10 `i _pb0Released 98  ]
-{
-[; ;timer0.c: 12: pb0Pressed = 1;
+[e = _T0SE -> -> 0 `i `b ]
+[; ;timer0.c: 12: PSA = 0;
 "12
-[e = _pb0Pressed -> -> 1 `i `b ]
-[; ;timer0.c: 13: pb0Released = 0;
+[e = _PSA -> -> 0 `i `b ]
+[; ;timer0.c: 13: PS0 = 0;
 "13
-[e = _pb0Released -> -> 0 `i `b ]
+[e = _PS0 -> -> 0 `i `b ]
+[; ;timer0.c: 14: PS1 = 0;
 "14
-}
-[e :U 98 ]
+[e = _PS1 -> -> 0 `i `b ]
+[; ;timer0.c: 15: PS2 = 1;
 "15
-}
-[; ;timer0.c: 14: }
-[; ;timer0.c: 15: }
-[e $U 99  ]
-"16
-[e :U 97 ]
-[; ;timer0.c: 16: else{
-{
-[; ;timer0.c: 17: pbCounter = 0;
+[e = _PS2 -> -> 1 `i `b ]
+[; ;timer0.c: 17: TMR0IE = 1;
 "17
-[e = _pbCounter -> -> 0 `i `uc ]
-[; ;timer0.c: 18: pb0Released = 1;
+[e = _TMR0IE -> -> 1 `i `b ]
+[; ;timer0.c: 18: (GIE = 1);
 "18
-[e = _pb0Released -> -> 1 `i `b ]
-"19
-}
-[e :U 99 ]
+[e = _GIE -> -> 1 `i `b ]
 [; ;timer0.c: 19: }
-[; ;timer0.c: 21: if(!RB1) {
+"19
+[e :UE 96 ]
+}
 "21
-[e $ ! ! _RB1 100  ]
+[v _flashLed `(v ~T0 @X0 1 ef ]
 {
-[; ;timer0.c: 22: pbCounter2++;
+[; ;timer0.c: 21: void flashLed(){
+[e :U _flashLed ]
+[f ]
+[; ;timer0.c: 22: rtcCounter++;
 "22
-[e ++ _pbCounter2 -> -> 1 `i `uc ]
-[; ;timer0.c: 23: if(pbCounter2 >10 &&pb1Released){
+[e ++ _rtcCounter -> -> 1 `i `ui ]
+[; ;timer0.c: 23: if(rtcCounter == 500){
 "23
-[e $ ! && > -> _pbCounter2 `i -> 10 `i _pb1Released 101  ]
+[e $ ! == _rtcCounter -> -> 500 `i `ui 98  ]
 {
-[; ;timer0.c: 24: pb1Pressed = 1;
+[; ;timer0.c: 24: RB5 = !RB5;
 "24
-[e = _pb1Pressed -> -> 1 `i `b ]
-[; ;timer0.c: 25: pb1Released = 0;
+[e = _RB5 ! _RB5 ]
+[; ;timer0.c: 25: rtcCounter = 0;
 "25
-[e = _pb1Released -> -> 0 `i `b ]
+[e = _rtcCounter -> -> 0 `i `ui ]
 "26
 }
-[e :U 101 ]
-"27
-}
+[e :U 98 ]
 [; ;timer0.c: 26: }
 [; ;timer0.c: 27: }
-[e $U 102  ]
-"28
-[e :U 100 ]
-[; ;timer0.c: 28: else{
-{
-[; ;timer0.c: 29: pbCounter2 = 0;
-"29
-[e = _pbCounter2 -> -> 0 `i `uc ]
-[; ;timer0.c: 30: pb1Released = 1;
-"30
-[e = _pb1Released -> -> 1 `i `b ]
-"31
+"27
+[e :UE 97 ]
 }
-[e :U 102 ]
-[; ;timer0.c: 31: }
-[; ;timer0.c: 32: if(!RB2) {
+"29
+[v _debounceButtons `(v ~T0 @X0 1 ef ]
+{
+[; ;timer0.c: 29: void debounceButtons(){
+[e :U _debounceButtons ]
+[f ]
+[; ;timer0.c: 31: if(!RB0) {
+"31
+[e $ ! ! _RB0 100  ]
+{
+[; ;timer0.c: 32: pbCounter++;
 "32
-[e $ ! ! _RB2 103  ]
-{
-[; ;timer0.c: 33: pbCounter3++;
+[e ++ _pbCounter -> -> 1 `i `uc ]
+[; ;timer0.c: 33: if(pbCounter >10 &&pb0Released){
 "33
-[e ++ _pbCounter3 -> -> 1 `i `uc ]
-[; ;timer0.c: 34: if(pbCounter3 >10 &&pb2Released){
-"34
-[e $ ! && > -> _pbCounter3 `i -> 10 `i _pb2Released 104  ]
+[e $ ! && > -> _pbCounter `i -> 10 `i _pb0Released 101  ]
 {
-[; ;timer0.c: 35: pb2Pressed = 1;
+[; ;timer0.c: 34: pb0Pressed = 1;
+"34
+[e = _pb0Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 35: pb0Released = 0;
 "35
-[e = _pb2Pressed -> -> 1 `i `b ]
-[; ;timer0.c: 36: pb2Released = 0;
+[e = _pb0Released -> -> 0 `i `b ]
 "36
-[e = _pb2Released -> -> 0 `i `b ]
+}
+[e :U 101 ]
 "37
 }
-[e :U 104 ]
-"38
-}
+[; ;timer0.c: 36: }
 [; ;timer0.c: 37: }
-[; ;timer0.c: 38: }
-[e $U 105  ]
+[e $U 102  ]
+"38
+[e :U 100 ]
+[; ;timer0.c: 38: else{
+{
+[; ;timer0.c: 39: pbCounter = 0;
 "39
-[e :U 103 ]
-[; ;timer0.c: 39: else{
-{
-[; ;timer0.c: 40: pbCounter3 = 0;
+[e = _pbCounter -> -> 0 `i `uc ]
+[; ;timer0.c: 40: pb0Released = 1;
 "40
-[e = _pbCounter3 -> -> 0 `i `uc ]
-[; ;timer0.c: 41: pb2Released = 1;
+[e = _pb0Released -> -> 1 `i `b ]
 "41
-[e = _pb2Released -> -> 1 `i `b ]
-"42
 }
-[e :U 105 ]
-[; ;timer0.c: 42: }
-[; ;timer0.c: 43: if(!RB3) {
+[e :U 102 ]
+[; ;timer0.c: 41: }
+[; ;timer0.c: 43: if(!RB1) {
 "43
-[e $ ! ! _RB3 106  ]
+[e $ ! ! _RB1 103  ]
 {
-[; ;timer0.c: 44: pbCounter4++;
+[; ;timer0.c: 44: pbCounter2++;
 "44
-[e ++ _pbCounter4 -> -> 1 `i `uc ]
-[; ;timer0.c: 45: if(pbCounter4 >10 &&pb3Released){
+[e ++ _pbCounter2 -> -> 1 `i `uc ]
+[; ;timer0.c: 45: if(pbCounter2 >10 &&pb1Released){
 "45
-[e $ ! && > -> _pbCounter4 `i -> 10 `i _pb3Released 107  ]
+[e $ ! && > -> _pbCounter2 `i -> 10 `i _pb1Released 104  ]
 {
-[; ;timer0.c: 46: pb3Pressed = 1;
+[; ;timer0.c: 46: pb1Pressed = 1;
 "46
-[e = _pb3Pressed -> -> 1 `i `b ]
-[; ;timer0.c: 47: pb3Released = 0;
+[e = _pb1Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 47: pb1Released = 0;
 "47
-[e = _pb3Released -> -> 0 `i `b ]
+[e = _pb1Released -> -> 0 `i `b ]
 "48
 }
-[e :U 107 ]
+[e :U 104 ]
 "49
 }
 [; ;timer0.c: 48: }
 [; ;timer0.c: 49: }
-[e $U 108  ]
+[e $U 105  ]
 "50
-[e :U 106 ]
+[e :U 103 ]
 [; ;timer0.c: 50: else{
 {
-[; ;timer0.c: 51: pbCounter4 = 0;
+[; ;timer0.c: 51: pbCounter2 = 0;
 "51
-[e = _pbCounter4 -> -> 0 `i `uc ]
-[; ;timer0.c: 52: pb3Released = 1;
+[e = _pbCounter2 -> -> 0 `i `uc ]
+[; ;timer0.c: 52: pb1Released = 1;
 "52
-[e = _pb3Released -> -> 1 `i `b ]
+[e = _pb1Released -> -> 1 `i `b ]
 "53
 }
-[e :U 108 ]
+[e :U 105 ]
 [; ;timer0.c: 53: }
-[; ;timer0.c: 54: }
+[; ;timer0.c: 54: if(!RB2) {
 "54
-[e :UE 96 ]
+[e $ ! ! _RB2 106  ]
+{
+[; ;timer0.c: 55: pbCounter3++;
+"55
+[e ++ _pbCounter3 -> -> 1 `i `uc ]
+[; ;timer0.c: 56: if(pbCounter3 >10 &&pb2Released){
+"56
+[e $ ! && > -> _pbCounter3 `i -> 10 `i _pb2Released 107  ]
+{
+[; ;timer0.c: 57: pb2Pressed = 1;
+"57
+[e = _pb2Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 58: pb2Released = 0;
+"58
+[e = _pb2Released -> -> 0 `i `b ]
+"59
+}
+[e :U 107 ]
+"60
+}
+[; ;timer0.c: 59: }
+[; ;timer0.c: 60: }
+[e $U 108  ]
+"61
+[e :U 106 ]
+[; ;timer0.c: 61: else{
+{
+[; ;timer0.c: 62: pbCounter3 = 0;
+"62
+[e = _pbCounter3 -> -> 0 `i `uc ]
+[; ;timer0.c: 63: pb2Released = 1;
+"63
+[e = _pb2Released -> -> 1 `i `b ]
+"64
+}
+[e :U 108 ]
+[; ;timer0.c: 64: }
+[; ;timer0.c: 65: if(!RB3) {
+"65
+[e $ ! ! _RB3 109  ]
+{
+[; ;timer0.c: 66: pbCounter4++;
+"66
+[e ++ _pbCounter4 -> -> 1 `i `uc ]
+[; ;timer0.c: 67: if(pbCounter4 >10 &&pb3Released){
+"67
+[e $ ! && > -> _pbCounter4 `i -> 10 `i _pb3Released 110  ]
+{
+[; ;timer0.c: 68: pb3Pressed = 1;
+"68
+[e = _pb3Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 69: pb3Released = 0;
+"69
+[e = _pb3Released -> -> 0 `i `b ]
+"70
+}
+[e :U 110 ]
+"71
+}
+[; ;timer0.c: 70: }
+[; ;timer0.c: 71: }
+[e $U 111  ]
+"72
+[e :U 109 ]
+[; ;timer0.c: 72: else{
+{
+[; ;timer0.c: 73: pbCounter4 = 0;
+"73
+[e = _pbCounter4 -> -> 0 `i `uc ]
+[; ;timer0.c: 74: pb3Released = 1;
+"74
+[e = _pb3Released -> -> 1 `i `b ]
+"75
+}
+[e :U 111 ]
+[; ;timer0.c: 75: }
+[; ;timer0.c: 76: }
+"76
+[e :UE 99 ]
 }

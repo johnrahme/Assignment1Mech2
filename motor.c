@@ -46,14 +46,14 @@ void move(char steps, char direction){
          else{
                PORTC = 0x00;
          }
+         
+         lcdSetCursor(0x40);
          if(direction){
              nrOfSteps--;
-             lcdSetCursor(0x40);
              lcdWriteToDigitBCD(nrOfSteps);
          }
          else{
              nrOfSteps++;
-             lcdSetCursor(0x40);
              lcdWriteToDigitBCD(nrOfSteps);
          }
         __delay_ms(SPEED);

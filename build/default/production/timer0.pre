@@ -1454,10 +1454,34 @@ volatile bit pb3Released = 0;
 volatile unsigned char pbCounter4 = 0;
 
 
-
+void initializeTimer0();
 void debounceButtons();
+void flashLed();
 
-# 7 "timer0.c"
+# 6 "timer0.c"
+void initializeTimer0(){
+
+
+TMR0 = 100;
+T0CS = 0;
+T0SE = 0;
+PSA = 0;
+PS0 = 0;
+PS1 = 0;
+PS2 = 1;
+
+TMR0IE = 1;
+(GIE = 1);
+}
+
+void flashLed(){
+rtcCounter++;
+if(rtcCounter == 500){
+RB5 = !RB5;
+rtcCounter = 0;
+}
+}
+
 void debounceButtons(){
 
 if(!RB0) {

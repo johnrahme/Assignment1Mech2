@@ -47,9 +47,9 @@
 [v _setupLCD setupLCD `(v  1 e 1 0 ]
 "13 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _isr isr `II(v  1 e 1 0 ]
-"29
+"25
 [v _initialise initialise `(v  1 e 1 0 ]
-"53
+"43
 [v _main main `(v  1 e 1 0 ]
 "19 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _initializeMotor initializeMotor `(i  1 e 2 0 ]
@@ -57,7 +57,11 @@
 [v _move move `(v  1 e 1 0 ]
 "63
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
-"7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
+"6 C:\Users\JohnMac\Assignment1Mech2\timer0.c
+[v _initializeTimer0 initializeTimer0 `(v  1 e 1 0 ]
+"21
+[v _flashLed flashLed `(v  1 e 1 0 ]
+"29
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
 "6 C:\Users\JohnMac\Assignment1Mech2\adConv.h
 [v _conversionDone conversionDone `VEb  1 e 0 0 ]
@@ -175,24 +179,19 @@
 [v _pb3Released pb3Released `VEb  1 e 0 0 ]
 "22
 [v _pbCounter4 pbCounter4 `VEuc  1 e 1 0 ]
-"53 C:\Users\JohnMac\Assignment1Mech2\main.c
+"43 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"67
+"54
 [v main@result result `i  1 a 2 13 ]
-"99
+"86
 } 0
 "33 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _startADCConversion startADCConversion `(v  1 e 1 0 ]
 {
 "38
 } 0
-"78 C:\Users\JohnMac\Assignment1Mech2\lcd.c
-[v _setupLCD setupLCD `(v  1 e 1 0 ]
-{
-"98
-} 0
-"27 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+"27
 [v _readADCData readADCData `(i  1 e 2 0 ]
 {
 "29
@@ -316,6 +315,21 @@
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
 } 0
+"25 C:\Users\JohnMac\Assignment1Mech2\main.c
+[v _initialise initialise `(v  1 e 1 0 ]
+{
+"41
+} 0
+"78 C:\Users\JohnMac\Assignment1Mech2\lcd.c
+[v _setupLCD setupLCD `(v  1 e 1 0 ]
+{
+"98
+} 0
+"6 C:\Users\JohnMac\Assignment1Mech2\timer0.c
+[v _initializeTimer0 initializeTimer0 `(v  1 e 1 0 ]
+{
+"19
+} 0
 "19 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _initializeMotor initializeMotor `(i  1 e 2 0 ]
 {
@@ -375,18 +389,18 @@
 {
 "26
 } 0
-"29 C:\Users\JohnMac\Assignment1Mech2\main.c
-[v _initialise initialise `(v  1 e 1 0 ]
-{
-"51
-} 0
-"13
+"13 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"28
+"24
 } 0
-"7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
+"21 C:\Users\JohnMac\Assignment1Mech2\timer0.c
+[v _flashLed flashLed `(v  1 e 1 0 ]
+{
+"27
+} 0
+"29
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
 {
-"54
+"76
 } 0

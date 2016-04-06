@@ -14,11 +14,7 @@ void interrupt isr(void){
     if (T0IF){ // If Timer 0 overflow occurred
         T0IF = 0; // Clear flag
         TMR0 = TMR0_VAL;
-        rtcCounter++;
-        if(rtcCounter == 500){
-            LED1 = !LED1;
-            rtcCounter = 0;
-        }
+        flashLed();
         debounceButtons();
     }
     if(ADIF){
@@ -35,28 +31,19 @@ void initialise (void){
     LED0 = 1;
     LED1 = 1;
     
+    initializeTimer0();
+    initializeADC();
+    setupLCD();
+    initializeMotor();
+
     
-    //Timer initialization
-    TMR0 = 100;
-    T0CS = 0;
-    T0SE = 0;
-    PSA = 0;
-    PS0 = 0;
-    PS1 = 0;
-    PS2 = 1;
-    
-    TMR0IE = 1;
-    ei();
     
 }
 
 void main (void) {
 //initialise the program
     initialise();
-    initializeADC();
-    startADCConversion();
-    setupLCD();
-    initializeMotor();
+    startADCConversion();   
 
     //ADCON0 = ADCON0 | 0b00000100;
     while(1){
