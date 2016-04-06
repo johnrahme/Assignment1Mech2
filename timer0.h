@@ -18,6 +18,12 @@ volatile bit pb2Pressed = 0; // Bit flag to signal if the pushbutton is pressed
 volatile bit pb2Released = 0; // Bit to signal if the pushbutton has been released
 volatile unsigned char rtcCounter3 = 0;
 
+volatile bit pb3Pressed = 0; // Bit flag to signal if the pushbutton is pressed
+volatile bit pb3Released = 0; // Bit to signal if the pushbutton has been released
+volatile unsigned char rtcCounter4 = 0;
+
+
+
 void debounceButtons();
 
 #endif TIMER0_H

@@ -2,5 +2,6 @@
  build/default/production/main.p1:  \
  main.c  \
 adConv.h  \
+lcd.h  \
 motor.h  \
 timer0.h 

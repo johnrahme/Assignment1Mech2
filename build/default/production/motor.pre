@@ -1464,13 +1464,37 @@ extern double round(double);
 
 # 15 "motor.h"
 signed char cstep = 0;
+signed int nrOfSteps = 0;
 int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
 int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 
 void move(char steps, char direction);
 void moveDeg(double deg);
 
-# 18 "motor.c"
+# 14 "lcd.h"
+void lcdWriteControl(unsigned char databyte);
+
+
+void lcd_WriteData(unsigned char databyte);
+
+
+void lcdSetCursor(unsigned char address);
+
+void lcdWriteString(char * s);
+
+
+void lcdWriteToDigitBCD(signed int data);
+
+
+void setupLCD(void);
+
+# 19 "motor.c"
+void initializeMotor(){
+PORTC = halfSteps[0];
+lcdSetCursor(0x40);
+lcdWriteToDigitBCD(nrOfSteps);
+}
+
 void move(char steps, char direction){
 for(char i = 0; i<steps; i++){
 if(cstep == 7 && direction == 1){
@@ -1494,6 +1518,16 @@ cstep--;
 }
 else{
 PORTC = 0x00;
+}
+if(direction){
+nrOfSteps--;
+lcdSetCursor(0x40);
+lcdWriteToDigitBCD(nrOfSteps);
+}
+else{
+nrOfSteps++;
+lcdSetCursor(0x40);
+lcdWriteToDigitBCD(nrOfSteps);
 }
 _delay((unsigned long)((20)*(20000000/4000.0)));
 }

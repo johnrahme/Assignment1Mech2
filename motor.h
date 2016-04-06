@@ -13,6 +13,7 @@
 #define STEP7 0b00011110
 #define _XTAL_FREQ 20000000
 signed char cstep = 0; //stores current step
+signed int nrOfSteps = 0;
 int halfSteps[] = {STEP0, STEP1, STEP2, STEP3, STEP4, STEP5, STEP6, STEP7};
 int wholeSteps[] = {STEP0, STEP2, STEP4, STEP6};
 

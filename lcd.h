@@ -2,9 +2,9 @@
 #define LCD_H
 
 #include <xc.h>
-#include "main.h"
 
 //defines
+#define _XTAL_FREQ 20000000
 #define RS RE0			//LCD Register Select
 #define RW RE1			//LCD Read Write
 #define EN RE2			//LCD Enable
@@ -22,7 +22,7 @@ void lcdSetCursor(unsigned char address);
 void lcdWriteString(char * s);
 
 //function accepts char between 0 and 99 and writes it to lcd display in 2 digits
-void lcdWriteToDigitBCD(unsigned char data);
+void lcdWriteToDigitBCD(signed int data);
 
 //function initalises the LCD module - check that ADCON1 setting doesn't conflict
 void setupLCD(void);

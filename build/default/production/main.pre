@@ -1436,6 +1436,7 @@ extern __bit __timeout;
 
 # 15 "motor.h"
 signed char cstep = 0;
+signed int nrOfSteps = 0;
 int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
 int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 
@@ -1455,6 +1456,12 @@ volatile bit pb2Pressed = 0;
 volatile bit pb2Released = 0;
 volatile unsigned char rtcCounter3 = 0;
 
+volatile bit pb3Pressed = 0;
+volatile bit pb3Released = 0;
+volatile unsigned char rtcCounter4 = 0;
+
+
+
 void debounceButtons();
 
 # 8 "adConv.h"
@@ -1463,8 +1470,25 @@ void initializeADC();
 int readADCData();
 void startADCConversion();
 
+# 14 "lcd.h"
+void lcdWriteControl(unsigned char databyte);
 
-# 6 "main.c"
+
+void lcd_WriteData(unsigned char databyte);
+
+
+void lcdSetCursor(unsigned char address);
+
+void lcdWriteString(char * s);
+
+
+void lcdWriteToDigitBCD(signed int data);
+
+
+void setupLCD(void);
+
+
+# 7 "main.c"
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
 
@@ -1491,6 +1515,7 @@ RB3 = 1;
 RB4 = 1;
 
 
+
 TMR0 = 100;
 T0CS = 0;
 T0SE = 0;
@@ -1509,6 +1534,8 @@ void main (void) {
 initialise();
 initializeADC();
 startADCConversion();
+setupLCD();
+initializeMotor();
 
 
 while(1){
@@ -1517,6 +1544,9 @@ while(1){
 if(conversionDone){
 conversionDone = 0;
 int result = readADCData();
+lcdSetCursor(0x00);
+lcdWriteToDigitBCD(result);
+
 startADCConversion();
 
 }

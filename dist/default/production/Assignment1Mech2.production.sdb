@@ -29,19 +29,33 @@
 [v _round round `(d  1 e 3 0 ]
 "13 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\trunc.c
 [v _trunc trunc `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\pic\eeprom.c
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"11 C:\Users\JohnMac\Assignment1Mech2\main.c
+"6 C:\Users\JohnMac\Assignment1Mech2\lcd.c
+[v _lcdWriteControl lcdWriteControl `(v  1 e 1 0 ]
+"17
+[v _lcdWriteData lcdWriteData `(v  1 e 1 0 ]
+"28
+[v _lcdSetCursor lcdSetCursor `(v  1 e 1 0 ]
+"39
+[v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
+"78
+[v _setupLCD setupLCD `(v  1 e 1 0 ]
+"12 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _isr isr `II(v  1 e 1 0 ]
-"22
+"23
 [v _initialise initialise `(v  1 e 1 0 ]
-"45
+"47
 [v _main main `(v  1 e 1 0 ]
-"18 C:\Users\JohnMac\Assignment1Mech2\motor.c
+"19 C:\Users\JohnMac\Assignment1Mech2\motor.c
+[v _initializeMotor initializeMotor `(i  1 e 2 0 ]
+"25
 [v _move move `(v  1 e 1 0 ]
-"46
+"63
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
 "7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
@@ -51,6 +65,10 @@
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "270
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"331
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"392
+[v _PORTE PORTE `VEuc  1 e 1 @9 ]
 "1118
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 "1124
@@ -61,6 +79,10 @@
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1398
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1459
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1520
+[v _TRISE TRISE `VEuc  1 e 1 @137 ]
 "2169
 [v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
 "2323
@@ -103,6 +125,12 @@
 [v _RB3 RB3 `VEb  1 e 0 @51 ]
 "2521
 [v _RB4 RB4 `VEb  1 e 0 @52 ]
+"2579
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
+"2581
+[v _RE1 RE1 `VEb  1 e 0 @73 ]
+"2583
+[v _RE2 RE2 `VEb  1 e 0 @74 ]
 "2627
 [v _T0CS T0CS `VEb  1 e 0 @1037 ]
 "2631
@@ -111,11 +139,13 @@
 [v _T0SE T0SE `VEb  1 e 0 @1036 ]
 "2649
 [v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
-"9 C:\Users\JohnMac\Assignment1Mech2\main.c
+"10 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _motorToggle motorToggle `b  1 e 0 0 ]
 "15 C:\Users\JohnMac\Assignment1Mech2\motor.h
 [v _cstep cstep `c  1 e 1 0 ]
 "16
+[v _nrOfSteps nrOfSteps `i  1 e 2 0 ]
+"17
 [v _halfSteps halfSteps `[8]i  1 e 16 0 ]
 "9 C:\Users\JohnMac\Assignment1Mech2\timer0.h
 [v _pb0Pressed pb0Pressed `VEb  1 e 0 0 ]
@@ -135,33 +165,44 @@
 [v _pb2Released pb2Released `VEb  1 e 0 0 ]
 "19
 [v _rtcCounter3 rtcCounter3 `VEuc  1 e 1 0 ]
-"45 C:\Users\JohnMac\Assignment1Mech2\main.c
+"21
+[v _pb3Pressed pb3Pressed `VEb  1 e 0 0 ]
+"22
+[v _pb3Released pb3Released `VEb  1 e 0 0 ]
+"23
+[v _rtcCounter4 rtcCounter4 `VEuc  1 e 1 0 ]
+"47 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"57
+"61
 [v main@result result `i  1 a 2 13 ]
-"81
+"88
 } 0
 "48 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _startADCConversion startADCConversion `(v  1 e 1 0 ]
 {
 "53
 } 0
-"28
+"78 C:\Users\JohnMac\Assignment1Mech2\lcd.c
+[v _setupLCD setupLCD `(v  1 e 1 0 ]
+{
+"98
+} 0
+"28 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _readADCData readADCData `(i  1 e 2 0 ]
 {
 "30
 [v readADCData@ADCResult ADCResult `i  1 a 2 2 ]
 "47
 } 0
-"46 C:\Users\JohnMac\Assignment1Mech2\motor.c
+"63 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
 {
-"47
+"64
 [v moveDeg@stepsToMove stepsToMove `uc  1 a 1 10 ]
-"46
+"63
 [v moveDeg@deg deg `d  1 p 3 77 ]
-"56
+"73
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\round.c
 [v _round round `(d  1 e 3 0 ]
@@ -230,17 +271,17 @@
 [v ___ftadd@f2 f2 `f  1 p 3 61 ]
 "148
 } 0
-"18 C:\Users\JohnMac\Assignment1Mech2\motor.c
+"25 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _move move `(v  1 e 1 0 ]
 {
 [v move@steps steps `uc  1 a 1 wreg ]
-"19
-[v move@i i `uc  1 a 1 4 ]
-"18
+"26
+[v move@i i `uc  1 a 1 19 ]
+"25
 [v move@steps steps `uc  1 a 1 wreg ]
-[v move@direction direction `uc  1 p 1 0 ]
-[v move@steps steps `uc  1 a 1 3 ]
-"44
+[v move@direction direction `uc  1 p 1 15 ]
+[v move@steps steps `uc  1 a 1 18 ]
+"61
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftge.c
 [v ___ftge __ftge `(b  1 e 0 0 ]
@@ -271,20 +312,74 @@
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
 } 0
+"19 C:\Users\JohnMac\Assignment1Mech2\motor.c
+[v _initializeMotor initializeMotor `(i  1 e 2 0 ]
+{
+"23
+} 0
+"39 C:\Users\JohnMac\Assignment1Mech2\lcd.c
+[v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
+{
+"40
+[v lcdWriteToDigitBCD@OnesDigit OnesDigit `ui  1 a 2 13 ]
+"42
+[v lcdWriteToDigitBCD@sign sign `c  1 a 1 12 ]
+"41
+[v lcdWriteToDigitBCD@ThousandDigit ThousandDigit `uc  1 a 1 11 ]
+[v lcdWriteToDigitBCD@HundredDigit HundredDigit `uc  1 a 1 10 ]
+[v lcdWriteToDigitBCD@TensDigit TensDigit `uc  1 a 1 9 ]
+"39
+[v lcdWriteToDigitBCD@data data `i  1 p 2 6 ]
+"75
+} 0
+"17
+[v _lcdWriteData lcdWriteData `(v  1 e 1 0 ]
+{
+[v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
+[v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
+[v lcdWriteData@databyte databyte `uc  1 a 1 2 ]
+"25
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"28 C:\Users\JohnMac\Assignment1Mech2\lcd.c
+[v _lcdSetCursor lcdSetCursor `(v  1 e 1 0 ]
+{
+[v lcdSetCursor@address address `uc  1 a 1 wreg ]
+[v lcdSetCursor@address address `uc  1 a 1 wreg ]
+[v lcdSetCursor@address address `uc  1 a 1 3 ]
+"31
+} 0
+"6
+[v _lcdWriteControl lcdWriteControl `(v  1 e 1 0 ]
+{
+[v lcdWriteControl@databyte databyte `uc  1 a 1 wreg ]
+[v lcdWriteControl@databyte databyte `uc  1 a 1 wreg ]
+[v lcdWriteControl@databyte databyte `uc  1 a 1 2 ]
+"14
+} 0
 "5 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _initializeADC initializeADC `(v  1 e 1 0 ]
 {
 "27
 } 0
-"22 C:\Users\JohnMac\Assignment1Mech2\main.c
+"23 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _initialise initialise `(v  1 e 1 0 ]
 {
-"43
+"45
 } 0
-"11
+"12
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"21
+"22
 } 0
 "7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]

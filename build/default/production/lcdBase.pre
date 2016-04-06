@@ -1,5 +1,5 @@
 
-# 1 "adConv.c"
+# 1 "lcdBase.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -1433,60 +1433,3 @@ extern __nonreentrant void _delay(unsigned long);
 extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
-
-# 8 "adConv.h"
-volatile bit conversionDone = 0;
-void initializeADC();
-int readADCData();
-void startADCConversion();
-
-# 5 "adConv.c"
-void initializeADC(){
-TRISA = 0b11111111;
-
-ADFM = 1;
-
-ADCS2 = 0;
-
-PCFG3 = 0;
-PCFG2 = 0;
-PCFG1 = 1;
-PCFG0 = 1;
-
-
-
-ADCON0 = 0b10000001;
-
-
-
-ADIF = 0;
-ADIE = 1;
-PEIE = 1;
-GIE = 1;
-}
-int readADCData(){
-
-int ADCResult = (ADRESH<<8) + ADRESL ;
-
-if(ADCResult>1000){
-RB3 = 0;
-RB4 = 1;
-}
-else if (ADCResult<1000&&ADCResult>400){
-RB3 = 1;
-RB4 = 0;
-}
-
-else{
-RB3 = 1;
-RB4 = 1;
-}
-return ADCResult;
-
-}
-void startADCConversion(){
-
-_delay((unsigned long)((1)*(20000000/4000.0)));
-
-GO = 1;
-}

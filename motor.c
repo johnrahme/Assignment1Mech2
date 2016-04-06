@@ -9,11 +9,18 @@
 #include <xc.h>
 #include <math.h>
 #include "motor.h"
+#include "lcd.h"
 #define CLOCKWISE 1
 #define COUNTER_CLOCKWISE 0
 #define STEPS_PER_ROTATION 48
 #define DEG_PER_STEP 7.5
 #define SPEED 20
+
+void initializeMotor(){
+    PORTC = halfSteps[0];
+    lcdSetCursor(0x40);
+    lcdWriteToDigitBCD(nrOfSteps);
+}
 
 void move(char steps, char direction){
     for(char i = 0; i<steps; i++){
@@ -38,6 +45,16 @@ void move(char steps, char direction){
          }
          else{
                PORTC = 0x00;
+         }
+         if(direction){
+             nrOfSteps--;
+             lcdSetCursor(0x40);
+             lcdWriteToDigitBCD(nrOfSteps);
+         }
+         else{
+             nrOfSteps++;
+             lcdSetCursor(0x40);
+             lcdWriteToDigitBCD(nrOfSteps);
          }
         __delay_ms(SPEED);
     }

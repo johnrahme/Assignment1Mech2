@@ -1087,9 +1087,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adConv.c: 14: PCFG1 = 1;
 "14
 [e = _PCFG1 -> -> 1 `i `b ]
-[; ;adConv.c: 15: PCFG0 = 0;
+[; ;adConv.c: 15: PCFG0 = 1;
 "15
-[e = _PCFG0 -> -> 0 `i `b ]
+[e = _PCFG0 -> -> 1 `i `b ]
 [; ;adConv.c: 19: ADCON0 = 0b10000001;
 "19
 [e = _ADCON0 -> -> 129 `i `uc ]

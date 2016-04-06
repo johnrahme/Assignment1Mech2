@@ -1,5 +1,5 @@
 
-# 1 "adConv.c"
+# 1 "lcd.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -1434,59 +1434,114 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 8 "adConv.h"
-volatile bit conversionDone = 0;
-void initializeADC();
-int readADCData();
-void startADCConversion();
-
-# 5 "adConv.c"
-void initializeADC(){
-TRISA = 0b11111111;
-
-ADFM = 1;
-
-ADCS2 = 0;
-
-PCFG3 = 0;
-PCFG2 = 0;
-PCFG1 = 1;
-PCFG0 = 1;
+# 14 "lcd.h"
+void lcdWriteControl(unsigned char databyte);
 
 
-
-ADCON0 = 0b10000001;
-
+void lcd_WriteData(unsigned char databyte);
 
 
-ADIF = 0;
-ADIE = 1;
-PEIE = 1;
-GIE = 1;
-}
-int readADCData(){
+void lcdSetCursor(unsigned char address);
 
-int ADCResult = (ADRESH<<8) + ADRESL ;
+void lcdWriteString(char * s);
 
-if(ADCResult>1000){
-RB3 = 0;
-RB4 = 1;
-}
-else if (ADCResult<1000&&ADCResult>400){
-RB3 = 1;
-RB4 = 0;
+
+void lcdWriteToDigitBCD(signed int data);
+
+
+void setupLCD(void);
+
+# 6 "lcd.c"
+void lcdWriteControl(unsigned char databyte){
+RE2 = 0;
+RE1 = 0;
+RE0 = 0;
+PORTD = databyte;
+RE2 = 1;
+RE2 = 0;
+_delay((unsigned long)((2)*(20000000/4000.0)));
 }
 
-else{
-RB3 = 1;
-RB4 = 1;
-}
-return ADCResult;
 
-}
-void startADCConversion(){
-
+void lcdWriteData(unsigned char databyte){
+RE2 = 0;
+RE1 = 0;
+RE0 = 1;
+PORTD = databyte;
+RE2 = 1;
+RE2 = 0;
 _delay((unsigned long)((1)*(20000000/4000.0)));
+}
 
-GO = 1;
+
+void lcdSetCursor(unsigned char address){
+address |= 0b10000000;
+lcdWriteControl(address);
+}
+
+void lcdWriteString(char * s){
+
+while(*s) lcdWriteData(*s++);
+}
+
+
+void lcdWriteToDigitBCD(signed int data){
+unsigned int OnesDigit;
+unsigned char TensDigit, HundredDigit, ThousandDigit;
+signed char sign = 1;
+if(data<0)
+sign = -1;
+
+OnesDigit = data*sign;
+ThousandDigit = 0;
+HundredDigit = 0;
+TensDigit = 0;
+
+
+
+while(OnesDigit >= 1000){
+OnesDigit = OnesDigit - 1000;
+ThousandDigit++;
+}
+while(OnesDigit >= 100){
+OnesDigit = OnesDigit - 100;
+HundredDigit++;
+}
+while (OnesDigit >= 10){
+OnesDigit = OnesDigit - 10;
+TensDigit++;
+}
+if(sign == -1)
+lcdWriteData((unsigned char)45);
+else{
+lcdWriteData((unsigned char)43);
+}
+
+lcdWriteData((unsigned char)ThousandDigit + 48);
+lcdWriteData((unsigned char)HundredDigit + 48);
+lcdWriteData((unsigned char)TensDigit + 48);
+lcdWriteData((unsigned char)OnesDigit + 48);
+}
+
+
+void setupLCD(void){
+
+
+PORTD = 0;
+PORTE = 0;
+
+TRISD = 0b00000000;
+TRISE = 0b00000000;
+
+
+lcdWriteControl(0b00000001);
+lcdWriteControl(0b00111000);
+lcdWriteControl(0b00001100);
+lcdWriteControl(0b00000110);
+lcdWriteControl(0b00000010);
+
+
+
+lcdWriteControl(0b00000001);
+
 }

@@ -1447,6 +1447,12 @@ volatile bit pb2Pressed = 0;
 volatile bit pb2Released = 0;
 volatile unsigned char rtcCounter3 = 0;
 
+volatile bit pb3Pressed = 0;
+volatile bit pb3Released = 0;
+volatile unsigned char rtcCounter4 = 0;
+
+
+
 void debounceButtons();
 
 # 7 "timer0.c"

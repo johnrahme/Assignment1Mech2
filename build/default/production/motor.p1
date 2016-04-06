@@ -1,6 +1,10 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "270 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _PORTC `Vuc ~T0 @X0 0 e@7 ]
+"20 lcd.h
+[v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
+"25
+[v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef1`i ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
 [v __delay `JF1091 ~T0 @X0 0 e ]
@@ -1057,6 +1061,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;motor.h: 15: signed char cstep = 0;
 "16
+[v _nrOfSteps `i ~T0 @X0 1 e ]
+[i _nrOfSteps
+-> 0 `i
+]
+[; ;motor.h: 16: signed int nrOfSteps = 0;
+"17
 [v _halfSteps `i ~T0 @X0 -> 0 `x e ]
 [i _halfSteps
 :U ..
@@ -1070,8 +1080,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 30 `i
 ..
 ]
-[; ;motor.h: 16: int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
-"17
+[; ;motor.h: 17: int halfSteps[] = {0b00111100, 0b00101110, 0b00101011, 0b00100111, 0b00110101, 0b00010111, 0b00011011, 0b00011110};
+"18
 [v _wholeSteps `i ~T0 @X0 -> 0 `x e ]
 [i _wholeSteps
 :U ..
@@ -1081,162 +1091,221 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 27 `i
 ..
 ]
-[; ;motor.h: 17: int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
-[; ;motor.h: 19: void move(char steps, char direction);
-[; ;motor.h: 20: void moveDeg(double deg);
-"18 motor.c
+[; ;motor.h: 18: int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
+[; ;motor.h: 20: void move(char steps, char direction);
+[; ;motor.h: 21: void moveDeg(double deg);
+[; ;lcd.h: 14: void lcdWriteControl(unsigned char databyte);
+[; ;lcd.h: 17: void lcd_WriteData(unsigned char databyte);
+[; ;lcd.h: 20: void lcdSetCursor(unsigned char address);
+[; ;lcd.h: 22: void lcdWriteString(char * s);
+[; ;lcd.h: 25: void lcdWriteToDigitBCD(signed int data);
+[; ;lcd.h: 28: void setupLCD(void);
+"19 motor.c
+[v _initializeMotor `(v ~T0 @X0 1 ef ]
+{
+[; ;motor.c: 19: void initializeMotor(){
+[e :U _initializeMotor ]
+[f ]
+[; ;motor.c: 20: PORTC = halfSteps[0];
+"20
+[e = _PORTC -> *U + &U _halfSteps * -> -> -> 0 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
+[; ;motor.c: 21: lcdSetCursor(0x40);
+"21
+[e ( _lcdSetCursor (1 -> -> 64 `i `uc ]
+[; ;motor.c: 22: lcdWriteToDigitBCD(nrOfSteps);
+"22
+[e ( _lcdWriteToDigitBCD (1 _nrOfSteps ]
+[; ;motor.c: 23: }
+"23
+[e :UE 96 ]
+}
+"25
 [v _move `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;motor.c: 18: void move(char steps, char direction){
+[; ;motor.c: 25: void move(char steps, char direction){
 [e :U _move ]
 [v _steps `uc ~T0 @X0 1 r1 ]
 [v _direction `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;motor.c: 19: for(char i = 0; i<steps; i++){
-"19
+[; ;motor.c: 26: for(char i = 0; i<steps; i++){
+"26
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $U 100  ]
-[e :U 97 ]
+[e $U 101  ]
+[e :U 98 ]
 {
-[; ;motor.c: 20: if(cstep == 7 && direction == 1){
-"20
-[e $ ! && == -> _cstep `i -> 7 `i == -> _direction `i -> 1 `i 101  ]
-{
-[; ;motor.c: 21: PORTC = halfSteps[0];
-"21
-[e = _PORTC -> *U + &U _halfSteps * -> -> -> 0 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
-[; ;motor.c: 22: cstep = 0;
-"22
-[e = _cstep -> -> 0 `i `c ]
-"23
-}
-[; ;motor.c: 23: }
-[e $U 102  ]
-"24
-[e :U 101 ]
-[; ;motor.c: 24: else if(cstep == 0 && direction == 0){
-[e $ ! && == -> _cstep `i -> 0 `i == -> _direction `i -> 0 `i 103  ]
-{
-[; ;motor.c: 25: PORTC = halfSteps[7];
-"25
-[e = _PORTC -> *U + &U _halfSteps * -> -> -> 7 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
-[; ;motor.c: 26: cstep = 7;
-"26
-[e = _cstep -> -> 7 `i `c ]
+[; ;motor.c: 27: if(cstep == 7 && direction == 1){
 "27
-}
-[; ;motor.c: 27: }
-[e $U 104  ]
+[e $ ! && == -> _cstep `i -> 7 `i == -> _direction `i -> 1 `i 102  ]
+{
+[; ;motor.c: 28: PORTC = halfSteps[0];
 "28
-[e :U 103 ]
-[; ;motor.c: 28: else if (cstep >= 0 && cstep <= 7){
-[e $ ! && >= -> _cstep `i -> 0 `i <= -> _cstep `i -> 7 `i 105  ]
-{
-[; ;motor.c: 29: if(direction == 1){
+[e = _PORTC -> *U + &U _halfSteps * -> -> -> 0 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
+[; ;motor.c: 29: cstep = 0;
 "29
-[e $ ! == -> _direction `i -> 1 `i 106  ]
-{
-[; ;motor.c: 30: PORTC = halfSteps[cstep+1];
+[e = _cstep -> -> 0 `i `c ]
 "30
-[e = _PORTC -> *U + &U _halfSteps * -> -> + -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
-[; ;motor.c: 31: cstep++;
+}
+[; ;motor.c: 30: }
+[e $U 103  ]
 "31
-[e ++ _cstep -> -> 1 `i `c ]
+[e :U 102 ]
+[; ;motor.c: 31: else if(cstep == 0 && direction == 0){
+[e $ ! && == -> _cstep `i -> 0 `i == -> _direction `i -> 0 `i 104  ]
+{
+[; ;motor.c: 32: PORTC = halfSteps[7];
 "32
-}
-[; ;motor.c: 32: }
-[e $U 107  ]
+[e = _PORTC -> *U + &U _halfSteps * -> -> -> 7 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
+[; ;motor.c: 33: cstep = 7;
 "33
-[e :U 106 ]
-[; ;motor.c: 33: else if(direction == 0){
-[e $ ! == -> _direction `i -> 0 `i 108  ]
-{
-[; ;motor.c: 34: PORTC = halfSteps[cstep-1];
+[e = _cstep -> -> 7 `i `c ]
 "34
-[e = _PORTC -> *U + &U _halfSteps * -> -> - -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
-[; ;motor.c: 35: cstep--;
+}
+[; ;motor.c: 34: }
+[e $U 105  ]
 "35
-[e -- _cstep -> -> 1 `i `c ]
-"36
-}
-[e :U 108 ]
-"38
-[e :U 107 ]
-}
-[; ;motor.c: 36: }
-[; ;motor.c: 38: }
-[e $U 109  ]
-"39
-[e :U 105 ]
-[; ;motor.c: 39: else{
+[e :U 104 ]
+[; ;motor.c: 35: else if (cstep >= 0 && cstep <= 7){
+[e $ ! && >= -> _cstep `i -> 0 `i <= -> _cstep `i -> 7 `i 106  ]
 {
-[; ;motor.c: 40: PORTC = 0x00;
+[; ;motor.c: 36: if(direction == 1){
+"36
+[e $ ! == -> _direction `i -> 1 `i 107  ]
+{
+[; ;motor.c: 37: PORTC = halfSteps[cstep+1];
+"37
+[e = _PORTC -> *U + &U _halfSteps * -> -> + -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
+[; ;motor.c: 38: cstep++;
+"38
+[e ++ _cstep -> -> 1 `i `c ]
+"39
+}
+[; ;motor.c: 39: }
+[e $U 108  ]
 "40
-[e = _PORTC -> -> 0 `i `uc ]
+[e :U 107 ]
+[; ;motor.c: 40: else if(direction == 0){
+[e $ ! == -> _direction `i -> 0 `i 109  ]
+{
+[; ;motor.c: 41: PORTC = halfSteps[cstep-1];
 "41
+[e = _PORTC -> *U + &U _halfSteps * -> -> - -> _cstep `i -> 1 `i `ui `ux -> -> # *U &U _halfSteps `ui `ux `uc ]
+[; ;motor.c: 42: cstep--;
+"42
+[e -- _cstep -> -> 1 `i `c ]
+"43
 }
 [e :U 109 ]
-[e :U 104 ]
-[e :U 102 ]
-[; ;motor.c: 41: }
-[; ;motor.c: 42: _delay((unsigned long)((20)*(20000000/4000.0)));
-"42
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"43
-}
-"19
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 100 ]
-[e $ < -> _i `i -> _steps `i 97  ]
-[e :U 98 ]
-"43
+"45
+[e :U 108 ]
 }
 [; ;motor.c: 43: }
-[; ;motor.c: 44: }
-"44
-[e :UE 96 ]
-}
+[; ;motor.c: 45: }
+[e $U 110  ]
 "46
+[e :U 106 ]
+[; ;motor.c: 46: else{
+{
+[; ;motor.c: 47: PORTC = 0x00;
+"47
+[e = _PORTC -> -> 0 `i `uc ]
+"48
+}
+[e :U 110 ]
+[e :U 105 ]
+[e :U 103 ]
+[; ;motor.c: 48: }
+[; ;motor.c: 49: if(direction){
+"49
+[e $ ! != -> _direction `i -> -> -> 0 `i `uc `i 111  ]
+{
+[; ;motor.c: 50: nrOfSteps--;
+"50
+[e -- _nrOfSteps -> 1 `i ]
+[; ;motor.c: 51: lcdSetCursor(0x40);
+"51
+[e ( _lcdSetCursor (1 -> -> 64 `i `uc ]
+[; ;motor.c: 52: lcdWriteToDigitBCD(nrOfSteps);
+"52
+[e ( _lcdWriteToDigitBCD (1 _nrOfSteps ]
+"53
+}
+[; ;motor.c: 53: }
+[e $U 112  ]
+"54
+[e :U 111 ]
+[; ;motor.c: 54: else{
+{
+[; ;motor.c: 55: nrOfSteps++;
+"55
+[e ++ _nrOfSteps -> 1 `i ]
+[; ;motor.c: 56: lcdSetCursor(0x40);
+"56
+[e ( _lcdSetCursor (1 -> -> 64 `i `uc ]
+[; ;motor.c: 57: lcdWriteToDigitBCD(nrOfSteps);
+"57
+[e ( _lcdWriteToDigitBCD (1 _nrOfSteps ]
+"58
+}
+[e :U 112 ]
+[; ;motor.c: 58: }
+[; ;motor.c: 59: _delay((unsigned long)((20)*(20000000/4000.0)));
+"59
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"60
+}
+"26
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 101 ]
+[e $ < -> _i `i -> _steps `i 98  ]
+[e :U 99 ]
+"60
+}
+[; ;motor.c: 60: }
+[; ;motor.c: 61: }
+"61
+[e :UE 97 ]
+}
+"63
 [v _moveDeg `(v ~T0 @X0 1 ef1`d ]
 {
-[; ;motor.c: 46: void moveDeg(double deg){
+[; ;motor.c: 63: void moveDeg(double deg){
 [e :U _moveDeg ]
 [v _deg `d ~T0 @X0 1 r1 ]
 [f ]
-"47
+"64
 [v _stepsToMove `uc ~T0 @X0 1 a ]
-[; ;motor.c: 47: char stepsToMove;
-[; ;motor.c: 48: if(deg<0){
-"48
-[e $ ! < _deg -> -> 0 `i `d 111  ]
+[; ;motor.c: 64: char stepsToMove;
+[; ;motor.c: 65: if(deg<0){
+"65
+[e $ ! < _deg -> -> 0 `i `d 114  ]
 {
-[; ;motor.c: 49: stepsToMove = (char) round(-deg/(7.5/2.0));
-"49
+[; ;motor.c: 66: stepsToMove = (char) round(-deg/(7.5/2.0));
+"66
 [e = _stepsToMove -> ( _round (1 / -U _deg / .7.5 .2.0 `uc ]
-[; ;motor.c: 50: move(stepsToMove,0);
-"50
+[; ;motor.c: 67: move(stepsToMove,0);
+"67
 [e ( _move (2 , _stepsToMove -> -> 0 `i `uc ]
-"51
+"68
 }
-[; ;motor.c: 51: }
-[e $U 112  ]
-"52
-[e :U 111 ]
-[; ;motor.c: 52: else{
+[; ;motor.c: 68: }
+[e $U 115  ]
+"69
+[e :U 114 ]
+[; ;motor.c: 69: else{
 {
-[; ;motor.c: 53: stepsToMove = (char) round(deg/(7.5/2.0));
-"53
+[; ;motor.c: 70: stepsToMove = (char) round(deg/(7.5/2.0));
+"70
 [e = _stepsToMove -> ( _round (1 / _deg / .7.5 .2.0 `uc ]
-[; ;motor.c: 54: move(stepsToMove,1);
-"54
+[; ;motor.c: 71: move(stepsToMove,1);
+"71
 [e ( _move (2 , _stepsToMove -> -> 1 `i `uc ]
-"55
+"72
 }
-[e :U 112 ]
-[; ;motor.c: 55: }
-[; ;motor.c: 56: }
-"56
-[e :UE 110 ]
+[e :U 115 ]
+[; ;motor.c: 72: }
+[; ;motor.c: 73: }
+"73
+[e :UE 113 ]
 }

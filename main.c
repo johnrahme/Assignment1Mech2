@@ -2,6 +2,7 @@
 #include "motor.h"
 #include "timer0.h"
 #include "adConv.h"
+#include "lcd.h"
 
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF //for XC8 compiler
 #define TMR0_VAL 100
@@ -28,6 +29,7 @@ void initialise (void){
     LED0 = 1;
     LED1 = 1;
     
+    
     //Timer initialization
     TMR0 = 100;
     T0CS = 0;
@@ -47,14 +49,19 @@ void main (void) {
     initialise();
     initializeADC();
     startADCConversion();
+    setupLCD();
+    initializeMotor();
 
     //ADCON0 = ADCON0 | 0b00000100;
     while(1){
         
-        
+
         if(conversionDone){
             conversionDone = 0;
             int result = readADCData();
+            lcdSetCursor(0x00);
+            lcdWriteToDigitBCD(result);
+            //lcdWriteString("Hello World!");
             startADCConversion();
             
         }

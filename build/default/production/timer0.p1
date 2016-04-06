@@ -1076,7 +1076,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [; ;timer0.h: 19: volatile unsigned char rtcCounter3 = 0;
-[; ;timer0.h: 21: void debounceButtons();
+"21
+[v _pb3Pressed `Vb ~T0 @X0 1 e ]
+[i _pb3Pressed
+-> 0 `i
+]
+[; ;timer0.h: 21: volatile bit pb3Pressed = 0;
+"22
+[v _pb3Released `Vb ~T0 @X0 1 e ]
+[i _pb3Released
+-> 0 `i
+]
+[; ;timer0.h: 22: volatile bit pb3Released = 0;
+"23
+[v _rtcCounter4 `Vuc ~T0 @X0 1 e ]
+[i _rtcCounter4
+-> -> 0 `i `uc
+]
+[; ;timer0.h: 23: volatile unsigned char rtcCounter4 = 0;
+[; ;timer0.h: 27: void debounceButtons();
 "7 timer0.c
 [v _debounceButtons `(v ~T0 @X0 1 ef ]
 {

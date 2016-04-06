@@ -12,7 +12,7 @@ void initializeADC(){
     PCFG3 = 0;
     PCFG2 = 0;
     PCFG1 = 1;
-    PCFG0 = 0;
+    PCFG0 = 1;
     
     //ADCON1 = 0b10000000;
     
