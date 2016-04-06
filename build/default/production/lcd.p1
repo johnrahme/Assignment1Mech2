@@ -1034,12 +1034,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-[; ;lcd.h: 14: void lcdWriteControl(unsigned char databyte);
-[; ;lcd.h: 17: void lcd_WriteData(unsigned char databyte);
-[; ;lcd.h: 20: void lcdSetCursor(unsigned char address);
-[; ;lcd.h: 22: void lcdWriteString(char * s);
-[; ;lcd.h: 25: void lcdWriteToDigitBCD(signed int data);
-[; ;lcd.h: 28: void setupLCD(void);
+[; ;lcd.h: 13: void lcdWriteControl(unsigned char databyte);
+[; ;lcd.h: 16: void lcd_WriteData(unsigned char databyte);
+[; ;lcd.h: 19: void lcdSetCursor(unsigned char address);
+[; ;lcd.h: 21: void lcdWriteString(char * s);
+[; ;lcd.h: 24: void lcdWriteToDigitBCD(signed int data);
+[; ;lcd.h: 27: void setupLCD(void);
 "6 lcd.c
 [v _lcdWriteControl `(v ~T0 @X0 1 ef1`uc ]
 {

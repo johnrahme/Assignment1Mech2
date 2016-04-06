@@ -1443,34 +1443,36 @@ int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 void move(char steps, char direction);
 void moveDeg(double deg);
 
-# 9 "timer0.h"
+# 6 "timer0.h"
+volatile unsigned int rtcCounter = 0;
+
 volatile bit pb0Pressed = 0;
 volatile bit pb0Released = 0;
-volatile unsigned char rtcCounter = 0;
+volatile unsigned char pbCounter = 0;
 
 volatile bit pb1Pressed = 0;
 volatile bit pb1Released = 0;
-volatile unsigned char rtcCounter2 = 0;
+volatile unsigned char pbCounter2 = 0;
 
 volatile bit pb2Pressed = 0;
 volatile bit pb2Released = 0;
-volatile unsigned char rtcCounter3 = 0;
+volatile unsigned char pbCounter3 = 0;
 
 volatile bit pb3Pressed = 0;
 volatile bit pb3Released = 0;
-volatile unsigned char rtcCounter4 = 0;
+volatile unsigned char pbCounter4 = 0;
 
 
 
 void debounceButtons();
 
-# 8 "adConv.h"
+# 6 "adConv.h"
 volatile bit conversionDone = 0;
 void initializeADC();
 int readADCData();
 void startADCConversion();
 
-# 14 "lcd.h"
+# 13 "lcd.h"
 void lcdWriteControl(unsigned char databyte);
 
 
@@ -1488,7 +1490,7 @@ void lcdWriteToDigitBCD(signed int data);
 void setupLCD(void);
 
 
-# 7 "main.c"
+# 8 "main.c"
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
 
@@ -1498,6 +1500,11 @@ void interrupt isr(void){
 if (T0IF){
 T0IF = 0;
 TMR0 = 100;
+rtcCounter++;
+if(rtcCounter == 500){
+RB5 = !RB5;
+rtcCounter = 0;
+}
 debounceButtons();
 }
 if(ADIF){
@@ -1508,11 +1515,11 @@ ADIF = 0;
 void initialise (void){
 
 
-TRISB = 0b00000111;
+TRISB = 0b00001111;
 TRISC = 0;
 
-RB3 = 1;
 RB4 = 1;
+RB5 = 1;
 
 
 
@@ -1568,6 +1575,11 @@ moveDeg(180);
 motorToggle = !motorToggle;
 pb2Pressed = 0;
 }
+if(pb3Pressed){
+RB4 = !RB4;
+pb3Pressed = 0;
+}
+
 _delay((unsigned long)((20)*(20000000/4000.0)));
 }
 }

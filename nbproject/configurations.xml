@@ -8,6 +8,7 @@
       <itemPath>timer0.h</itemPath>
       <itemPath>adConv.h</itemPath>
       <itemPath>lcd.h</itemPath>
+      <itemPath>common.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

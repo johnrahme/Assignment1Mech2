@@ -3,5 +3,6 @@
  main.c  \
 adConv.h  \
 lcd.h  \
+common.h  \
 motor.h  \
 timer0.h 

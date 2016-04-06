@@ -5,6 +5,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RB1 `Vb ~T0 @X0 0 e@49 ]
 "2517
 [v _RB2 `Vb ~T0 @X0 0 e@50 ]
+"2519
+[v _RB3 `Vb ~T0 @X0 0 e@51 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1022,79 +1024,85 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-"9 timer0.h
+"6 timer0.h
+[v _rtcCounter `Vui ~T0 @X0 1 e ]
+[i _rtcCounter
+-> -> 0 `i `ui
+]
+[; ;timer0.h: 6: volatile unsigned int rtcCounter = 0;
+"8
 [v _pb0Pressed `Vb ~T0 @X0 1 e ]
 [i _pb0Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 9: volatile bit pb0Pressed = 0;
-"10
+[; ;timer0.h: 8: volatile bit pb0Pressed = 0;
+"9
 [v _pb0Released `Vb ~T0 @X0 1 e ]
 [i _pb0Released
 -> 0 `i
 ]
-[; ;timer0.h: 10: volatile bit pb0Released = 0;
-"11
-[v _rtcCounter `Vuc ~T0 @X0 1 e ]
-[i _rtcCounter
+[; ;timer0.h: 9: volatile bit pb0Released = 0;
+"10
+[v _pbCounter `Vuc ~T0 @X0 1 e ]
+[i _pbCounter
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 11: volatile unsigned char rtcCounter = 0;
-"13
+[; ;timer0.h: 10: volatile unsigned char pbCounter = 0;
+"12
 [v _pb1Pressed `Vb ~T0 @X0 1 e ]
 [i _pb1Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 13: volatile bit pb1Pressed = 0;
-"14
+[; ;timer0.h: 12: volatile bit pb1Pressed = 0;
+"13
 [v _pb1Released `Vb ~T0 @X0 1 e ]
 [i _pb1Released
 -> 0 `i
 ]
-[; ;timer0.h: 14: volatile bit pb1Released = 0;
-"15
-[v _rtcCounter2 `Vuc ~T0 @X0 1 e ]
-[i _rtcCounter2
+[; ;timer0.h: 13: volatile bit pb1Released = 0;
+"14
+[v _pbCounter2 `Vuc ~T0 @X0 1 e ]
+[i _pbCounter2
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 15: volatile unsigned char rtcCounter2 = 0;
-"17
+[; ;timer0.h: 14: volatile unsigned char pbCounter2 = 0;
+"16
 [v _pb2Pressed `Vb ~T0 @X0 1 e ]
 [i _pb2Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 17: volatile bit pb2Pressed = 0;
-"18
+[; ;timer0.h: 16: volatile bit pb2Pressed = 0;
+"17
 [v _pb2Released `Vb ~T0 @X0 1 e ]
 [i _pb2Released
 -> 0 `i
 ]
-[; ;timer0.h: 18: volatile bit pb2Released = 0;
-"19
-[v _rtcCounter3 `Vuc ~T0 @X0 1 e ]
-[i _rtcCounter3
+[; ;timer0.h: 17: volatile bit pb2Released = 0;
+"18
+[v _pbCounter3 `Vuc ~T0 @X0 1 e ]
+[i _pbCounter3
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 19: volatile unsigned char rtcCounter3 = 0;
-"21
+[; ;timer0.h: 18: volatile unsigned char pbCounter3 = 0;
+"20
 [v _pb3Pressed `Vb ~T0 @X0 1 e ]
 [i _pb3Pressed
 -> 0 `i
 ]
-[; ;timer0.h: 21: volatile bit pb3Pressed = 0;
-"22
+[; ;timer0.h: 20: volatile bit pb3Pressed = 0;
+"21
 [v _pb3Released `Vb ~T0 @X0 1 e ]
 [i _pb3Released
 -> 0 `i
 ]
-[; ;timer0.h: 22: volatile bit pb3Released = 0;
-"23
-[v _rtcCounter4 `Vuc ~T0 @X0 1 e ]
-[i _rtcCounter4
+[; ;timer0.h: 21: volatile bit pb3Released = 0;
+"22
+[v _pbCounter4 `Vuc ~T0 @X0 1 e ]
+[i _pbCounter4
 -> -> 0 `i `uc
 ]
-[; ;timer0.h: 23: volatile unsigned char rtcCounter4 = 0;
-[; ;timer0.h: 27: void debounceButtons();
+[; ;timer0.h: 22: volatile unsigned char pbCounter4 = 0;
+[; ;timer0.h: 26: void debounceButtons();
 "7 timer0.c
 [v _debounceButtons `(v ~T0 @X0 1 ef ]
 {
@@ -1105,12 +1113,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "9
 [e $ ! ! _RB0 97  ]
 {
-[; ;timer0.c: 10: rtcCounter++;
+[; ;timer0.c: 10: pbCounter++;
 "10
-[e ++ _rtcCounter -> -> 1 `i `uc ]
-[; ;timer0.c: 11: if(rtcCounter >10 &&pb0Released){
+[e ++ _pbCounter -> -> 1 `i `uc ]
+[; ;timer0.c: 11: if(pbCounter >10 &&pb0Released){
 "11
-[e $ ! && > -> _rtcCounter `i -> 10 `i _pb0Released 98  ]
+[e $ ! && > -> _pbCounter `i -> 10 `i _pb0Released 98  ]
 {
 [; ;timer0.c: 12: pb0Pressed = 1;
 "12
@@ -1130,9 +1138,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 97 ]
 [; ;timer0.c: 16: else{
 {
-[; ;timer0.c: 17: rtcCounter = 0;
+[; ;timer0.c: 17: pbCounter = 0;
 "17
-[e = _rtcCounter -> -> 0 `i `uc ]
+[e = _pbCounter -> -> 0 `i `uc ]
 [; ;timer0.c: 18: pb0Released = 1;
 "18
 [e = _pb0Released -> -> 1 `i `b ]
@@ -1144,12 +1152,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "21
 [e $ ! ! _RB1 100  ]
 {
-[; ;timer0.c: 22: rtcCounter2++;
+[; ;timer0.c: 22: pbCounter2++;
 "22
-[e ++ _rtcCounter2 -> -> 1 `i `uc ]
-[; ;timer0.c: 23: if(rtcCounter2 >10 &&pb1Released){
+[e ++ _pbCounter2 -> -> 1 `i `uc ]
+[; ;timer0.c: 23: if(pbCounter2 >10 &&pb1Released){
 "23
-[e $ ! && > -> _rtcCounter2 `i -> 10 `i _pb1Released 101  ]
+[e $ ! && > -> _pbCounter2 `i -> 10 `i _pb1Released 101  ]
 {
 [; ;timer0.c: 24: pb1Pressed = 1;
 "24
@@ -1169,9 +1177,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 100 ]
 [; ;timer0.c: 28: else{
 {
-[; ;timer0.c: 29: rtcCounter2 = 0;
+[; ;timer0.c: 29: pbCounter2 = 0;
 "29
-[e = _rtcCounter2 -> -> 0 `i `uc ]
+[e = _pbCounter2 -> -> 0 `i `uc ]
 [; ;timer0.c: 30: pb1Released = 1;
 "30
 [e = _pb1Released -> -> 1 `i `b ]
@@ -1183,12 +1191,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "32
 [e $ ! ! _RB2 103  ]
 {
-[; ;timer0.c: 33: rtcCounter3++;
+[; ;timer0.c: 33: pbCounter3++;
 "33
-[e ++ _rtcCounter3 -> -> 1 `i `uc ]
-[; ;timer0.c: 34: if(rtcCounter3 >10 &&pb2Released){
+[e ++ _pbCounter3 -> -> 1 `i `uc ]
+[; ;timer0.c: 34: if(pbCounter3 >10 &&pb2Released){
 "34
-[e $ ! && > -> _rtcCounter3 `i -> 10 `i _pb2Released 104  ]
+[e $ ! && > -> _pbCounter3 `i -> 10 `i _pb2Released 104  ]
 {
 [; ;timer0.c: 35: pb2Pressed = 1;
 "35
@@ -1208,9 +1216,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 103 ]
 [; ;timer0.c: 39: else{
 {
-[; ;timer0.c: 40: rtcCounter3 = 0;
+[; ;timer0.c: 40: pbCounter3 = 0;
 "40
-[e = _rtcCounter3 -> -> 0 `i `uc ]
+[e = _pbCounter3 -> -> 0 `i `uc ]
 [; ;timer0.c: 41: pb2Released = 1;
 "41
 [e = _pb2Released -> -> 1 `i `b ]
@@ -1218,7 +1226,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 105 ]
 [; ;timer0.c: 42: }
-[; ;timer0.c: 43: }
+[; ;timer0.c: 43: if(!RB3) {
 "43
+[e $ ! ! _RB3 106  ]
+{
+[; ;timer0.c: 44: pbCounter4++;
+"44
+[e ++ _pbCounter4 -> -> 1 `i `uc ]
+[; ;timer0.c: 45: if(pbCounter4 >10 &&pb3Released){
+"45
+[e $ ! && > -> _pbCounter4 `i -> 10 `i _pb3Released 107  ]
+{
+[; ;timer0.c: 46: pb3Pressed = 1;
+"46
+[e = _pb3Pressed -> -> 1 `i `b ]
+[; ;timer0.c: 47: pb3Released = 0;
+"47
+[e = _pb3Released -> -> 0 `i `b ]
+"48
+}
+[e :U 107 ]
+"49
+}
+[; ;timer0.c: 48: }
+[; ;timer0.c: 49: }
+[e $U 108  ]
+"50
+[e :U 106 ]
+[; ;timer0.c: 50: else{
+{
+[; ;timer0.c: 51: pbCounter4 = 0;
+"51
+[e = _pbCounter4 -> -> 0 `i `uc ]
+[; ;timer0.c: 52: pb3Released = 1;
+"52
+[e = _pb3Released -> -> 1 `i `b ]
+"53
+}
+[e :U 108 ]
+[; ;timer0.c: 53: }
+[; ;timer0.c: 54: }
+"54
 [e :UE 96 ]
 }

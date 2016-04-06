@@ -3,11 +3,11 @@
 [d edition pro ]
 [d chip 16F877A ]
 [d frameptr 6 ]
-"5 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+"4 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _initializeADC initializeADC `(v  1 e 1 0 ]
-"28
+"27
 [v _readADCData readADCData `(i  1 e 2 0 ]
-"48
+"33
 [v _startADCConversion startADCConversion `(v  1 e 1 0 ]
 "42 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
@@ -45,11 +45,11 @@
 [v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
 "78
 [v _setupLCD setupLCD `(v  1 e 1 0 ]
-"12 C:\Users\JohnMac\Assignment1Mech2\main.c
+"13 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _isr isr `II(v  1 e 1 0 ]
-"23
+"29
 [v _initialise initialise `(v  1 e 1 0 ]
-"47
+"53
 [v _main main `(v  1 e 1 0 ]
 "19 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _initializeMotor initializeMotor `(i  1 e 2 0 ]
@@ -59,7 +59,7 @@
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
 "7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
-"8 C:\Users\JohnMac\Assignment1Mech2\adConv.h
+"6 C:\Users\JohnMac\Assignment1Mech2\adConv.h
 [v _conversionDone conversionDone `VEb  1 e 0 0 ]
 "55 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -125,6 +125,8 @@
 [v _RB3 RB3 `VEb  1 e 0 @51 ]
 "2521
 [v _RB4 RB4 `VEb  1 e 0 @52 ]
+"2523
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
 "2579
 [v _RE0 RE0 `VEb  1 e 0 @72 ]
 "2581
@@ -139,7 +141,7 @@
 [v _T0SE T0SE `VEb  1 e 0 @1036 ]
 "2649
 [v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
-"10 C:\Users\JohnMac\Assignment1Mech2\main.c
+"11 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _motorToggle motorToggle `b  1 e 0 0 ]
 "15 C:\Users\JohnMac\Assignment1Mech2\motor.h
 [v _cstep cstep `c  1 e 1 0 ]
@@ -147,53 +149,55 @@
 [v _nrOfSteps nrOfSteps `i  1 e 2 0 ]
 "17
 [v _halfSteps halfSteps `[8]i  1 e 16 0 ]
-"9 C:\Users\JohnMac\Assignment1Mech2\timer0.h
+"6 C:\Users\JohnMac\Assignment1Mech2\timer0.h
+[v _rtcCounter rtcCounter `VEui  1 e 2 0 ]
+"8
 [v _pb0Pressed pb0Pressed `VEb  1 e 0 0 ]
-"10
+"9
 [v _pb0Released pb0Released `VEb  1 e 0 0 ]
-"11
-[v _rtcCounter rtcCounter `VEuc  1 e 1 0 ]
-"13
+"10
+[v _pbCounter pbCounter `VEuc  1 e 1 0 ]
+"12
 [v _pb1Pressed pb1Pressed `VEb  1 e 0 0 ]
-"14
+"13
 [v _pb1Released pb1Released `VEb  1 e 0 0 ]
-"15
-[v _rtcCounter2 rtcCounter2 `VEuc  1 e 1 0 ]
-"17
+"14
+[v _pbCounter2 pbCounter2 `VEuc  1 e 1 0 ]
+"16
 [v _pb2Pressed pb2Pressed `VEb  1 e 0 0 ]
-"18
+"17
 [v _pb2Released pb2Released `VEb  1 e 0 0 ]
-"19
-[v _rtcCounter3 rtcCounter3 `VEuc  1 e 1 0 ]
-"21
+"18
+[v _pbCounter3 pbCounter3 `VEuc  1 e 1 0 ]
+"20
 [v _pb3Pressed pb3Pressed `VEb  1 e 0 0 ]
-"22
+"21
 [v _pb3Released pb3Released `VEb  1 e 0 0 ]
-"23
-[v _rtcCounter4 rtcCounter4 `VEuc  1 e 1 0 ]
-"47 C:\Users\JohnMac\Assignment1Mech2\main.c
+"22
+[v _pbCounter4 pbCounter4 `VEuc  1 e 1 0 ]
+"53 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"61
+"67
 [v main@result result `i  1 a 2 13 ]
-"88
+"99
 } 0
-"48 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+"33 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _startADCConversion startADCConversion `(v  1 e 1 0 ]
 {
-"53
+"38
 } 0
 "78 C:\Users\JohnMac\Assignment1Mech2\lcd.c
 [v _setupLCD setupLCD `(v  1 e 1 0 ]
 {
 "98
 } 0
-"28 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+"27 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _readADCData readADCData `(i  1 e 2 0 ]
 {
-"30
+"29
 [v readADCData@ADCResult ADCResult `i  1 a 2 2 ]
-"47
+"32
 } 0
 "63 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
@@ -366,23 +370,23 @@
 [v lcdWriteControl@databyte databyte `uc  1 a 1 2 ]
 "14
 } 0
-"5 C:\Users\JohnMac\Assignment1Mech2\adConv.c
+"4 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _initializeADC initializeADC `(v  1 e 1 0 ]
 {
-"27
+"26
 } 0
-"23 C:\Users\JohnMac\Assignment1Mech2\main.c
+"29 C:\Users\JohnMac\Assignment1Mech2\main.c
 [v _initialise initialise `(v  1 e 1 0 ]
 {
-"45
+"51
 } 0
-"12
+"13
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"22
+"28
 } 0
 "7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _debounceButtons debounceButtons `(v  1 e 1 0 ]
 {
-"43
+"54
 } 0

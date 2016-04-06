@@ -2,6 +2,7 @@
 #define MOTOR_H
 
 #include <xc.h>
+#include "common.h"
 
 #define STEP0 0b00111100
 #define STEP1 0b00101110
@@ -11,7 +12,6 @@
 #define STEP5 0b00010111
 #define STEP6 0b00011011
 #define STEP7 0b00011110
-#define _XTAL_FREQ 20000000
 signed char cstep = 0; //stores current step
 signed int nrOfSteps = 0;
 int halfSteps[] = {STEP0, STEP1, STEP2, STEP3, STEP4, STEP5, STEP6, STEP7};

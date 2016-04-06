@@ -1434,22 +1434,24 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 9 "timer0.h"
+# 6 "timer0.h"
+volatile unsigned int rtcCounter = 0;
+
 volatile bit pb0Pressed = 0;
 volatile bit pb0Released = 0;
-volatile unsigned char rtcCounter = 0;
+volatile unsigned char pbCounter = 0;
 
 volatile bit pb1Pressed = 0;
 volatile bit pb1Released = 0;
-volatile unsigned char rtcCounter2 = 0;
+volatile unsigned char pbCounter2 = 0;
 
 volatile bit pb2Pressed = 0;
 volatile bit pb2Released = 0;
-volatile unsigned char rtcCounter3 = 0;
+volatile unsigned char pbCounter3 = 0;
 
 volatile bit pb3Pressed = 0;
 volatile bit pb3Released = 0;
-volatile unsigned char rtcCounter4 = 0;
+volatile unsigned char pbCounter4 = 0;
 
 
 
@@ -1459,37 +1461,48 @@ void debounceButtons();
 void debounceButtons(){
 
 if(!RB0) {
-rtcCounter++;
-if(rtcCounter >10 &&pb0Released){
+pbCounter++;
+if(pbCounter >10 &&pb0Released){
 pb0Pressed = 1;
 pb0Released = 0;
 }
 }
 else{
-rtcCounter = 0;
+pbCounter = 0;
 pb0Released = 1;
 }
 
 if(!RB1) {
-rtcCounter2++;
-if(rtcCounter2 >10 &&pb1Released){
+pbCounter2++;
+if(pbCounter2 >10 &&pb1Released){
 pb1Pressed = 1;
 pb1Released = 0;
 }
 }
 else{
-rtcCounter2 = 0;
+pbCounter2 = 0;
 pb1Released = 1;
 }
 if(!RB2) {
-rtcCounter3++;
-if(rtcCounter3 >10 &&pb2Released){
+pbCounter3++;
+if(pbCounter3 >10 &&pb2Released){
 pb2Pressed = 1;
 pb2Released = 0;
 }
 }
 else{
-rtcCounter3 = 0;
+pbCounter3 = 0;
 pb2Released = 1;
+}
+if(!RB3) {
+pbCounter4++;
+if(pbCounter4 >10 &&pb3Released){
+pb3Pressed = 1;
+pb3Released = 0;
+}
+}
+else{
+pbCounter4 = 0;
+pb3Released = 1;
 }
 }

@@ -1471,7 +1471,7 @@ int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 void move(char steps, char direction);
 void moveDeg(double deg);
 
-# 14 "lcd.h"
+# 13 "lcd.h"
 void lcdWriteControl(unsigned char databyte);
 
 

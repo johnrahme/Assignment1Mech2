@@ -2,9 +2,8 @@
 #define LCD_H
 
 #include <xc.h>
-
+#include "common.h"
 //defines
-#define _XTAL_FREQ 20000000
 #define RS RE0			//LCD Register Select
 #define RW RE1			//LCD Read Write
 #define EN RE2			//LCD Enable

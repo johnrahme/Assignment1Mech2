@@ -1,6 +1,5 @@
 #include <xc.h>
 #include "adConv.h"
-#define _XTAL_FREQ 20000000
 
 void initializeADC(){
     TRISA = 0b11111111;
@@ -28,20 +27,6 @@ void initializeADC(){
 int readADCData(){
     
        int ADCResult = (ADRESH<<8) + ADRESL ;   //Merging the MSB and LSB
-
-        if(ADCResult>1000){
-            LED0 = 0;
-            LED1 = 1;
-        }
-        else if (ADCResult<1000&&ADCResult>400){
-            LED0 = 1;
-            LED1 = 0;
-        }
-
-        else{
-            LED0 = 1;
-            LED1 = 1;
-        }
        return ADCResult;
     
 }

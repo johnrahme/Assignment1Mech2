@@ -1,9 +1,9 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "270 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f877a.h
 [v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"20 lcd.h
+"19 lcd.h
 [v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
-"25
+"24
 [v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef1`i ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
@@ -1094,12 +1094,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;motor.h: 18: int wholeSteps[] = {0b00111100, 0b00101011, 0b00110101, 0b00011011};
 [; ;motor.h: 20: void move(char steps, char direction);
 [; ;motor.h: 21: void moveDeg(double deg);
-[; ;lcd.h: 14: void lcdWriteControl(unsigned char databyte);
-[; ;lcd.h: 17: void lcd_WriteData(unsigned char databyte);
-[; ;lcd.h: 20: void lcdSetCursor(unsigned char address);
-[; ;lcd.h: 22: void lcdWriteString(char * s);
-[; ;lcd.h: 25: void lcdWriteToDigitBCD(signed int data);
-[; ;lcd.h: 28: void setupLCD(void);
+[; ;lcd.h: 13: void lcdWriteControl(unsigned char databyte);
+[; ;lcd.h: 16: void lcd_WriteData(unsigned char databyte);
+[; ;lcd.h: 19: void lcdSetCursor(unsigned char address);
+[; ;lcd.h: 21: void lcdWriteString(char * s);
+[; ;lcd.h: 24: void lcdWriteToDigitBCD(signed int data);
+[; ;lcd.h: 27: void setupLCD(void);
 "19 motor.c
 [v _initializeMotor `(v ~T0 @X0 1 ef ]
 {

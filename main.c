@@ -3,6 +3,7 @@
 #include "timer0.h"
 #include "adConv.h"
 #include "lcd.h"
+#include "common.h"
 
 #pragma config BOREN = OFF, CPD = OFF, WRT = OFF, FOSC = HS, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF //for XC8 compiler
 #define TMR0_VAL 100
@@ -13,6 +14,11 @@ void interrupt isr(void){
     if (T0IF){ // If Timer 0 overflow occurred
         T0IF = 0; // Clear flag
         TMR0 = TMR0_VAL;
+        rtcCounter++;
+        if(rtcCounter == 500){
+            LED1 = !LED1;
+            rtcCounter = 0;
+        }
         debounceButtons();
     }
     if(ADIF){
@@ -23,7 +29,7 @@ void interrupt isr(void){
 void initialise (void){
 // Let?s try using PORTB. Configure PORTB.
 // Hint: Read the datasheet, it will be your best friend in this subject
-    TRISB = 0b00000111;
+    TRISB = 0b00001111;
     TRISC = 0;
     
     LED0 = 1;
@@ -83,6 +89,11 @@ void main (void) {
             motorToggle = !motorToggle;
             pb2Pressed = 0;
         }
+        if(pb3Pressed){
+            LED0 = !LED0;
+            pb3Pressed = 0;
+        }
+
         __delay_ms(20);
     }
 }

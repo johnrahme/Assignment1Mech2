@@ -1,26 +1,25 @@
 #ifndef TIMER0_H
 #define TIMER0_H
 #include <xc.h>
+#include "common.h"
 
-#define PB0 !RB0 // We?ll NOT the pushbutton input to convert it to active high logic
-#define PB1 !RB1
-#define PB2 !RB2
+volatile unsigned int rtcCounter = 0;
 
 volatile bit pb0Pressed = 0; // Bit flag to signal if the pushbutton is pressed
 volatile bit pb0Released = 0; // Bit to signal if the pushbutton has been released
-volatile unsigned char rtcCounter = 0;
+volatile unsigned char pbCounter = 0;
 
 volatile bit pb1Pressed = 0; // Bit flag to signal if the pushbutton is pressed
 volatile bit pb1Released = 0; // Bit to signal if the pushbutton has been released
-volatile unsigned char rtcCounter2 = 0;
+volatile unsigned char pbCounter2 = 0;
 
 volatile bit pb2Pressed = 0; // Bit flag to signal if the pushbutton is pressed
 volatile bit pb2Released = 0; // Bit to signal if the pushbutton has been released
-volatile unsigned char rtcCounter3 = 0;
+volatile unsigned char pbCounter3 = 0;
 
 volatile bit pb3Pressed = 0; // Bit flag to signal if the pushbutton is pressed
 volatile bit pb3Released = 0; // Bit to signal if the pushbutton has been released
-volatile unsigned char rtcCounter4 = 0;
+volatile unsigned char pbCounter4 = 0;
 
 
 
