@@ -1521,12 +1521,12 @@ PORTC = 0x00;
 }
 
 lcdSetCursor(0x40);
-if(direction){
-nrOfSteps--;
+if(direction==1){
+nrOfSteps++;
 lcdWriteToDigitBCD(nrOfSteps);
 }
 else{
-nrOfSteps++;
+nrOfSteps--;
 lcdWriteToDigitBCD(nrOfSteps);
 }
 _delay((unsigned long)((20)*(20000000/4000.0)));

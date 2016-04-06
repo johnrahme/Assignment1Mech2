@@ -59,11 +59,11 @@ void main (void) {
             
         }
         if(pb0Pressed){
-            move(1,0);
+            move(1,1);
             pb0Pressed = 0;
         }
         if(pb1Pressed){
-            move(1,1);
+            move(1,0);
             pb1Pressed = 0;
         }
         if(pb2Pressed){

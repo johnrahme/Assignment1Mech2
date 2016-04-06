@@ -48,12 +48,12 @@ void move(char steps, char direction){
          }
          
          lcdSetCursor(0x40);
-         if(direction){
-             nrOfSteps--;
+         if(direction==CLOCKWISE){
+             nrOfSteps++;
              lcdWriteToDigitBCD(nrOfSteps);
          }
          else{
-             nrOfSteps++;
+             nrOfSteps--;
              lcdWriteToDigitBCD(nrOfSteps);
          }
         __delay_ms(SPEED);

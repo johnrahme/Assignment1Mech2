@@ -1219,13 +1219,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;motor.c: 50: lcdSetCursor(0x40);
 "50
 [e ( _lcdSetCursor (1 -> -> 64 `i `uc ]
-[; ;motor.c: 51: if(direction){
+[; ;motor.c: 51: if(direction==1){
 "51
-[e $ ! != -> _direction `i -> -> -> 0 `i `uc `i 111  ]
+[e $ ! == -> _direction `i -> 1 `i 111  ]
 {
-[; ;motor.c: 52: nrOfSteps--;
+[; ;motor.c: 52: nrOfSteps++;
 "52
-[e -- _nrOfSteps -> 1 `i ]
+[e ++ _nrOfSteps -> 1 `i ]
 [; ;motor.c: 53: lcdWriteToDigitBCD(nrOfSteps);
 "53
 [e ( _lcdWriteToDigitBCD (1 _nrOfSteps ]
@@ -1237,9 +1237,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 111 ]
 [; ;motor.c: 55: else{
 {
-[; ;motor.c: 56: nrOfSteps++;
+[; ;motor.c: 56: nrOfSteps--;
 "56
-[e ++ _nrOfSteps -> 1 `i ]
+[e -- _nrOfSteps -> 1 `i ]
 [; ;motor.c: 57: lcdWriteToDigitBCD(nrOfSteps);
 "57
 [e ( _lcdWriteToDigitBCD (1 _nrOfSteps ]

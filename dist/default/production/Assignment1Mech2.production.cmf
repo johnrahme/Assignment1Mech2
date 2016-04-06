@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
+$C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 12 12 3 2
 config CONFIG 0 2007 2007 1 2
@@ -104,36 +104,36 @@ STRING 1000-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Assignment1Mech2.production.obj
-15 cinit CODE >847:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-15 cinit CODE >850:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-15 cinit CODE >932:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-16 cinit CODE >933:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-17 cinit CODE >936:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-18 cinit CODE >937:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-19 cinit CODE >938:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-1A cinit CODE >941:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-1B cinit CODE >942:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-1C cinit CODE >943:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-1D cinit CODE >944:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-1E cinit CODE >945:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-1F cinit CODE >946:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-20 cinit CODE >947:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-21 cinit CODE >948:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-22 cinit CODE >949:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-23 cinit CODE >950:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-24 cinit CODE >982:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-25 cinit CODE >983:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-26 cinit CODE >984:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-27 cinit CODE >985:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-28 cinit CODE >986:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-29 cinit CODE >987:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-2A cinit CODE >988:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-2B cinit CODE >989:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-2C cinit CODE >990:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-2D cinit CODE >991:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-30 cinit CODE >997:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-30 cinit CODE >999:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-31 cinit CODE >1000:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
+15 cinit CODE >847:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+15 cinit CODE >850:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+15 cinit CODE >932:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+16 cinit CODE >933:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+17 cinit CODE >936:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+18 cinit CODE >937:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+19 cinit CODE >938:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+1A cinit CODE >941:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+1B cinit CODE >942:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+1C cinit CODE >943:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+1D cinit CODE >944:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+1E cinit CODE >945:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+1F cinit CODE >946:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+20 cinit CODE >947:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+21 cinit CODE >948:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+22 cinit CODE >949:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+23 cinit CODE >950:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+24 cinit CODE >982:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+25 cinit CODE >983:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+26 cinit CODE >984:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+27 cinit CODE >985:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+28 cinit CODE >986:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+29 cinit CODE >987:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+2A cinit CODE >988:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+2B cinit CODE >989:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+2C cinit CODE >990:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+2D cinit CODE >991:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+30 cinit CODE >997:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+30 cinit CODE >999:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+31 cinit CODE >1000:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
 4 intentry CODE >13:C:\Users\JohnMac\Assignment1Mech2\main.c
 634 text27 CODE >29:C:\Users\JohnMac\Assignment1Mech2\timer0.c
 634 text27 CODE >31:C:\Users\JohnMac\Assignment1Mech2\timer0.c
@@ -491,9 +491,9 @@ F73 text1 CODE >38:C:\Users\JohnMac\Assignment1Mech2\adConv.c
 4BA maintext CODE >58:C:\Users\JohnMac\Assignment1Mech2\main.c
 4BF maintext CODE >61:C:\Users\JohnMac\Assignment1Mech2\main.c
 4C1 maintext CODE >62:C:\Users\JohnMac\Assignment1Mech2\main.c
-4CA maintext CODE >63:C:\Users\JohnMac\Assignment1Mech2\main.c
-4CB maintext CODE >65:C:\Users\JohnMac\Assignment1Mech2\main.c
-4CD maintext CODE >66:C:\Users\JohnMac\Assignment1Mech2\main.c
+4CB maintext CODE >63:C:\Users\JohnMac\Assignment1Mech2\main.c
+4CC maintext CODE >65:C:\Users\JohnMac\Assignment1Mech2\main.c
+4CE maintext CODE >66:C:\Users\JohnMac\Assignment1Mech2\main.c
 4D7 maintext CODE >67:C:\Users\JohnMac\Assignment1Mech2\main.c
 4D8 maintext CODE >69:C:\Users\JohnMac\Assignment1Mech2\main.c
 4DA maintext CODE >70:C:\Users\JohnMac\Assignment1Mech2\main.c
@@ -507,23 +507,23 @@ F73 text1 CODE >38:C:\Users\JohnMac\Assignment1Mech2\adConv.c
 4FB maintext CODE >82:C:\Users\JohnMac\Assignment1Mech2\main.c
 4FB maintext CODE >84:C:\Users\JohnMac\Assignment1Mech2\main.c
 506 maintext CODE >49:C:\Users\JohnMac\Assignment1Mech2\main.c
-F83 inittext CODE >956:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F83 inittext CODE >957:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F84 inittext CODE >958:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F85 inittext CODE >959:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F86 inittext CODE >960:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F87 inittext CODE >967:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F87 inittext CODE >968:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F8A inittext CODE >969:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F8B inittext CODE >970:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F8C inittext CODE >971:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F8D inittext CODE >972:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F8E inittext CODE >973:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F8F inittext CODE >974:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F90 inittext CODE >975:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F91 inittext CODE >976:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F92 inittext CODE >977:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
-F93 inittext CODE >978:C:\Users\JohnMac\AppData\Local\Temp\s6vo.
+F83 inittext CODE >956:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F83 inittext CODE >957:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F84 inittext CODE >958:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F85 inittext CODE >959:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F86 inittext CODE >960:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F87 inittext CODE >967:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F87 inittext CODE >968:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F8A inittext CODE >969:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F8B inittext CODE >970:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F8C inittext CODE >971:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F8D inittext CODE >972:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F8E inittext CODE >973:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F8F inittext CODE >974:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F90 inittext CODE >975:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F91 inittext CODE >976:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F92 inittext CODE >977:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
+F93 inittext CODE >978:C:\Users\JohnMac\AppData\Local\Temp\s6d0.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -565,14 +565,14 @@ _T0CS 40D 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _T0IF 5A 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _T0SE 40C 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _TMR0 1 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
-___sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
+___sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
 _main 90A 0 CODE 0 maintext dist/default/production\Assignment1Mech2.production.obj
 _move 6E4 0 CODE 0 text11 dist/default/production\Assignment1Mech2.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ltemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ___ftadd@f1 5A 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ___ftadd@f2 5D 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-start 24 0 CODE 0 init C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
+start 24 0 CODE 0 init C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
 ttemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 wtemp 7E 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __size_of___ftadd 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
@@ -609,12 +609,12 @@ ttemp2 84 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ttemp3 87 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ttemp4 7F 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __size_of_lcdWriteControl 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
-intlevel1 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
-intlevel2 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
-intlevel3 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
-intlevel4 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
-intlevel5 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
+intlevel0 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
+intlevel1 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
+intlevel2 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
+intlevel3 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
+intlevel4 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
+intlevel5 0 0 CODE 0 functab C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
 _lcdWriteData 1F28 0 CODE 0 text20 dist/default/production\Assignment1Mech2.production.obj
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 lcdWriteToDigitBCD@HundredDigit 2A 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
@@ -682,7 +682,7 @@ _TMR0IE 5D 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 ___ftpack A0E 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
 ___ftpack@arg 20 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 ___ftpack@exp 23 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
+___int_sp 0 0 STACK 2 stack C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
 __end_of___ftpack AEA 0 CODE 0 text14 dist/default/production\Assignment1Mech2.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -758,7 +758,7 @@ __end_of_isr F70 0 CODE 0 text25 dist/default/production\Assignment1Mech2.produc
 _rtcCounter CB 0 BANK1 1 bssBANK1 dist/default/production\Assignment1Mech2.production.obj
 __size_of_lcdWriteToDigitBCD 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
 __pdataBANK1 A0 0 BANK1 1 dataBANK1 dist/default/production\Assignment1Mech2.production.obj
 __size_of_flashLed 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 __size_of___ftge 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
@@ -801,8 +801,8 @@ ___wmul@multiplier 20 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1M
 __size_of_setupLCD 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj
 _pb3Released 389 -310 COMMON 1 bitbssCOMMON dist/default/production\Assignment1Mech2.production.obj
 _nrOfSteps C9 0 BANK1 1 bssBANK1 dist/default/production\Assignment1Mech2.production.obj
-stackhi 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
-stacklo 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s6vo.obj
+stackhi 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
+stacklo 0 0 ABS 0 - C:\Users\JohnMac\AppData\Local\Temp\s6d0.obj
 lcdWriteToDigitBCD@OnesDigit 2D 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 lcdWriteToDigitBCD@ThousandDigit 2B 0 BANK0 1 cstackBANK0 dist/default/production\Assignment1Mech2.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\Assignment1Mech2.production.obj

@@ -1333,9 +1333,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "61
 [e $ ! _pb0Pressed 105  ]
 {
-[; ;main.c: 62: move(1,0);
+[; ;main.c: 62: move(1,1);
 "62
-[e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 [; ;main.c: 63: pb0Pressed = 0;
 "63
 [e = _pb0Pressed -> -> 0 `i `b ]
@@ -1347,9 +1347,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "65
 [e $ ! _pb1Pressed 106  ]
 {
-[; ;main.c: 66: move(1,1);
+[; ;main.c: 66: move(1,0);
 "66
-[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
 [; ;main.c: 67: pb1Pressed = 0;
 "67
 [e = _pb1Pressed -> -> 0 `i `b ]

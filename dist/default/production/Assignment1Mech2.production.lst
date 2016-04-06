@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.37 build -260352376 
-                                                                                               Wed Apr 06 22:34:49 2016
+                                                                                               Wed Apr 06 22:40:16 2016
 
 Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110536
      1                           	processor	16F877A
@@ -1033,29 +1033,29 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   1027                           ;main.c: 60: }
   1028                           ;main.c: 61: if(pb0Pressed){
   1029  04BF  1D70               	btfss	_pb0Pressed/(0+8),_pb0Pressed& (0+7)	;volatile
-  1030  04C0  2CCB               	goto	l2500
+  1030  04C0  2CCC               	goto	l2500
   1031                           
-  1032                           ;main.c: 62: move(1,0);
+  1032                           ;main.c: 62: move(1,1);
   1033  04C1  1283               	bcf	3,5	;RP0=0, select bank0
   1034  04C2  1303               	bcf	3,6	;RP1=0, select bank0
   1035  04C3  01AF               	clrf	move@direction
-  1036  04C4  3001               	movlw	1
-  1037  04C5  120A  118A  2372  120A  118A  	fcall	_move
-  1038                           
-  1039                           ;main.c: 63: pb0Pressed = 0;
-  1040  04CA  1170               	bcf	_pb0Pressed/(0+8),_pb0Pressed& (0+7)	;volatile
-  1041  04CB                     l2500:	
-  1042                           
-  1043                           ;main.c: 64: }
-  1044                           ;main.c: 65: if(pb1Pressed){
-  1045  04CB  1E70               	btfss	_pb1Pressed/(0+8),_pb1Pressed& (0+7)	;volatile
-  1046  04CC  2CD8               	goto	l2506
-  1047                           
-  1048                           ;main.c: 66: move(1,1);
-  1049  04CD  1283               	bcf	3,5	;RP0=0, select bank0
-  1050  04CE  1303               	bcf	3,6	;RP1=0, select bank0
-  1051  04CF  01AF               	clrf	move@direction
-  1052  04D0  0AAF               	incf	move@direction,f
+  1036  04C4  0AAF               	incf	move@direction,f
+  1037  04C5  3001               	movlw	1
+  1038  04C6  120A  118A  2372  120A  118A  	fcall	_move
+  1039                           
+  1040                           ;main.c: 63: pb0Pressed = 0;
+  1041  04CB  1170               	bcf	_pb0Pressed/(0+8),_pb0Pressed& (0+7)	;volatile
+  1042  04CC                     l2500:	
+  1043                           
+  1044                           ;main.c: 64: }
+  1045                           ;main.c: 65: if(pb1Pressed){
+  1046  04CC  1E70               	btfss	_pb1Pressed/(0+8),_pb1Pressed& (0+7)	;volatile
+  1047  04CD  2CD8               	goto	l2506
+  1048                           
+  1049                           ;main.c: 66: move(1,0);
+  1050  04CE  1283               	bcf	3,5	;RP0=0, select bank0
+  1051  04CF  1303               	bcf	3,6	;RP1=0, select bank0
+  1052  04D0  01AF               	clrf	move@direction
   1053  04D1  3001               	movlw	1
   1054  04D2  120A  118A  2372  120A  118A  	fcall	_move
   1055                           
@@ -2715,21 +2715,21 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2709  03C1  3040               	movlw	64
   2710  03C2  120A  158A  2753  120A  118A  	fcall	_lcdSetCursor
   2711                           
-  2712                           ;motor.c: 51: if(direction){
+  2712                           ;motor.c: 51: if(direction==1){
   2713  03C7  1283               	bcf	3,5	;RP0=0, select bank0
   2714  03C8  1303               	bcf	3,6	;RP1=0, select bank0
-  2715  03C9  082F               	movf	move@direction,w
-  2716  03CA  1903               	btfsc	3,2
+  2715  03C9  032F               	decf	move@direction,w
+  2716  03CA  1D03               	btfss	3,2
   2717  03CB  2BD4               	goto	l2380
   2718                           
-  2719                           ;motor.c: 52: nrOfSteps--;
-  2720  03CC  30FF               	movlw	255
+  2719                           ;motor.c: 52: nrOfSteps++;
+  2720  03CC  3001               	movlw	1
   2721  03CD  1683               	bsf	3,5	;RP0=1, select bank1
   2722  03CE  1303               	bcf	3,6	;RP1=0, select bank1
   2723  03CF  07C9               	addwf	_nrOfSteps^(0+128),f
   2724  03D0  1803               	skipnc
   2725  03D1  0ACA               	incf	(_nrOfSteps+1)^(0+128),f
-  2726  03D2  30FF               	movlw	255
+  2726  03D2  3000               	movlw	0
   2727  03D3  2BDB               	goto	L3
   2728  03D4                     l2380:	
   2729                           ;motor.c: 54: }
@@ -2738,14 +2738,14 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2732                           
   2733                           
   2734                           ;motor.c: 55: else{
-  2735                           ;motor.c: 56: nrOfSteps++;
-  2736  03D4  3001               	movlw	1
+  2735                           ;motor.c: 56: nrOfSteps--;
+  2736  03D4  30FF               	movlw	255
   2737  03D5  1683               	bsf	3,5	;RP0=1, select bank1
   2738  03D6  1303               	bcf	3,6	;RP1=0, select bank1
   2739  03D7  07C9               	addwf	_nrOfSteps^(0+128),f
   2740  03D8  1803               	skipnc
   2741  03D9  0ACA               	incf	(_nrOfSteps+1)^(0+128),f
-  2742  03DA  3000               	movlw	0
+  2742  03DA  30FF               	movlw	255
   2743  03DB                     L3:	
   2744  03DB  07CA               	addwf	(_nrOfSteps+1)^(0+128),f
   2745                           
@@ -4992,7 +4992,7 @@ EEDATA             100      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.37 build -260352376 
-Symbol Table                                                                                   Wed Apr 06 22:34:49 2016
+Symbol Table                                                                                   Wed Apr 06 22:40:16 2016
 
                    ___altoft@exp 002E                                pc 0002                      __CFG_CP$OFF 0000  
                   ___altoft@sign 002F                               l96 04FB                               _GO 00FA  
@@ -5017,7 +5017,7 @@ Symbol Table                                                                    
                            l2410 025A                             l2250 0123                             l2218 00A2  
                            l2172 043C                             l2076 054E                             l2068 0529  
                            l2404 0244                             l2236 00EE                             l1524 02FE  
-                           l2500 04CB                             l2182 045C                             l2174 0444  
+                           l2500 04CC                             l2182 045C                             l2174 0444  
                            l2158 0405                             l2350 0389                             l2190 005D  
                            l1550 034D                             l1542 0330                             l2270 069E  
                            l2176 0450                             l2168 041C                             l2432 02BE  
