@@ -36,7 +36,7 @@ void lcdWriteString(char * s){
 }
 
 //function accepts char between 0 and 99 and writes it to lcd display in 2 digits
-    void lcdWriteToDigitBCD(signed int data){
+    void lcdWriteToDigitBCD(signed int data, char digits, char showSign){
         unsigned int OnesDigit;
         unsigned char TensDigit, HundredDigit, ThousandDigit;
         signed char sign = 1;
@@ -62,15 +62,18 @@ void lcdWriteString(char * s){
                 OnesDigit = OnesDigit - 10;
                 TensDigit++;
         }
-        if(sign == -1)
+        if(sign == -1 && showSign)
             lcdWriteData((unsigned char)45);
-        else{
+        else if (sign == 1 && showSign){
             lcdWriteData((unsigned char)43);
         }
-
-        lcdWriteData((unsigned char)ThousandDigit + 48);
-        lcdWriteData((unsigned char)HundredDigit + 48);
-        lcdWriteData((unsigned char)TensDigit + 48);
+        if(digits>3)
+            lcdWriteData((unsigned char)ThousandDigit + 48);
+        if(digits>2)
+            lcdWriteData((unsigned char)HundredDigit + 48);
+        if(digits>1)
+            lcdWriteData((unsigned char)TensDigit + 48);
+        
         lcdWriteData((unsigned char)OnesDigit + 48);
     }
 

@@ -56,9 +56,9 @@ void main (void) {
             int resultInMeters = readADCMeter();
             if(updateLcdIRData){
                 lcdSetCursor(0x00);
-                lcdWriteToDigitBCD(result);
+                lcdWriteToDigitBCD(result,4,0);
                 lcdSetCursor(0x0B);
-                lcdWriteToDigitBCD(resultInMeters);
+                lcdWriteToDigitBCD(resultInMeters,3,0);
                 updateLcdIRData = 0;
             }
             //lcdWriteString("Hello World!");
@@ -67,6 +67,7 @@ void main (void) {
         }
         if(pb0Pressed){
             move(1,1);
+            LED0 = !LED0;
             pb0Pressed = 0;
         }
         if(pb1Pressed){

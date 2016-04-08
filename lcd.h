@@ -21,7 +21,7 @@ void lcdSetCursor(unsigned char address);
 void lcdWriteString(char * s);
 
 //function accepts char between 0 and 99 and writes it to lcd display in 2 digits
-void lcdWriteToDigitBCD(signed int data);
+void lcdWriteToDigitBCD(signed int data, char digits, char showSign);
 
 //function initalises the LCD module - check that ADCON1 setting doesn't conflict
 void setupLCD(void);

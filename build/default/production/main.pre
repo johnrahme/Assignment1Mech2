@@ -1489,7 +1489,7 @@ void lcdSetCursor(unsigned char address);
 void lcdWriteString(char * s);
 
 
-void lcdWriteToDigitBCD(signed int data);
+void lcdWriteToDigitBCD(signed int data, char digits, char showSign);
 
 
 void setupLCD(void);
@@ -1547,9 +1547,9 @@ int result = readADCData();
 int resultInMeters = readADCMeter();
 if(updateLcdIRData){
 lcdSetCursor(0x00);
-lcdWriteToDigitBCD(result);
+lcdWriteToDigitBCD(result,4,0);
 lcdSetCursor(0x0B);
-lcdWriteToDigitBCD(resultInMeters);
+lcdWriteToDigitBCD(resultInMeters,3,0);
 updateLcdIRData = 0;
 }
 
@@ -1558,6 +1558,7 @@ startADCConversion();
 }
 if(pb0Pressed){
 move(1,1);
+RB4 = !RB4;
 pb0Pressed = 0;
 }
 if(pb1Pressed){

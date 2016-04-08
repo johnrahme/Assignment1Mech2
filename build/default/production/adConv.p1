@@ -1172,8 +1172,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _k -> -> 18609 `i `d ]
 "38
 [v _m `d ~T0 @X0 1 a ]
-[; ;adConv.c: 38: double m = -0.0002;
-[e = _m -U .0.0002 ]
+[; ;adConv.c: 38: double m = -1.6803;
+[e = _m -U .1.6803 ]
 "39
 [v _result `d ~T0 @X0 1 a ]
 [; ;adConv.c: 39: double result = rawInverted*k + m;

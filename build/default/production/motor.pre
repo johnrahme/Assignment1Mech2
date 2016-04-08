@@ -1483,7 +1483,7 @@ void lcdSetCursor(unsigned char address);
 void lcdWriteString(char * s);
 
 
-void lcdWriteToDigitBCD(signed int data);
+void lcdWriteToDigitBCD(signed int data, char digits, char showSign);
 
 
 void setupLCD(void);
@@ -1492,7 +1492,7 @@ void setupLCD(void);
 void initializeMotor(){
 PORTC = halfSteps[0];
 lcdSetCursor(0x40);
-lcdWriteToDigitBCD(nrOfSteps);
+lcdWriteToDigitBCD(nrOfSteps,4,1);
 }
 
 void move(char steps, char direction){
@@ -1523,11 +1523,11 @@ PORTC = 0x00;
 lcdSetCursor(0x40);
 if(direction==1){
 nrOfSteps++;
-lcdWriteToDigitBCD(nrOfSteps);
+lcdWriteToDigitBCD(nrOfSteps,4,1);
 }
 else{
 nrOfSteps--;
-lcdWriteToDigitBCD(nrOfSteps);
+lcdWriteToDigitBCD(nrOfSteps,4,1);
 }
 _delay((unsigned long)((20)*(20000000/4000.0)));
 }

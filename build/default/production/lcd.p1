@@ -1038,7 +1038,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 16: void lcd_WriteData(unsigned char databyte);
 [; ;lcd.h: 19: void lcdSetCursor(unsigned char address);
 [; ;lcd.h: 21: void lcdWriteString(char * s);
-[; ;lcd.h: 24: void lcdWriteToDigitBCD(signed int data);
+[; ;lcd.h: 24: void lcdWriteToDigitBCD(signed int data, char digits, char showSign);
 [; ;lcd.h: 27: void setupLCD(void);
 "6 lcd.c
 [v _lcdWriteControl `(v ~T0 @X0 1 ef1`uc ]
@@ -1141,11 +1141,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 99 ]
 }
 "39
-[v _lcdWriteToDigitBCD `(v ~T0 @X0 1 ef1`i ]
+[v _lcdWriteToDigitBCD `(v ~T0 @X0 1 ef3`i`uc`uc ]
 {
-[; ;lcd.c: 39: void lcdWriteToDigitBCD(signed int data){
+[; ;lcd.c: 39: void lcdWriteToDigitBCD(signed int data, char digits, char showSign){
 [e :U _lcdWriteToDigitBCD ]
 [v _data `i ~T0 @X0 1 r1 ]
+[v _digits `uc ~T0 @X0 1 r2 ]
+[v _showSign `uc ~T0 @X0 1 r3 ]
 [f ]
 "40
 [v _OnesDigit `ui ~T0 @X0 1 a ]
@@ -1232,77 +1234,91 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ >= _OnesDigit -> -> 10 `i `ui 112  ]
 [e :U 113 ]
 [; ;lcd.c: 64: }
-[; ;lcd.c: 65: if(sign == -1)
+[; ;lcd.c: 65: if(sign == -1 && showSign)
 "65
-[e $ ! == -> _sign `i -U -> 1 `i 114  ]
+[e $ ! && == -> _sign `i -U -> 1 `i != -> _showSign `i -> -> -> 0 `i `uc `i 114  ]
 [; ;lcd.c: 66: lcdWriteData((unsigned char)45);
 "66
 [e ( _lcdWriteData (1 -> -> 45 `i `uc ]
 [e $U 115  ]
 "67
 [e :U 114 ]
-[; ;lcd.c: 67: else{
+[; ;lcd.c: 67: else if (sign == 1 && showSign){
+[e $ ! && == -> _sign `i -> 1 `i != -> _showSign `i -> -> -> 0 `i `uc `i 116  ]
 {
 [; ;lcd.c: 68: lcdWriteData((unsigned char)43);
 "68
 [e ( _lcdWriteData (1 -> -> 43 `i `uc ]
 "69
 }
+[e :U 116 ]
+"70
 [e :U 115 ]
 [; ;lcd.c: 69: }
+[; ;lcd.c: 70: if(digits>3)
+[e $ ! > -> _digits `i -> 3 `i 117  ]
 [; ;lcd.c: 71: lcdWriteData((unsigned char)ThousandDigit + 48);
 "71
 [e ( _lcdWriteData (1 -> + -> _ThousandDigit `i -> 48 `i `uc ]
-[; ;lcd.c: 72: lcdWriteData((unsigned char)HundredDigit + 48);
+[e :U 117 ]
+[; ;lcd.c: 72: if(digits>2)
 "72
-[e ( _lcdWriteData (1 -> + -> _HundredDigit `i -> 48 `i `uc ]
-[; ;lcd.c: 73: lcdWriteData((unsigned char)TensDigit + 48);
+[e $ ! > -> _digits `i -> 2 `i 118  ]
+[; ;lcd.c: 73: lcdWriteData((unsigned char)HundredDigit + 48);
 "73
-[e ( _lcdWriteData (1 -> + -> _TensDigit `i -> 48 `i `uc ]
-[; ;lcd.c: 74: lcdWriteData((unsigned char)OnesDigit + 48);
+[e ( _lcdWriteData (1 -> + -> _HundredDigit `i -> 48 `i `uc ]
+[e :U 118 ]
+[; ;lcd.c: 74: if(digits>1)
 "74
-[e ( _lcdWriteData (1 -> + -> -> _OnesDigit `uc `i -> 48 `i `uc ]
-[; ;lcd.c: 75: }
+[e $ ! > -> _digits `i -> 1 `i 119  ]
+[; ;lcd.c: 75: lcdWriteData((unsigned char)TensDigit + 48);
 "75
+[e ( _lcdWriteData (1 -> + -> _TensDigit `i -> 48 `i `uc ]
+[e :U 119 ]
+[; ;lcd.c: 77: lcdWriteData((unsigned char)OnesDigit + 48);
+"77
+[e ( _lcdWriteData (1 -> + -> -> _OnesDigit `uc `i -> 48 `i `uc ]
+[; ;lcd.c: 78: }
+"78
 [e :UE 103 ]
 }
-"78
+"81
 [v _setupLCD `(v ~T0 @X0 1 ef ]
 {
-[; ;lcd.c: 78: void setupLCD(void){
+[; ;lcd.c: 81: void setupLCD(void){
 [e :U _setupLCD ]
 [f ]
-[; ;lcd.c: 81: PORTD = 0;
-"81
-[e = _PORTD -> -> 0 `i `uc ]
-[; ;lcd.c: 82: PORTE = 0;
-"82
-[e = _PORTE -> -> 0 `i `uc ]
-[; ;lcd.c: 84: TRISD = 0b00000000;
+[; ;lcd.c: 84: PORTD = 0;
 "84
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;lcd.c: 85: TRISE = 0b00000000;
+[e = _PORTD -> -> 0 `i `uc ]
+[; ;lcd.c: 85: PORTE = 0;
 "85
-[e = _TRISE -> -> 0 `i `uc ]
-[; ;lcd.c: 88: lcdWriteControl(0b00000001);
+[e = _PORTE -> -> 0 `i `uc ]
+[; ;lcd.c: 87: TRISD = 0b00000000;
+"87
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;lcd.c: 88: TRISE = 0b00000000;
 "88
-[e ( _lcdWriteControl (1 -> -> 1 `i `uc ]
-[; ;lcd.c: 89: lcdWriteControl(0b00111000);
-"89
-[e ( _lcdWriteControl (1 -> -> 56 `i `uc ]
-[; ;lcd.c: 90: lcdWriteControl(0b00001100);
-"90
-[e ( _lcdWriteControl (1 -> -> 12 `i `uc ]
-[; ;lcd.c: 91: lcdWriteControl(0b00000110);
+[e = _TRISE -> -> 0 `i `uc ]
+[; ;lcd.c: 91: lcdWriteControl(0b00000001);
 "91
-[e ( _lcdWriteControl (1 -> -> 6 `i `uc ]
-[; ;lcd.c: 92: lcdWriteControl(0b00000010);
-"92
-[e ( _lcdWriteControl (1 -> -> 2 `i `uc ]
-[; ;lcd.c: 96: lcdWriteControl(0b00000001);
-"96
 [e ( _lcdWriteControl (1 -> -> 1 `i `uc ]
-[; ;lcd.c: 98: }
-"98
-[e :UE 116 ]
+[; ;lcd.c: 92: lcdWriteControl(0b00111000);
+"92
+[e ( _lcdWriteControl (1 -> -> 56 `i `uc ]
+[; ;lcd.c: 93: lcdWriteControl(0b00001100);
+"93
+[e ( _lcdWriteControl (1 -> -> 12 `i `uc ]
+[; ;lcd.c: 94: lcdWriteControl(0b00000110);
+"94
+[e ( _lcdWriteControl (1 -> -> 6 `i `uc ]
+[; ;lcd.c: 95: lcdWriteControl(0b00000010);
+"95
+[e ( _lcdWriteControl (1 -> -> 2 `i `uc ]
+[; ;lcd.c: 99: lcdWriteControl(0b00000001);
+"99
+[e ( _lcdWriteControl (1 -> -> 1 `i `uc ]
+[; ;lcd.c: 101: }
+"101
+[e :UE 120 ]
 }

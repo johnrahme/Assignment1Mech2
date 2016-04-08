@@ -37,7 +37,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "19 lcd.h
 [v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
 "24
-[v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef1`i ]
+[v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef3`i`uc`uc ]
 "20 motor.h
 [v _move `(v ~T0 @X0 0 ef2`uc`uc ]
 "21
@@ -1211,7 +1211,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 16: void lcd_WriteData(unsigned char databyte);
 [; ;lcd.h: 19: void lcdSetCursor(unsigned char address);
 [; ;lcd.h: 21: void lcdWriteString(char * s);
-[; ;lcd.h: 24: void lcdWriteToDigitBCD(signed int data);
+[; ;lcd.h: 24: void lcdWriteToDigitBCD(signed int data, char digits, char showSign);
 [; ;lcd.h: 27: void setupLCD(void);
 "8 main.c
 [p x BOREN=OFF ]
@@ -1228,9 +1228,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [; ;main.c: 11: bit motorToggle = 0;
-[v F1143 `(v ~T0 @X0 1 tf ]
+[v F1145 `(v ~T0 @X0 1 tf ]
 "13
-[v _isr `IF1143 ~T0 @X0 1 e ]
+[v _isr `IF1145 ~T0 @X0 1 e ]
 {
 [; ;main.c: 13: void interrupt isr(void){
 [e :U _isr ]
@@ -1348,15 +1348,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 58: lcdSetCursor(0x00);
 "58
 [e ( _lcdSetCursor (1 -> -> 0 `i `uc ]
-[; ;main.c: 59: lcdWriteToDigitBCD(result);
+[; ;main.c: 59: lcdWriteToDigitBCD(result,4,0);
 "59
-[e ( _lcdWriteToDigitBCD (1 _result ]
+[e ( _lcdWriteToDigitBCD (3 , , _result -> -> 4 `i `uc -> -> 0 `i `uc ]
 [; ;main.c: 60: lcdSetCursor(0x0B);
 "60
 [e ( _lcdSetCursor (1 -> -> 11 `i `uc ]
-[; ;main.c: 61: lcdWriteToDigitBCD(resultInMeters);
+[; ;main.c: 61: lcdWriteToDigitBCD(resultInMeters,3,0);
 "61
-[e ( _lcdWriteToDigitBCD (1 _resultInMeters ]
+[e ( _lcdWriteToDigitBCD (3 , , _resultInMeters -> -> 3 `i `uc -> -> 0 `i `uc ]
 [; ;main.c: 62: updateLcdIRData = 0;
 "62
 [e = _updateLcdIRData -> -> 0 `i `b ]
@@ -1378,88 +1378,91 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 69: move(1,1);
 "69
 [e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 70: pb0Pressed = 0;
+[; ;main.c: 70: RB4 = !RB4;
 "70
-[e = _pb0Pressed -> -> 0 `i `b ]
+[e = _RB4 ! _RB4 ]
+[; ;main.c: 71: pb0Pressed = 0;
 "71
+[e = _pb0Pressed -> -> 0 `i `b ]
+"72
 }
 [e :U 106 ]
-[; ;main.c: 71: }
-[; ;main.c: 72: if(pb1Pressed){
-"72
+[; ;main.c: 72: }
+[; ;main.c: 73: if(pb1Pressed){
+"73
 [e $ ! _pb1Pressed 107  ]
 {
-[; ;main.c: 73: move(1,0);
-"73
-[e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 74: pb1Pressed = 0;
+[; ;main.c: 74: move(1,0);
 "74
-[e = _pb1Pressed -> -> 0 `i `b ]
+[e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 75: pb1Pressed = 0;
 "75
+[e = _pb1Pressed -> -> 0 `i `b ]
+"76
 }
 [e :U 107 ]
-[; ;main.c: 75: }
-[; ;main.c: 76: if(pb2Pressed){
-"76
+[; ;main.c: 76: }
+[; ;main.c: 77: if(pb2Pressed){
+"77
 [e $ ! _pb2Pressed 108  ]
 {
-[; ;main.c: 77: if(motorToggle){
-"77
+[; ;main.c: 78: if(motorToggle){
+"78
 [e $ ! _motorToggle 109  ]
 {
-[; ;main.c: 78: moveDeg(-180);
-"78
-[e ( _moveDeg (1 -> -U -> 180 `i `d ]
+[; ;main.c: 79: moveDeg(-180);
 "79
-}
-[; ;main.c: 79: }
-[e $U 110  ]
+[e ( _moveDeg (1 -> -U -> 180 `i `d ]
 "80
-[e :U 109 ]
-[; ;main.c: 80: else{
-{
-[; ;main.c: 81: moveDeg(180);
+}
+[; ;main.c: 80: }
+[e $U 110  ]
 "81
-[e ( _moveDeg (1 -> -> 180 `i `d ]
+[e :U 109 ]
+[; ;main.c: 81: else{
+{
+[; ;main.c: 82: moveDeg(180);
 "82
+[e ( _moveDeg (1 -> -> 180 `i `d ]
+"83
 }
 [e :U 110 ]
-[; ;main.c: 82: }
-[; ;main.c: 83: motorToggle = !motorToggle;
-"83
-[e = _motorToggle ! _motorToggle ]
-[; ;main.c: 84: pb2Pressed = 0;
+[; ;main.c: 83: }
+[; ;main.c: 84: motorToggle = !motorToggle;
 "84
-[e = _pb2Pressed -> -> 0 `i `b ]
+[e = _motorToggle ! _motorToggle ]
+[; ;main.c: 85: pb2Pressed = 0;
 "85
+[e = _pb2Pressed -> -> 0 `i `b ]
+"86
 }
 [e :U 108 ]
-[; ;main.c: 85: }
-[; ;main.c: 86: if(pb3Pressed){
-"86
+[; ;main.c: 86: }
+[; ;main.c: 87: if(pb3Pressed){
+"87
 [e $ ! _pb3Pressed 111  ]
 {
-[; ;main.c: 87: RB4 = !RB4;
-"87
-[e = _RB4 ! _RB4 ]
-[; ;main.c: 88: pb3Pressed = 0;
+[; ;main.c: 88: RB4 = !RB4;
 "88
-[e = _pb3Pressed -> -> 0 `i `b ]
+[e = _RB4 ! _RB4 ]
+[; ;main.c: 89: pb3Pressed = 0;
 "89
+[e = _pb3Pressed -> -> 0 `i `b ]
+"90
 }
 [e :U 111 ]
-[; ;main.c: 89: }
-[; ;main.c: 91: _delay((unsigned long)((20)*(20000000/4000.0)));
-"91
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 90: }
+[; ;main.c: 92: _delay((unsigned long)((20)*(20000000/4000.0)));
 "92
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"93
 }
 [e :U 101 ]
 "50
 [e $U 102  ]
 [e :U 103 ]
-[; ;main.c: 92: }
 [; ;main.c: 93: }
-"93
+[; ;main.c: 94: }
+"94
 [e :UE 100 ]
 }

@@ -19,7 +19,7 @@
 void initializeMotor(){
     PORTC = halfSteps[0];
     lcdSetCursor(0x40);
-    lcdWriteToDigitBCD(nrOfSteps);
+    lcdWriteToDigitBCD(nrOfSteps,4,1);
 }
 
 void move(char steps, char direction){
@@ -50,11 +50,11 @@ void move(char steps, char direction){
          lcdSetCursor(0x40);
          if(direction==CLOCKWISE){
              nrOfSteps++;
-             lcdWriteToDigitBCD(nrOfSteps);
+             lcdWriteToDigitBCD(nrOfSteps,4,1);
          }
          else{
              nrOfSteps--;
-             lcdWriteToDigitBCD(nrOfSteps);
+             lcdWriteToDigitBCD(nrOfSteps,4,1);
          }
         __delay_ms(SPEED);
     }
