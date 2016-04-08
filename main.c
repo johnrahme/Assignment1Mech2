@@ -16,6 +16,7 @@ void interrupt isr(void){
         TMR0 = TMR0_VAL;
         flashLed();
         debounceButtons();
+        lcdRefresh();
     }
     if(ADIF){
         conversionDone = 1;
@@ -52,8 +53,14 @@ void main (void) {
         if(conversionDone){
             conversionDone = 0;
             int result = readADCData();
-            lcdSetCursor(0x00);
-            lcdWriteToDigitBCD(result);
+            int resultInMeters = readADCMeter();
+            if(updateLcdIRData){
+                lcdSetCursor(0x00);
+                lcdWriteToDigitBCD(result);
+                lcdSetCursor(0x0B);
+                lcdWriteToDigitBCD(resultInMeters);
+                updateLcdIRData = 0;
+            }
             //lcdWriteString("Hello World!");
             startADCConversion();
             

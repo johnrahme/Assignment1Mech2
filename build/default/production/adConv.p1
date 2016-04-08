@@ -27,6 +27,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
 "2169
 [v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
+"55 C:\Program Files (x86)\Microchip\xc8\v1.37\include\math.h
+[v _round `(d ~T0 @X0 0 ef1`d ]
 [v F1091 `(v ~T0 @X0 1 tf1`ul ]
 "152 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h
 [v __delay `JF1091 ~T0 @X0 0 e ]
@@ -1058,84 +1060,149 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adConv.h: 6: volatile bit conversionDone = 0;
 [; ;adConv.h: 7: void initializeADC();
 [; ;adConv.h: 8: int readADCData();
-[; ;adConv.h: 9: void startADCConversion();
-"4 adConv.c
+[; ;adConv.h: 9: int readADCMeter();
+[; ;adConv.h: 10: void startADCConversion();
+[; ;math.h: 30: extern double fabs(double);
+[; ;math.h: 31: extern double floor(double);
+[; ;math.h: 32: extern double ceil(double);
+[; ;math.h: 33: extern double modf(double, double *);
+[; ;math.h: 34: extern double sqrt(double);
+[; ;math.h: 35: extern double atof(const char *);
+[; ;math.h: 36: extern double sin(double) ;
+[; ;math.h: 37: extern double cos(double) ;
+[; ;math.h: 38: extern double tan(double) ;
+[; ;math.h: 39: extern double asin(double) ;
+[; ;math.h: 40: extern double acos(double) ;
+[; ;math.h: 41: extern double atan(double);
+[; ;math.h: 42: extern double atan2(double, double) ;
+[; ;math.h: 43: extern double log(double);
+[; ;math.h: 44: extern double log10(double);
+[; ;math.h: 45: extern double pow(double, double) ;
+[; ;math.h: 46: extern double exp(double) ;
+[; ;math.h: 47: extern double sinh(double) ;
+[; ;math.h: 48: extern double cosh(double) ;
+[; ;math.h: 49: extern double tanh(double);
+[; ;math.h: 50: extern double eval_poly(double, const double *, int);
+[; ;math.h: 51: extern double frexp(double, int *);
+[; ;math.h: 52: extern double ldexp(double, int);
+[; ;math.h: 53: extern double fmod(double, double);
+[; ;math.h: 54: extern double trunc(double);
+[; ;math.h: 55: extern double round(double);
+"5 adConv.c
 [v _initializeADC `(v ~T0 @X0 1 ef ]
 {
-[; ;adConv.c: 4: void initializeADC(){
+[; ;adConv.c: 5: void initializeADC(){
 [e :U _initializeADC ]
 [f ]
-[; ;adConv.c: 5: TRISA = 0b11111111;
-"5
+[; ;adConv.c: 6: TRISA = 0b11111111;
+"6
 [e = _TRISA -> -> 255 `i `uc ]
-[; ;adConv.c: 7: ADFM = 1;
-"7
+[; ;adConv.c: 8: ADFM = 1;
+"8
 [e = _ADFM -> -> 1 `i `b ]
-[; ;adConv.c: 9: ADCS2 = 0;
-"9
+[; ;adConv.c: 10: ADCS2 = 0;
+"10
 [e = _ADCS2 -> -> 0 `i `b ]
-[; ;adConv.c: 11: PCFG3 = 0;
-"11
-[e = _PCFG3 -> -> 0 `i `b ]
-[; ;adConv.c: 12: PCFG2 = 0;
+[; ;adConv.c: 12: PCFG3 = 0;
 "12
-[e = _PCFG2 -> -> 0 `i `b ]
-[; ;adConv.c: 13: PCFG1 = 1;
+[e = _PCFG3 -> -> 0 `i `b ]
+[; ;adConv.c: 13: PCFG2 = 0;
 "13
-[e = _PCFG1 -> -> 1 `i `b ]
-[; ;adConv.c: 14: PCFG0 = 1;
+[e = _PCFG2 -> -> 0 `i `b ]
+[; ;adConv.c: 14: PCFG1 = 1;
 "14
+[e = _PCFG1 -> -> 1 `i `b ]
+[; ;adConv.c: 15: PCFG0 = 1;
+"15
 [e = _PCFG0 -> -> 1 `i `b ]
-[; ;adConv.c: 18: ADCON0 = 0b10000001;
-"18
+[; ;adConv.c: 19: ADCON0 = 0b10000001;
+"19
 [e = _ADCON0 -> -> 129 `i `uc ]
-[; ;adConv.c: 22: ADIF = 0;
-"22
-[e = _ADIF -> -> 0 `i `b ]
-[; ;adConv.c: 23: ADIE = 1;
+[; ;adConv.c: 23: ADIF = 0;
 "23
-[e = _ADIE -> -> 1 `i `b ]
-[; ;adConv.c: 24: PEIE = 1;
+[e = _ADIF -> -> 0 `i `b ]
+[; ;adConv.c: 24: ADIE = 1;
 "24
-[e = _PEIE -> -> 1 `i `b ]
-[; ;adConv.c: 25: GIE = 1;
+[e = _ADIE -> -> 1 `i `b ]
+[; ;adConv.c: 25: PEIE = 1;
 "25
-[e = _GIE -> -> 1 `i `b ]
-[; ;adConv.c: 26: }
+[e = _PEIE -> -> 1 `i `b ]
+[; ;adConv.c: 26: GIE = 1;
 "26
+[e = _GIE -> -> 1 `i `b ]
+[; ;adConv.c: 27: }
+"27
 [e :UE 96 ]
 }
-"27
+"28
 [v _readADCData `(i ~T0 @X0 1 ef ]
 {
-[; ;adConv.c: 27: int readADCData(){
+[; ;adConv.c: 28: int readADCData(){
 [e :U _readADCData ]
 [f ]
-"29
-[v _ADCResult `i ~T0 @X0 1 a ]
-[; ;adConv.c: 29: int ADCResult = (ADRESH<<8) + ADRESL ;
-[e = _ADCResult + << -> _ADRESH `i -> 8 `i -> _ADRESL `i ]
-[; ;adConv.c: 30: return ADCResult;
 "30
+[v _ADCResult `i ~T0 @X0 1 a ]
+[; ;adConv.c: 30: int ADCResult = (ADRESH<<8) + ADRESL ;
+[e = _ADCResult + << -> _ADRESH `i -> 8 `i -> _ADRESL `i ]
+[; ;adConv.c: 31: return ADCResult;
+"31
 [e ) _ADCResult ]
 [e $UE 97  ]
-[; ;adConv.c: 32: }
-"32
+[; ;adConv.c: 33: }
+"33
 [e :UE 97 ]
 }
-"33
+"34
+[v _readADCMeter `(i ~T0 @X0 1 ef ]
+{
+[; ;adConv.c: 34: int readADCMeter(){
+[e :U _readADCMeter ]
+[f ]
+"35
+[v _raw `i ~T0 @X0 1 a ]
+[; ;adConv.c: 35: int raw = readADCData();
+[e = _raw ( _readADCData ..  ]
+"36
+[v _rawInverted `d ~T0 @X0 1 a ]
+[; ;adConv.c: 36: double rawInverted = 1.0/((double) raw);
+[e = _rawInverted / .1.0 -> _raw `d ]
+"37
+[v _k `d ~T0 @X0 1 a ]
+[; ;adConv.c: 37: double k = 18609;
+[e = _k -> -> 18609 `i `d ]
+"38
+[v _m `d ~T0 @X0 1 a ]
+[; ;adConv.c: 38: double m = -0.0002;
+[e = _m -U .0.0002 ]
+"39
+[v _result `d ~T0 @X0 1 a ]
+[; ;adConv.c: 39: double result = rawInverted*k + m;
+[e = _result + * _rawInverted _k _m ]
+"40
+[v _resultInInt `i ~T0 @X0 1 a ]
+[; ;adConv.c: 40: int resultInInt = (int) round(result);
+[e = _resultInInt -> ( _round (1 _result `i ]
+[; ;adConv.c: 41: return resultInInt;
+"41
+[e ) _resultInInt ]
+[e $UE 98  ]
+[; ;adConv.c: 42: }
+"42
+[e :UE 98 ]
+}
+"43
 [v _startADCConversion `(v ~T0 @X0 1 ef ]
 {
-[; ;adConv.c: 33: void startADCConversion(){
+[; ;adConv.c: 43: void startADCConversion(){
 [e :U _startADCConversion ]
 [f ]
-[; ;adConv.c: 35: _delay((unsigned long)((1)*(20000000/4000.0)));
-"35
+[; ;adConv.c: 45: _delay((unsigned long)((1)*(20000000/4000.0)));
+"45
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;adConv.c: 37: GO = 1;
-"37
+[; ;adConv.c: 47: GO = 1;
+"47
 [e = _GO -> -> 1 `i `b ]
-[; ;adConv.c: 38: }
-"38
-[e :UE 98 ]
+[; ;adConv.c: 48: }
+"48
+[e :UE 99 ]
 }

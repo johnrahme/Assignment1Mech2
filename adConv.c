@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "adConv.h"
+#include <math.h>
 
 void initializeADC(){
     TRISA = 0b11111111;
@@ -29,6 +30,15 @@ int readADCData(){
        int ADCResult = (ADRESH<<8) + ADRESL ;   //Merging the MSB and LSB
        return ADCResult;
     
+}
+int readADCMeter(){
+    int raw = readADCData();
+    double rawInverted =  1.0/((double) raw);
+    double k = 18609;
+    double m = -0.0002;
+    double result = rawInverted*k + m;
+    int resultInInt = (int) round(result);
+    return resultInInt;
 }
 void startADCConversion(){
        //acquisition time

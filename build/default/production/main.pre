@@ -1462,15 +1462,19 @@ volatile bit pb3Pressed = 0;
 volatile bit pb3Released = 0;
 volatile unsigned char pbCounter4 = 0;
 
+volatile bit updateLcdIRData = 0;
+volatile unsigned char irLcdCounter = 0;
 
 void initializeTimer0();
 void debounceButtons();
+void lcdRefresh();
 void flashLed();
 
 # 6 "adConv.h"
 volatile bit conversionDone = 0;
 void initializeADC();
 int readADCData();
+int readADCMeter();
 void startADCConversion();
 
 # 13 "lcd.h"
@@ -1503,6 +1507,7 @@ T0IF = 0;
 TMR0 = 100;
 flashLed();
 debounceButtons();
+lcdRefresh();
 }
 if(ADIF){
 conversionDone = 1;
@@ -1539,8 +1544,14 @@ while(1){
 if(conversionDone){
 conversionDone = 0;
 int result = readADCData();
+int resultInMeters = readADCMeter();
+if(updateLcdIRData){
 lcdSetCursor(0x00);
 lcdWriteToDigitBCD(result);
+lcdSetCursor(0x0B);
+lcdWriteToDigitBCD(resultInMeters);
+updateLcdIRData = 0;
+}
 
 startADCConversion();
 

@@ -1453,12 +1453,15 @@ volatile bit pb3Pressed = 0;
 volatile bit pb3Released = 0;
 volatile unsigned char pbCounter4 = 0;
 
+volatile bit updateLcdIRData = 0;
+volatile unsigned char irLcdCounter = 0;
 
 void initializeTimer0();
 void debounceButtons();
+void lcdRefresh();
 void flashLed();
 
-# 6 "timer0.c"
+# 7 "timer0.c"
 void initializeTimer0(){
 
 
@@ -1474,6 +1477,14 @@ TMR0IE = 1;
 (GIE = 1);
 }
 
+void lcdRefresh(){
+irLcdCounter++;
+if(irLcdCounter==250){
+updateLcdIRData = 1;
+irLcdCounter = 0;
+}
+
+}
 void flashLed(){
 rtcCounter++;
 if(rtcCounter == 500){

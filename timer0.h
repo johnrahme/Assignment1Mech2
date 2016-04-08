@@ -21,9 +21,12 @@ volatile bit pb3Pressed = 0; // Bit flag to signal if the pushbutton is pressed
 volatile bit pb3Released = 0; // Bit to signal if the pushbutton has been released
 volatile unsigned char pbCounter4 = 0;
 
+volatile bit updateLcdIRData = 0;
+volatile unsigned char irLcdCounter = 0;
 
 void initializeTimer0();
 void debounceButtons();
+void lcdRefresh();
 void flashLed();
 
 #endif TIMER0_H
