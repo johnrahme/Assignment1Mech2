@@ -56,9 +56,12 @@ void main (void) {
             int resultInMeters = readADCMeter();
             if(updateLcdIRData){
                 lcdSetCursor(0x00);
+                lcdWriteString("Raw:");
                 lcdWriteToDigitBCD(result,4,0);
-                lcdSetCursor(0x0B);
+                lcdSetCursor(0x09);
+                lcdWriteString("=>");
                 lcdWriteToDigitBCD(resultInMeters,3,0);
+                lcdWriteString("cm");
                 updateLcdIRData = 0;
             }
             //lcdWriteString("Hello World!");

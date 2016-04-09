@@ -36,6 +36,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _readADCMeter `(i ~T0 @X0 0 ef ]
 "19 lcd.h
 [v _lcdSetCursor `(v ~T0 @X0 0 ef1`uc ]
+"21
+[v _lcdWriteString `(v ~T0 @X0 0 ef1`*uc ]
 "24
 [v _lcdWriteToDigitBCD `(v ~T0 @X0 0 ef3`i`uc`uc ]
 "20 motor.h
@@ -1348,121 +1350,133 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 58: lcdSetCursor(0x00);
 "58
 [e ( _lcdSetCursor (1 -> -> 0 `i `uc ]
-[; ;main.c: 59: lcdWriteToDigitBCD(result,4,0);
+[; ;main.c: 59: lcdWriteString("Raw:");
 "59
-[e ( _lcdWriteToDigitBCD (3 , , _result -> -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 60: lcdSetCursor(0x0B);
+[e ( _lcdWriteString (1 -> :s 1C `*uc ]
+[; ;main.c: 60: lcdWriteToDigitBCD(result,4,0);
 "60
-[e ( _lcdSetCursor (1 -> -> 11 `i `uc ]
-[; ;main.c: 61: lcdWriteToDigitBCD(resultInMeters,3,0);
+[e ( _lcdWriteToDigitBCD (3 , , _result -> -> 4 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 61: lcdSetCursor(0x09);
 "61
-[e ( _lcdWriteToDigitBCD (3 , , _resultInMeters -> -> 3 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 62: updateLcdIRData = 0;
+[e ( _lcdSetCursor (1 -> -> 9 `i `uc ]
+[; ;main.c: 62: lcdWriteString("=>");
 "62
-[e = _updateLcdIRData -> -> 0 `i `b ]
+[e ( _lcdWriteString (1 -> :s 2C `*uc ]
+[; ;main.c: 63: lcdWriteToDigitBCD(resultInMeters,3,0);
 "63
+[e ( _lcdWriteToDigitBCD (3 , , _resultInMeters -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 64: lcdWriteString("cm");
+"64
+[e ( _lcdWriteString (1 -> :s 3C `*uc ]
+[; ;main.c: 65: updateLcdIRData = 0;
+"65
+[e = _updateLcdIRData -> -> 0 `i `b ]
+"66
 }
 [e :U 105 ]
-[; ;main.c: 63: }
-[; ;main.c: 65: startADCConversion();
-"65
+[; ;main.c: 66: }
+[; ;main.c: 68: startADCConversion();
+"68
 [e ( _startADCConversion ..  ]
-"67
+"70
 }
 [e :U 104 ]
-[; ;main.c: 67: }
-[; ;main.c: 68: if(pb0Pressed){
-"68
+[; ;main.c: 70: }
+[; ;main.c: 71: if(pb0Pressed){
+"71
 [e $ ! _pb0Pressed 106  ]
 {
-[; ;main.c: 69: move(1,1);
-"69
-[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 70: RB4 = !RB4;
-"70
-[e = _RB4 ! _RB4 ]
-[; ;main.c: 71: pb0Pressed = 0;
-"71
-[e = _pb0Pressed -> -> 0 `i `b ]
+[; ;main.c: 72: move(1,1);
 "72
+[e ( _move (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 73: RB4 = !RB4;
+"73
+[e = _RB4 ! _RB4 ]
+[; ;main.c: 74: pb0Pressed = 0;
+"74
+[e = _pb0Pressed -> -> 0 `i `b ]
+"75
 }
 [e :U 106 ]
-[; ;main.c: 72: }
-[; ;main.c: 73: if(pb1Pressed){
-"73
+[; ;main.c: 75: }
+[; ;main.c: 76: if(pb1Pressed){
+"76
 [e $ ! _pb1Pressed 107  ]
 {
-[; ;main.c: 74: move(1,0);
-"74
+[; ;main.c: 77: move(1,0);
+"77
 [e ( _move (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 75: pb1Pressed = 0;
-"75
+[; ;main.c: 78: pb1Pressed = 0;
+"78
 [e = _pb1Pressed -> -> 0 `i `b ]
-"76
+"79
 }
 [e :U 107 ]
-[; ;main.c: 76: }
-[; ;main.c: 77: if(pb2Pressed){
-"77
+[; ;main.c: 79: }
+[; ;main.c: 80: if(pb2Pressed){
+"80
 [e $ ! _pb2Pressed 108  ]
 {
-[; ;main.c: 78: if(motorToggle){
-"78
+[; ;main.c: 81: if(motorToggle){
+"81
 [e $ ! _motorToggle 109  ]
 {
-[; ;main.c: 79: moveDeg(-180);
-"79
-[e ( _moveDeg (1 -> -U -> 180 `i `d ]
-"80
-}
-[; ;main.c: 80: }
-[e $U 110  ]
-"81
-[e :U 109 ]
-[; ;main.c: 81: else{
-{
-[; ;main.c: 82: moveDeg(180);
+[; ;main.c: 82: moveDeg(-180);
 "82
-[e ( _moveDeg (1 -> -> 180 `i `d ]
+[e ( _moveDeg (1 -> -U -> 180 `i `d ]
 "83
 }
-[e :U 110 ]
 [; ;main.c: 83: }
-[; ;main.c: 84: motorToggle = !motorToggle;
+[e $U 110  ]
 "84
-[e = _motorToggle ! _motorToggle ]
-[; ;main.c: 85: pb2Pressed = 0;
+[e :U 109 ]
+[; ;main.c: 84: else{
+{
+[; ;main.c: 85: moveDeg(180);
 "85
-[e = _pb2Pressed -> -> 0 `i `b ]
+[e ( _moveDeg (1 -> -> 180 `i `d ]
 "86
 }
-[e :U 108 ]
+[e :U 110 ]
 [; ;main.c: 86: }
-[; ;main.c: 87: if(pb3Pressed){
+[; ;main.c: 87: motorToggle = !motorToggle;
 "87
+[e = _motorToggle ! _motorToggle ]
+[; ;main.c: 88: pb2Pressed = 0;
+"88
+[e = _pb2Pressed -> -> 0 `i `b ]
+"89
+}
+[e :U 108 ]
+[; ;main.c: 89: }
+[; ;main.c: 90: if(pb3Pressed){
+"90
 [e $ ! _pb3Pressed 111  ]
 {
-[; ;main.c: 88: RB4 = !RB4;
-"88
+[; ;main.c: 91: RB4 = !RB4;
+"91
 [e = _RB4 ! _RB4 ]
-[; ;main.c: 89: pb3Pressed = 0;
-"89
+[; ;main.c: 92: pb3Pressed = 0;
+"92
 [e = _pb3Pressed -> -> 0 `i `b ]
-"90
+"93
 }
 [e :U 111 ]
-[; ;main.c: 90: }
-[; ;main.c: 92: _delay((unsigned long)((20)*(20000000/4000.0)));
-"92
+[; ;main.c: 93: }
+[; ;main.c: 95: _delay((unsigned long)((20)*(20000000/4000.0)));
+"95
 [e ( __delay (1 -> * -> -> 20 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"93
+"96
 }
 [e :U 101 ]
 "50
 [e $U 102  ]
 [e :U 103 ]
-[; ;main.c: 93: }
-[; ;main.c: 94: }
-"94
+[; ;main.c: 96: }
+[; ;main.c: 97: }
+"97
 [e :UE 100 ]
 }
+[a 3C 99 109 0 ]
+[a 2C 61 62 0 ]
+[a 1C 82 97 119 58 0 ]

@@ -1492,6 +1492,7 @@ void setupLCD(void);
 void initializeMotor(){
 PORTC = halfSteps[0];
 lcdSetCursor(0x40);
+lcdWriteString("Steps:");
 lcdWriteToDigitBCD(nrOfSteps,4,1);
 }
 
@@ -1520,7 +1521,9 @@ else{
 PORTC = 0x00;
 }
 
+
 lcdSetCursor(0x40);
+lcdWriteString("steps:");
 if(direction==1){
 nrOfSteps++;
 lcdWriteToDigitBCD(nrOfSteps,4,1);

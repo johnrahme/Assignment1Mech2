@@ -47,6 +47,8 @@
 [v _lcdWriteData lcdWriteData `(v  1 e 1 0 ]
 "28
 [v _lcdSetCursor lcdSetCursor `(v  1 e 1 0 ]
+"33
+[v _lcdWriteString lcdWriteString `(v  1 e 1 0 ]
 "39
 [v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
 "81
@@ -59,9 +61,9 @@
 [v _main main `(v  1 e 1 0 ]
 "19 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _initializeMotor initializeMotor `(i  1 e 2 0 ]
-"25
+"26
 [v _move move `(v  1 e 1 0 ]
-"63
+"66
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
 "7 C:\Users\JohnMac\Assignment1Mech2\timer0.c
 [v _initializeTimer0 initializeTimer0 `(v  1 e 1 0 ]
@@ -198,7 +200,7 @@
 [v main@resultInMeters resultInMeters `i  1 a 2 23 ]
 "55
 [v main@result result `i  1 a 2 21 ]
-"94
+"97
 } 0
 "43 C:\Users\JohnMac\Assignment1Mech2\adConv.c
 [v _startADCConversion startADCConversion `(v  1 e 1 0 ]
@@ -252,14 +254,14 @@
 [v ___awtoft@c c `i  1 p 2 8 ]
 "42
 } 0
-"63 C:\Users\JohnMac\Assignment1Mech2\motor.c
+"66 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _moveDeg moveDeg `(v  1 e 1 0 ]
 {
-"64
+"67
 [v moveDeg@stepsToMove stepsToMove `uc  1 a 1 10 ]
-"63
+"66
 [v moveDeg@deg deg `d  1 p 3 77 ]
-"73
+"76
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\round.c
 [v _round round `(d  1 e 3 0 ]
@@ -328,17 +330,17 @@
 [v ___ftadd@f2 f2 `f  1 p 3 61 ]
 "148
 } 0
-"25 C:\Users\JohnMac\Assignment1Mech2\motor.c
+"26 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _move move `(v  1 e 1 0 ]
 {
 [v move@steps steps `uc  1 a 1 wreg ]
-"26
+"27
 [v move@i i `uc  1 a 1 21 ]
-"25
+"26
 [v move@steps steps `uc  1 a 1 wreg ]
 [v move@direction direction `uc  1 p 1 17 ]
 [v move@steps steps `uc  1 a 1 20 ]
-"61
+"64
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\ftge.c
 [v ___ftge __ftge `(b  1 e 0 0 ]
@@ -387,7 +389,7 @@
 "19 C:\Users\JohnMac\Assignment1Mech2\motor.c
 [v _initializeMotor initializeMotor `(i  1 e 2 0 ]
 {
-"23
+"24
 } 0
 "39 C:\Users\JohnMac\Assignment1Mech2\lcd.c
 [v _lcdWriteToDigitBCD lcdWriteToDigitBCD `(v  1 e 1 0 ]
@@ -406,14 +408,6 @@
 [v lcdWriteToDigitBCD@showSign showSign `uc  1 p 1 9 ]
 "78
 } 0
-"17
-[v _lcdWriteData lcdWriteData `(v  1 e 1 0 ]
-{
-[v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
-[v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
-[v lcdWriteData@databyte databyte `uc  1 a 1 2 ]
-"25
-} 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.37\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
@@ -424,7 +418,23 @@
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"28 C:\Users\JohnMac\Assignment1Mech2\lcd.c
+"33 C:\Users\JohnMac\Assignment1Mech2\lcd.c
+[v _lcdWriteString lcdWriteString `(v  1 e 1 0 ]
+{
+[v lcdWriteString@s s `*.24uc  1 a 1 wreg ]
+[v lcdWriteString@s s `*.24uc  1 a 1 wreg ]
+[v lcdWriteString@s s `*.24uc  1 a 1 4 ]
+"36
+} 0
+"17
+[v _lcdWriteData lcdWriteData `(v  1 e 1 0 ]
+{
+[v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
+[v lcdWriteData@databyte databyte `uc  1 a 1 wreg ]
+[v lcdWriteData@databyte databyte `uc  1 a 1 2 ]
+"25
+} 0
+"28
 [v _lcdSetCursor lcdSetCursor `(v  1 e 1 0 ]
 {
 [v lcdSetCursor@address address `uc  1 a 1 wreg ]
