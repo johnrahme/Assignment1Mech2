@@ -1,7 +1,8 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#define _XTAL_FREQ 20000000
+#define _XTAL_FREQ 20000000 //Processor frequency
+//Define buttons and leds
 #define LED0 RB4
 #define LED1 RB5
 #define PB0 !RB0 

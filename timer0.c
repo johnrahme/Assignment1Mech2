@@ -1,8 +1,8 @@
 
 #include <xc.h>
 #include "timer0.h"
-#define DEBOUNCE_REQ_COUNT 10 // Ehhh we can make this any reasonable number
-#define LCD_REFRESH_RATE 250 // set refresh rate to 20 hz 
+#define DEBOUNCE_REQ_COUNT 10 // Debounce for 10 ms
+#define LCD_REFRESH_RATE 250 // set refresh rate 
 
 void initializeTimer0(){
         
@@ -10,15 +10,17 @@ void initializeTimer0(){
     TMR0 = 100;
     T0CS = 0;
     T0SE = 0;
+    //Set 32 prescalar
     PSA = 0;
     PS0 = 0;
     PS1 = 0;
     PS2 = 1;
-    
+    //Enable timer interrupts
     TMR0IE = 1;
     ei();
 }
 
+//Set flag for refreshing LCD
 void lcdRefresh(){
     irLcdCounter++;
     if(irLcdCounter==LCD_REFRESH_RATE){
@@ -27,6 +29,8 @@ void lcdRefresh(){
     }
     
 }
+
+//Set flag for flashing led at 1HZ
 void flashLed(){
     rtcCounter++;
     if(rtcCounter == 500){
@@ -35,16 +39,19 @@ void flashLed(){
     }
 }
 
+//Debounce buttons SB2, SB3, SB4 and SB5
 void debounceButtons(){
 
         if(PB0) {
-            pbCounter++;
+            pbCounter++; //Increment counter
             if(pbCounter >DEBOUNCE_REQ_COUNT &&pb0Released){
+                //Set flags
                 pb0Pressed = 1;
                 pb0Released = 0;
             }
         }
         else{
+            //Set flags
             pbCounter = 0;
             pb0Released = 1;
         }

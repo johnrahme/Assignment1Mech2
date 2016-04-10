@@ -35,11 +35,12 @@ void lcdWriteString(char * s){
     while(*s) lcdWriteData(*s++);
 }
 
-//function accepts char between 0 and 99 and writes it to lcd display in 2 digits
+//function accepts int between 0 and 9999 and writes it to lcd display in specified digits
     void lcdWriteToDigitBCD(signed int data, char digits, char showSign){
         unsigned int OnesDigit;
         unsigned char TensDigit, HundredDigit, ThousandDigit;
         signed char sign = 1;
+        //Check the sign
         if(data<0)
             sign = -1;
         //load number to be converted into OnesDigit and clear TensDigit
@@ -62,11 +63,14 @@ void lcdWriteString(char * s){
                 OnesDigit = OnesDigit - 10;
                 TensDigit++;
         }
+        
+        //Check if plus or minus should be written to LCD
         if(sign == -1 && showSign)
             lcdWriteData((unsigned char)45);
         else if (sign == 1 && showSign){
             lcdWriteData((unsigned char)43);
         }
+        //Check how many digits should be written to LCD
         if(digits>3)
             lcdWriteData((unsigned char)ThousandDigit + 48);
         if(digits>2)
@@ -78,8 +82,7 @@ void lcdWriteString(char * s){
     }
 
     //function initalises the LCD module - check that ADCON1 setting doesn't conflict
-    void setupLCD(void){
-        //setup ADCON1 register to make PortE Digital
+    void setupLCD(void){s
 
         PORTD = 0;				//set all pins on portd low
         PORTE = 0;				//set all pins on porte low
